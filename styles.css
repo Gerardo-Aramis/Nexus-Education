@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    position: relative;
+    background-image: linear-gradient(to bottom, #202d35 50%, #2A677C 50%);
+    color: white;
+}
+
+.container {
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    position: relative;
+    z-index: 1;   
+}
+
+.cuadro {
+    width: 1050px;
+    height: 450px; 
+    padding: 20px;
+    background-color: #0e3c54;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+     
+}
+.center-text {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+input[type="email"] {
+    width: calc(100%-30%);
+    height: 25px; 
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+}
+
+input[type="email"]:focus {
+    outline: none;
+    background-color: #e6e6e6;
+}
+
+button {
+    padding: 15px 25px;
+    background-color: #006eff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    
+}
+
+button:hover {
+    background-color: #005fcc;
+}
+
+      
+
+.logo-tecnm {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 250px; 
+    height: auto; 
+}
+
+.logo-ittepic {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 150px; 
+    height: auto; 
+}

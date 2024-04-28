@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Identidad - Nexus Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="images/logo.png" rel="shortcut icon">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+
+    <style>
+        
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            align-items: flex-start; /* Alinea todos los elementos al inicio */
+        }
+
+        .cuadro {
+            width: 1000px;
+            height: 420px; 
+            background-color: #0e3c54;
+            border-radius: 10px;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        input[type="email"],
+        input[type="codigo"],
+        button {
+            border: none;
+            background-color: #f2f2f2;
+            border-radius: 30px;
+            padding: 5px 10px;
+            margin-bottom: 0px;
+            height: 30px;
+            width: calc(50% - 10px); 
+            margin-right: 60px; /* Añadido para crear un margen entre los elementos */
+            text-align: left; /* Alinea el texto a la izquierda */
+            font-family: Arial, sans-serif; /* Cambiar la fuente */
+            font-size: 16px; /* Cambiar el tamaño de la letra */
+        }
+
+        input[type="email"]:focus,
+        input[type="codigo"]:focus,
+        button:focus {
+            outline: none;
+            background-color: #e6e6e6;
+        }
+
+        button {
+            background-color: #35B6E3;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            height: 30px;
+            width: calc(50% - 10px); /* Ajuste del ancho del botón */
+            text-align: center; /* Alinea el texto del botón al centro */
+            border-radius: 30px;
+        }
+
+        button:hover {
+            background-color: #005fcc;
+        }
+
+        buttonback {
+            background-color: #35B6E3;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            height: 30px;
+            width: calc(50% - 10px); /* Ajuste del ancho del botón */
+            border-radius: 50%; /* Para hacer el botón circular */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+
+        .otpverify {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Añadido para alinear verticalmente los elementos */
+        }
+
+        .left-margin {
+            margin-left: 60px; /* Ajuste del margen izquierdo */
+        }
+
+        /* Estilo para el botón con imagen */
+        .back-button {
+            position: absolute;
+            bottom: 70px; /* Distancia desde la parte inferior */
+            left: -260px; /* Distancia desde la parte izquierda */
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .otpverify{
+	        display: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/tecnm.png" alt="Logo Tecnm" class="logo-tecnm">
+    <img src="images/ittepic.png" alt="Logo Ittepic" class="logo-ittepic">
+
+    <!-- Botón con imagen -->
+    <buttonback class="back-button" onclick="window.history.back();">
+        <img src="images/atras.png" alt="Atrás" width="100" height="100">
+    </buttonback>
+
+    <div class="container">
+        <div class="cuadro">
+            <h1>Verificar Identidad</h1>
+            <form action="" method="post">
+                <div class="center-text">
+                    <div style="text-align: left; " class="left-margin"> <!-- Ajustes de estilo -->
+                        <h2>Correo Electrónico Institucional</h2> <!-- Ajustes de estilo -->
+                        <input type="email" id="email" name="email" placeholder="Ejemplo: usuario@ittepic.edu.mx" required>
+                    </div>
+                    <div style="text-align: left;" class="left-margin"> <!-- Ajustes de estilo -->
+                        <h2>Código de Validación</h2> <!-- Ajustes de estilo -->
+                        <div class="otpverify">
+                            <input type="codigo" id="otp_inp" name="codigo" placeholder="Ingrese los 4 dígitos enviados" required>
+                            <button type="button" id="otp-btn" style="width: 280px; height: 40px;">Verificar</button><!-- Ajuste del ancho del botón -->
+                        </div>
+                    </div>
+                    <div style="text-align: left;" class="left-margin"> <!-- Contenedor del botón enviar -->
+                        <p>
+                        <button onclick="return validarCorreo()"  type="button" style="width: 280px; height: 40px;">Enviar código</button></p> <!-- Botón de enviar -->
+                    </div>
+                </div>
+            </form>
+            <h3 style="color: #35B6E3;"><p>Recibirás un correo para continuar con la recuperación de tu cuenta</p></h3>
+        </div>
+    </div>   
+    <script src="validate-email.js"></script>
+     
+    <script>
+        function validarCorreo() {
+        var email = document.getElementById('email');
+                 var emailRegex = /^\w+@ittepic.edu.mx+$/;
+                 
+        if (!emailRegex.test(email.value)) {
+            alert("Por favor, ingrese un correo electrónico válido.");
+            return false;
+            } 
+            else {
+                    return sendOTP();         
+                 }
+    
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar - Nexus Education</title>
+    <link href="images/logo.png" rel="shortcut icon">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+
+
+        .cuadro {
+            width: 730px;
+            height: 1210px; 
+            background-color: #0e3c54;
+            border-radius: 10px;
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        input[type="nombre"],
+        input[type="paterno"],
+        input[type="materno"],
+        input[type="sexo"],
+        input[type="carrera"],
+        input[type="noControl"],
+        input[type="email"],
+        input[type="password"],
+        input[type="confirmpassword"] {
+            width: 500px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            margin-top: -20px;
+            margin-left: 100px;
+        }
+
+        input[type="nombre"],
+        input[type="paterno"],
+        input[type="materno"],
+        input[type="sexo"],
+        input[type="carrera"],
+        input[type="noControl"],
+        input[type="email"],
+        input[type="password"],
+        input[type="confirmpassword"],
+        button {
+            border: none;
+            background-color: #f2f2f2;
+            border-radius: 50px;
+            padding: 5px 10px;
+            margin-bottom: 5px;
+            height: 30px;
+            width: 500px;
+            margin-right: 10px; 
+            text-align: left; /* Alinea el texto a la izquierda */
+            font-family: Arial, sans-serif; /* Cambiar la fuente */
+            font-size: 13px; /* Cambiar el tamaño de la letra */
+            margin-left: 100px;
+        }
+
+        input[type="email"]:focus,
+        input[type="nombre"]:focus,
+        input[type="paterno"]:focus,
+        input[type="materno"]:focus,
+        input[type="sexo"]:focus,
+        input[type="carrera"]:focus,
+        input[type="noControl"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="confirmpassword"]:focus,
+        button:focus {
+            outline: none;
+            background-color: #e6e6e6;
+        }
+
+        button {
+            background-color: #35B6E3;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            height: 30px;
+            width: calc(50% - 10px); /* Ajuste del ancho del botón */
+            text-align: center; /* Alinea el texto del botón al centro */
+            margin-top: 20px;
+            margin-right: 50x;
+        }
+
+        button:hover {
+            background-color: #005fcc;
+        }
+
+        .back-button {
+            position: absolute;
+            bottom: 30px; /* Distancia desde la parte inferior */
+            left: 25px; /* Distancia desde la parte izquierda */
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .Nombre, .Apellido1, .Apellido2, .Combo1, .Combo2, .NC{
+           border-radius: 30px;
+           border: unset;
+           padding: 10px 50px;
+           margin-left: 100px;
+        }
+
+        .MsjContra{
+            font-size: 14px;
+            font-weight: lighter;
+            margin-left: 100px;
+            text-align: 100px;
+        }
+        
+        h2{
+            font-size: 22px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <img src="images/tecnm.png" alt="Logo Tecnm" class="logo-tecnm">
+    <img src="images/ittepic.png" alt="Logo Ittepic" class="logo-ittepic">
+
+    <div class="container">
+        <form action="register.php" method="post" name="formulario" class="cuadro">
+            <h1>Regístrate</h1>
+            <div style="text-align: left;" class="left-margin">
+                <h2><p style="margin-left: 100px;">Nombre(s)</p></h2>
+                <p><input class="Nombre" type="text" id="nombre" name="nombre" placeholder="Ejemplo: Luis Alberto" required></p>
+
+                <h2><p style="margin-left: 100px;">Apellido Paterno</p></h2>
+                <p><input class = "Apellido1" ntype="text" id="ApellidoPaterno" name="ApellidoPaterno" placeholder="López" required></p>
+
+                <h2><p style="margin-left: 100px;">Apellido Materno</p></h2>
+                <p><input class = "Apellido2" type="text" id="ApellidoMaterno" name="ApellidoMaterno" placeholder="Pérez" required></p>
+
+                <div class="form-input sexo">
+                    <h2><p style="margin-left: 100px;">Sexo</p></h2>
+                    <p>
+                        <select class = "Combo1" name="Sexo" id="Sexo">
+                            <option value="1">Hombre</option>
+                            <option value="2">Mujer</option>
+                            <option value="3">No binario</option>
+                        </select>
+                    </p>
+                </div>
+
+                <div class="form-input carrera">
+                    <h2><p style="margin-left: 100px;">Carrera</p></h2>
+                    <p>
+                        <select class = "Combo2" name="Carrera" id="Carrera">
+                            <option value="1">Arquitectura</option>
+                            <option value="2">Ingeniería Bioquímica</option>
+                            <option value="3">Ingeniería Civil</option>
+                            <option value="4">Ingeniería Eléctrica</option>
+                            <option value="5">Ingeniería en Gestión Empresarial</option>
+                            <option value="6">Ingeniería en Sistemas Computacionales</option>
+                            <option value="7">Ingeniería Industrial</option>
+                            <option value="8">Ingeniería Mecatrónica</option>
+                            <option value="9">Ingeniería Química</option>
+                            <option value="10">Licenciatura en Administración</option>
+                        </select>
+                    </p>
+                </div>
+
+                <div class="form-input semestre">
+                    <h2><p style="margin-left: 100px">Semestre</p></h2>
+                    <p>
+                        <select class="Combo2" name="Semestre" id="Semestre">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </p>
+                </div>
+                
+                
+                
+
+                <h2><p style="margin-left: 100px;">Número de control</p></h2>
+                <p><input class = "NC" type="text" id="NoControl" name="NoControl" placeholder="Ingrese 8 dígitos" required></p>
+
+                <h2><p style="margin-left: 100px;">Correo electrónico institucional</p></h2>
+                <p><input type="email" id="email" name="email" placeholder="Ejemplo: usuario@ittepic.edu.mx" required></p>
+            </div>
+
+            <h3 class = "MsjContra" style="color: #35B6E3; margin-left: 10px;"><p>Su contraseña debe tener una letra minúscula, una letra mayúscula, un número, un carácter especial y mínimo 8 dígitos.</p></h3>
+            <div style="text-align: left;" class="left-margin">
+                <h2><p style="margin-left: 100px;">Contraseña</p></h2>
+                <p><input type="password" id="password" name="password" placeholder="Ingrese 8 dígitos" required></p>
+
+                <h2><p style="margin-left: 100px;">Confirmar Contraseña</p></h2>
+                <p><input type="password" id="confirmpassword" name="confirmpassword" placeholder="Ingrese 8 dígitos" required><p>
+            </div>
+            
+            <input type="checkbox" id="termsAndConditions" name="termsAndConditions">
+            <label for="termsAndConditions">He leído y acepto los </label>
+            <a href="#">Términos y Condiciones</a>
+
+            <h2><p><button type="submit" style="width: 280px; height: 40px;">Enviar</button></p></h2>
+        </form>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html>
+</html>
