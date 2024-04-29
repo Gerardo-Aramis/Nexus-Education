@@ -6,7 +6,15 @@
     <title>Nexus Education - Inicio</title>
     <link rel="stylesheet" href="home.css">
     <link href="images/logo.png" rel="shortcut icon">
-    <link rel="stylesheet" href="home-style.css">
+    <link rel="stylesheet" href="style-page.css">
+    <style>
+        .filename {
+            font-size: smaller; /* Tamaño de letra más pequeño */
+            display: block; /* Para que aparezca debajo de la imagen */
+            margin-top: 5px; /* Espacio entre la imagen y el texto */
+        }
+
+    </style>
 </head>
 <body>
     <div class="top-section">
@@ -16,7 +24,7 @@
     <div class="left-section"> 
         <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
         <img src="images/Mi_Perfil.png" alt="Mi_perfil" class="fotosperfil">
-            <a href="perfil.php">Mi perfil</a>
+            <a href="profile.php">Mi perfil</a>
         <img src="images/Subir.png" alt="Subir" class="fotosperfil" style="margin-top: 70px;  ">
             <a href="subir/SubirArchivo.html" style="margin-top: 50px;">Subir</a>
         <img src="images/Mis_archivos.png" alt="Mis_archivos" class="fotosperfil" style="margin-top: 130px; width: 40px; height: auto;">
@@ -25,7 +33,10 @@
             <a href="login.html" style="margin-top: 260px;">Cerrar sesión</a>
     </div>
     <div class="bottom-section">
-
-    </div>
+            <a href="view-file/view-file.html?id=18khEkw4GrOtnT0dKgGGft3RzPrbLPNDa"><img src="images/Archivo_Word.png" alt="Archivo_Word" class="fotosarchivo"></a>
+            <a href="view-file/view-file.html?id=1qoIjM5YLzgEPX2Q1RgjFSuR6Vj_LWAHl"><img src="images/Archivo_Pdf.png" alt="Archivo_Pdf" class="fotosarchivo" style="margin-left: 230px; margin-top: -20px; width: 157px; height: auto;"></a>
+            <img src="images/Archivo_Powerpoint.png" alt="Archivo_Powerpoint" class="fotosarchivo" style="margin-left: -20px; margin-top: 135px; width: 160px; height: auto;">
+            <img src="images/Archivo_Xls.png" alt="Archivo_Xls" class="fotosarchivo" style="margin-left: 230px; width: 145px; height: auto; margin-top: 150px;">
+    </div> 
 </body>
 </html>
