@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Categoría - Nexus Education</title>
+    <link rel="stylesheet" href="../estilospantallas.css">
+    <link href="../images/logo.png" rel="shortcut icon">
+
+    <style>
+        button {
+            background-color: #65A7D3;
+            color:black;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            height: 40px;
+            width: 300px; /* Ajuste del ancho del botón */
+            text-align: center; /* Alinea el texto del botón al centro */
+            margin-bottom: 10px; /* Espacio entre botones */
+            border-radius: 50px;
+            font-family: Arial, sans-serif; /* Cambiar la fuente */
+            font-size: 22px; /* Cambiar el tamaño del texto */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button:hover {
+            background-color: #3594d3;
+        }
+
+        /* Estilo cuando se hace clic */
+        button:active {
+            transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        }
+        
+        input[type="nombre"],
+        input[type="carrera"],
+        input[type="semestre"],
+        input[type="materia"] {
+            width: 500px;
+            padding: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 30px;
+            margin-top: -20px;
+            margin-left: 90px;
+
+        }
+
+        input[type="nombre"],
+        input[type="carrera"],
+        input[type="semestre"],
+        input[type="materia"],
+        button {
+            border: none;
+            background-color: #65A7D3;
+            border-radius: 50px;
+            padding: 5px 10px;
+            margin-bottom: 5px;
+            height: 30px;
+            width: 500px;
+            margin-right: 0px; 
+            text-align: left; /* Alinea el texto a la izquierda */
+            font-family: Arial, sans-serif; /* Cambiar la fuente */
+            font-size: 16px; /* Cambiar el tamaño de la letra */
+            margin-left: 100px;
+        }
+
+        input[type="nombre"],
+        input[type="carrera"],
+        input[type="semestre"],
+        input[type="materia"],
+        button:focus {
+            outline: none;
+            background-color: #2d4e64;
+        }
+
+        .back-button {
+            position: absolute;
+            bottom: 30px; /* Distancia desde la parte inferior */
+            left: 25px; /* Distancia desde la parte izquierda */
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PARTE LOGOS DE ARRIBA -->
+        <div class="top-section">
+            <img src="../images/tecnm.png" alt="Logo Tecnm" class="logo-tecnm">
+            <img src="../images/ittepic.png" alt="Logo Tec Tepic" class="logo-ittepic">
+            <img src="../images/nexus2.png" alt="Logo Nexus" class="logo-nexus">
+            <img src="../images/nombrenexus.png" alt="Logo nombre Nexus" class="logo-nombrenexus">
+
+        </div>
+        
+        <!-- SECCION PARTE AZUL DEL CENTRO -->
+        <div class="bottom-section">
+            <div class="center-section">
+            <h1 style ="margin-right: -500px; font-family: Arial, sans-serif; font-size: 35px; " >Agregar categoría</h1>
+                <!-- SECCION PARTE BLANCA -->
+                <div class="center-sectionwhite">
+                    <form id="categoriaForm" method="POST" action="agregarcategoria1.php">
+                    <div style="display: flex; align-items: center; margin-top: 35px; margin-left: -250px;">
+                        <h3 style="margin-left: -15px; color:black; margin-bottom:50px; padding-top: 10px;">Nombre de la categoría</h3>
+                        <input style="background-color: #ffffff; margin-left: 15px;" type="nombre" id="nombre" name="nombre" placeholder="Nombre de la categoría" required>
+                    </div>
+                    
+                    <!--COMBO CARRERA -->
+                    <div class="form-input carrera" style="margin-top: -20px; display: flex; align-items: center; margin-bottom: 10px;  margin-left: -125px;">
+                        <h3 style="margin-right: 5px;  color:black;">Carrera</h3>
+                        <select name="carrera" id="carrera"  onchange="actualizarMaterias()" style=" margin-left:10px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px; margin-right: 15px;">
+                            <option value="">Seleccione una carrera...</option>
+                            <option value="1">Arquitectura</option>
+                            <option value="2">Ingeniería Bioquímica</option>
+                            <option value="3">Ingeniería Civil</option>
+                            <option value="4">Ingeniería Eléctrica</option>
+                            <option value="5">Ingeniería en Gestión Empresarial</option>
+                            <option value="6">Ingeniería en Sistemas Computacionales</option>
+                            <option value="7">Ingeniería Industrial</option>
+                            <option value="8">Ingeniería Mecatrónica</option>
+                            <option value="9">Ingeniería Química</option>
+                            <option value="10">Licenciatura en Administración</option>
+                        </select>
+                    </div>
+                    
+                    <!-- COMBOSEMESTRE -->
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -140px;">
+                        <h3 style="margin-right: 5px;  color:black;">Semestre</h3>
+                        <select name="semestre" id="semestre" onchange="actualizarMaterias()" style=" margin-left:10px ; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px; margin-right: 15px;">
+                            <option value="">Seleccione un semestre...</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    
+                     <!-- COMBO MATERIA-->
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -250px;">
+                        <h3 style="margin-right: 15px;  color:black;">Nombre de la materia</h3>
+                        <select name="materia" id="materia" style="margin-left:5px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px;">
+
+                        </select>
+                    </div>
+
+                    <button type="button" onclick="agregarcategoria()" style="font-size: 20px;width: 250px;height:40px; margin: 100px; margin-top: 40px; margin-left: -100px;">Agregar</button>
+                    
+                </div>
+               
+            </div>
+        </div>
+
+        
+        <div class="left-section"> 
+            <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
+            <img src="../images/moderador.png" alt="moderador" class="fotosperfil" style="margin-left: -17px; margin-top: -15px; width: 50px; height: auto;">
+            <img src="../images/textomoderador.png" alt="textomoderador" class="fotosperfil" style="margin-left: 30px; margin-top: -5px; width: 150px; height: auto;">
+
+            <img src="../images/validar.png" alt="Validar" class="fotosperfil" style="margin-left: -17px; margin-top: 5px; width: 125px; height: auto;">
+                <a href="validar.html" style="margin-left: 25px; margin-top: 80px;">Validar</a>
+            <img src="../images/reporte.png" alt="reporte" class="fotosperfil" style="margin-left: -10px; margin-top: 75px; width: 130px; height: auto; ">
+                <a href="reporte.html" style="margin-left: 25px; margin-top: 70px;">Reporte</a>
+            <img src="../images/categoria.png" alt="categoria" class="fotosperfil" style="margin-left: -12px; margin-top: 175px; width: 140px; height: auto;">
+                <a href="organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
+            <img src="../images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
+                <a href="../login.html" style="margin-left: 7px; margin-top: 170px;">Cerrar sesión</a>
+        </div>
+        
+    </div>
+    <script>
+        function agregarcategoria() {
+            // Obtener los datos del formulario
+            var nombre = document.getElementById('nombre').value;
+            var carrera = document.getElementById('carrera').value;
+            var semestre = document.getElementById('semestre').value;
+            var materia = document.getElementById('materia').value;
+            
+            if (nombre.trim() === '') {
+            alert('Por favor ingresa un nombre de categoría.');
+            return; // Detener la ejecución de la función si el campo está vacío
+        }
+            
+            // Crear un objeto FormData para enviar los datos
+            var formData = new FormData();
+            formData.append('nombre', nombre);
+            formData.append('carrera', carrera);
+            formData.append('semestre', semestre);
+            formData.append('materia', materia);
+            
+            // Crear una solicitud AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'agregarcategoria1.php', true);
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    // Mostrar mensaje de éxito o error
+                    alert(this.responseText);
+                }
+            };
+            xhr.send(formData);
+        }
+
+        function cargarOpcionesSelect(url, idSelect) {
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById(idSelect);
+                data.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    select.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error al cargar opciones de select:', error));
+        }
+    
+        // Función para cargar las materias según la carrera y el semestre seleccionados
+        function cargarMaterias() {
+            const carrera = document.getElementById('carrera').value;
+            const semestre = document.getElementById('semestre').value;
+            const url = `obtener_materias.php`;
+            const data = new FormData();
+            data.append('carrera', carrera);
+            data.append('semestre', semestre);
+
+            fetch(url, {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById('materia');
+                select.innerHTML = ''; // Limpiar opciones anteriores
+                const optionElement = document.createElement('option');
+                optionElement.value = '';
+                optionElement.textContent = 'Seleccione una materia...';
+                select.appendChild(optionElement);
+                data.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    select.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error al cargar opciones de select:', error));
+        }
+
+        function cargarCategorias() {
+            const carrera = document.getElementById('carrera').value;
+            const semestre = document.getElementById('semestre').value;
+            const materia = document.getElementById('materia').value;
+
+            const formData = new FormData();
+            formData.append('carrera', carrera);
+            formData.append('semestre', semestre);
+            formData.append('materia', materia);
+
+            fetch('obtener_categorias.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById('categoria');
+                select.innerHTML = ''; // Limpiar opciones anteriores
+                const optionElement = document.createElement('option');
+                optionElement.value = '';
+                optionElement.textContent = 'Seleccione una categoria...';
+                select.appendChild(optionElement);
+                data.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    select.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error al cargar categorías:', error));
+        }
+
+        // Llamar a la función para cargar las categorías al seleccionar una carrera, semestre o materia
+        document.getElementById('carrera').addEventListener('change', cargarCategorias);
+        document.getElementById('semestre').addEventListener('change', cargarCategorias);
+        document.getElementById('materia').addEventListener('change', cargarCategorias);
+
+
+        // Llamar a la función para cargar las opciones de materia y categoría
+        window.addEventListener('DOMContentLoaded', () => {
+            cargarOpcionesSelect('obtener_categorias.php', 'categoria');
+        });
+    
+        // Llamar a la función para cargar las materias al seleccionar una carrera y un semestre
+        document.getElementById('carrera').addEventListener('change', cargarMaterias);
+        document.getElementById('semestre').addEventListener('change', cargarMaterias);
+    </script>
+    
+    
+</body>
+    
+</html>

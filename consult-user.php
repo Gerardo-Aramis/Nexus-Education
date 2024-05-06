@@ -36,7 +36,7 @@ if (sqlsrv_has_rows($resultado)) {
     // Redirigir de manera segura si el usuario existe
     session_start();
     $_SESSION['email'] = $email;
-    header("Location: homepage.html");
+    header("Location: homepage.php");
     exit();
 } else {
     echo "<script>";

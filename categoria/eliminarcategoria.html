@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Categoría - Nexus Education</title>
+    <link rel="stylesheet" href="../estilospantallas.css">
+    <link href="../images/logo.png" rel="shortcut icon">
+
+    <style>
+        button {
+            background-color: #65A7D3;
+            color:black;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            height: 40px;
+            width: 300px; /* Ajuste del ancho del botón */
+            text-align: center; /* Alinea el texto del botón al centro */
+            margin-bottom: 10px; /* Espacio entre botones */
+            border-radius: 50px;
+            font-family: Arial, sans-serif; /* Cambiar la fuente */
+            font-size: 22px; /* Cambiar el tamaño del texto */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button:hover {
+            background-color: #3594d3;
+        }
+
+        /* Estilo cuando se hace clic */
+        button:active {
+            transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        }
+        
+        input[type="nombre"],
+        input[type="carrera"],
+        input[type="semestre"],
+        input[type="materia"] {
+            width: 500px;
+            padding: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 30px;
+            margin-top: -20px;
+            margin-left: 90px;
+
+        }
+
+        input[type="nombre"],
+        input[type="carrera"],
+        input[type="semestre"],
+        input[type="materia"],
+        button {
+            border: none;
+            background-color: #65A7D3;
+            border-radius: 50px;
+            padding: 5px 10px;
+            margin-bottom: 5px;
+            height: 30px;
+            width: 500px;
+            margin-right: 0px; 
+            text-align: left; /* Alinea el texto a la izquierda */
+            font-family: Arial, sans-serif; /* Cambiar la fuente */
+            font-size: 16px; /* Cambiar el tamaño de la letra */
+            margin-left: 100px;
+        }
+
+        input[type="nombre"],
+        input[type="carrera"],
+        input[type="semestre"],
+        input[type="materia"],
+        button:focus {
+            outline: none;
+            background-color: #2d4e64;
+        }
+
+        .back-button {
+            position: absolute;
+            bottom: 30px; /* Distancia desde la parte inferior */
+            left: 25px; /* Distancia desde la parte izquierda */
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- PARTE DE ARRIBA CON LOS LOGOS-->
+        <div class="top-section">
+            <img src="../images/tecnm.png" alt="Logo Tecnm" class="logo-tecnm">
+            <img src="../images/ittepic.png" alt="Logo Tec Tepic" class="logo-ittepic">
+            <img src="../images/nexus2.png" alt="Logo Nexus" class="logo-nexus">
+            <img src="../images/nombrenexus.png" alt="Logo nombre Nexus" class="logo-nombrenexus">
+
+        </div>
+        
+        <!-- SECCION AZUL -->
+        <div class="bottom-section">
+            <div class="center-section">
+            <h1 stye ="margin-right: -500px; font-family: Arial, sans-serif; font-size: 70px; " >Eliminar categoría</h1>
+                
+                <!-- SECCION BLANCA-->
+                <div class="center-sectionwhite">
+                    <form id="eliminarCategoriaForm" method="POST" action="eliminarcategoria.php">
+                        <div style="display: flex; align-items: center; margin-top: 35px; margin-left: -250px;">
+                            <h3 style="margin-left: -15px; color:black; margin-bottom:50px; padding-top: 10px;">Nombre de la categoría</h3>
+                            <select id="nombre" name="categoria_id" style="background-color: #ffffff; margin-left: 15px; padding: 10px; width: 520px; border: 1px solid #ccc; border-radius: 30px;">
+                                <!-- Opciones del combo box serán llenadas dinámicamente por JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <!-- COMBOCARRERA -->
+                    <div class="form-input carrera" style="margin-top: -20px; display: flex; align-items: center; margin-bottom: 10px;  margin-left: -125px;">
+                        <h3 style="margin-right: 5px;  color:black;">Carrera</h3>
+                        <select name="carrera" id="carrera" style=" margin-left:10px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px; margin-right: 15px;">
+                            <option value="">Seleccione una carrera...</option>
+                            <option value="1">Arquitectura</option>
+                            <option value="2">Ingeniería Bioquímica</option>
+                            <option value="3">Ingeniería Civil</option>
+                            <option value="4">Ingeniería Eléctrica</option>
+                            <option value="5">Ingeniería en Gestión Empresarial</option>
+                            <option value="6">Ingeniería en Sistemas Computacionales</option>
+                            <option value="7">Ingeniería Industrial</option>
+                            <option value="8">Ingeniería Mecatrónica</option>
+                            <option value="9">Ingeniería Química</option>
+                            <option value="10">Licenciatura en Administración</option>
+                        </select>
+                    </div>
+
+                    <!-- COMBO SEMESTRE-->
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -140px;">
+                        <h3 style="margin-right: 5px;  color:black;">Semestre</h3>
+                        <select name="semestre" id="semestre" style=" margin-left:10px ; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px; margin-right: 15px;">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <!-- COMBOMATERIA-->
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -245px;">
+                        <h3 style="margin-right: 8px;  color:black;">Nombre de la materia</h3>
+                        <select name="materia" id="materia" style="margin-left:5px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px;">
+                        <select id="nombre" name="nombre_categoria" style="background-color: #ffffff; margin-left: 15px; padding: 10px; width: 520px; border: 1px solid #ccc; border-radius: 30px;">
+                        </select>
+                    </div>
+                    <button type="button" onclick="actualizarMateriasYcategorias()" style="font-size: 20px;width: 250px;height:40px; margin: 100px; margin-top: 20px; margin-left: -260px;">Buscar</button>
+                    <button type="button" onclick="eliminarCategoria()" style="font-size: 20px;width: 250px;height:40px; margin: 100px; margin-top: 20px; margin-left: 30px;">Eliminar</button>                
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- ESTA SECCION ES LA BARRA DE LA IZQUIERDA-->
+        <div class="left-section"> 
+            
+            <img src="../images/moderador.png" alt="moderador" class="fotosperfil" style="margin-left: -17px; margin-top: -15px; width: 50px; height: auto;">
+            <img src="../images/textomoderador.png" alt="textomoderador" class="fotosperfil" style="margin-left: 30px; margin-top: -5px; width: 150px; height: auto;">
+
+            <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
+
+            <img src="../images/validar.png" alt="Validar" class="fotosperfil" style="margin-left: -17px; margin-top: 5px; width: 125px; height: auto;">
+                <a href="validar.html" style="margin-left: 25px; margin-top: 80px;">Validar</a>
+            <img src="../images/reporte.png" alt="reporte" class="fotosperfil" style="margin-left: -10px; margin-top: 75px; width: 130px; height: auto; ">
+                <a href="reporte.html" style="margin-left: 25px; margin-top: 70px;">Reporte</a>
+            <img src="../images/categoria.png" alt="categoria" class="fotosperfil" style="margin-left: -12px; margin-top: 175px; width: 140px; height: auto;">
+                <a href="organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
+            <img src="../images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
+                <a href="../login.html" style="margin-left: 7px; margin-top: 170px;">Cerrar sesión</a>
+        </div>
+        
+    </div>
+    <script>
+        document.getElementById('btnEliminar').addEventListener('click', eliminarCategoria); // Corregí el nombre de la función a eliminarCategoria
+
+function eliminarCategoria() {
+    var nombreCategoria = document.getElementById('nombre').value.trim(); // Cambié el ID a 'nombre' para que coincida con el select
+
+    if (!nombreCategoria) {
+        alert('Por favor, selecciona una categoría.');
+        return;
+    }
+
+    var confirmacion = confirm('¿Estás seguro de que deseas eliminar la categoría ' + nombreCategoria + '?');
+    if (!confirmacion) {
+        return;
+    }
+
+    var formData = new FormData();
+    formData.append('nombre_categoria', nombreCategoria);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'eliminarcategoria.php', true);
+    xhr.onload = function() {
+        if (this.status == 200) {
+            console.log(this.responseText); // Verificar la respuesta del servidor en la consola
+            location.reload();
+        }
+    };
+    xhr.send(formData);
+}
+</script>
+<script>
+    document.getElementById('carrera').addEventListener('change', function() {
+        actualizarMaterias();
+    });
+
+    document.getElementById('semestre').addEventListener('change', function() {
+        actualizarMaterias();
+    });
+
+    function actualizarMaterias() {
+        var carrera = document.getElementById('carrera').value;
+        var semestre = document.getElementById('semestre').value;
+
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'agregarcategoria.php?carrera=' + carrera + '&semestre=' + semestre, true);
+        xhr.onload = function() {
+            if (this.status == 200) {
+                var materias = JSON.parse(this.responseText);
+                var select = document.getElementById('materia');
+                select.innerHTML = '';
+                for (var i in materias) {
+                    select.innerHTML += '<option value="'+materias[i].subjectID+'">'+materias[i].subjectName+'</option>';
+                }
+            }
+        }
+        xhr.send();
+    }
+
+    function actualizarMateriasYcategorias() {
+    var carrera = document.getElementById('carrera').value;
+    var semestre = document.getElementById('semestre').value;
+    var materia = document.getElementById('materia').value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'buscarcategoria1.php?carrera=' + carrera + '&semestre=' + semestre + '&materia=' + materia, true);
+    xhr.onload = function() {
+        if (this.status == 200) {
+            var categorias = JSON.parse(this.responseText);
+            var select = document.getElementById('nombre');
+            
+            select.innerHTML = '';
+            for (var i in categorias) {
+                select.innerHTML += '<option value="'+categorias[i]+'">'+categorias[i]+'</option>';
+            }
+        }
+    }
+    xhr.send();
+}
+
+ </script>
+
+<script>
+    
+
+    function actualizarCategoria() {
+        document.getElementById('accion').value = 'actualizar'; // Establecer la acción como actualizar
+        document.getElementById('categoriaForm').action = 'buscarcategoria.php'; // Establecer la acción del formulario
+        document.getElementById('categoriaForm').submit(); // Enviar el formulario
+    }
+</script>
+
+   
+</body>
+
+
+</html>

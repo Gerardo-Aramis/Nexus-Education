@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />-->
+    <title>Subir Archivo - Nexus Education</title>
+    <link rel="stylesheet" href="../style-page.css">
+    <link href="../images/logo.png" rel="shortcut icon">
+    <style>
+        .bottom-section {
+            display: none;
+        }
+
+        input[type="archivo"],
+        input[type="carrera"],
+        input[type="semestre"],
+        input[type="materia"] {
+            width: 500px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            margin-top: -10px;
+            margin-left: 200px;
+
+        }
+
+        input[type="archivo"],
+        input[type="carrera"],
+        input[type="semestre"],
+        input[type="materia"],
+        button {
+            border: none;
+            background-color: #f2f2f2;
+            border-radius: 50px;
+            padding: 5px 10px;
+            margin-top: 10px;
+            height: 30px;
+            width: 500px;
+            margin-right: 10px; 
+            text-align: left; /* Alinea el texto a la izquierda */
+            font-family: Arial, sans-serif; /* Cambiar la fuente */
+            font-size: 16px; /* Cambiar el tamaño de la letra */
+            margin-left: 40px;
+        }
+
+        input[type="archivo"]:focus,
+        input[type="carrera"]:focus,
+        input[type="semestre"]:focus,
+        input[type="materia"]:focus,
+        button:focus {
+            outline: none;
+            background-color: #e6e6e6;
+        }
+
+        input[type="archivo"] {
+        color: #000; /* Cambia el color del texto a negro */
+    }
+
+        button {
+            background-color: #35B6E3;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            height: 40px;
+            width: 380px; /* Ajuste del ancho del botón */
+            text-align: center; /* Alinea el texto del botón al centro */
+            margin-top: 50px;
+            margin-left: -110px;
+            border-radius: 50px;
+            font-family: Arial, sans-serif; /* Cambiar la fuente */
+            font-size: 20px; /* Cambiar el tamaño del texto */
+        }
+
+        button:hover {
+            background-color: #005fcc;
+        }
+
+        /* Estilo cuando se hace clic */
+        button:active {
+            transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        }
+
+        buttonback {
+            background-color: #35B6E3;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            height: 30px;
+            width: calc(50% - 10px); /* Ajuste del ancho del botón */
+            border-radius: 50%; /* Para hacer el botón circular */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .back-button {
+            position: absolute;
+            bottom: 70px; /* Distancia desde la parte inferior */
+            left: -260px; /* Distancia desde la parte izquierda */
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-section">
+            <a href="../homepage.php" style="margin-top: 50px;">
+            <img src="../images/nexus.png" alt="Logo Nexus" class="logo-nexus"></a>
+            <h1 style="margin-left: 130px; ">Añadir archivo</h1>
+        </div>
+        <form id="uploadForm" action="upload.php" method="POST" enctype="multipart/form-data">
+            <div class="add-section" id="addFileContainer">
+                    <h2>Tipos de archivos permitidos</h2>
+                    <img src="../images/Archivo_Word.png" alt="Archivo_Word" class="fotosarchivo">
+                    <img src="../images/Archivo_Pdf.png" alt="Archivo_Pdf" class="fotosarchivo" style="margin-left: 230px; margin-top: -20px; width: 157px; height: auto;">
+                    <img src="../images/Archivo_Powerpoint.png" alt="Archivo_Powerpoint" class="fotosarchivo" style="margin-left: -20px; margin-top: 135px; width: 160px; height: auto;">
+                    <img src="../images/Archivo_Xls.png" alt="Archivo_Xls" class="fotosarchivo" style="margin-left: 230px; width: 145px; height: auto; margin-top: 150px;">
+                    <div style="margin-top: 300px; margin-left: 110px; " onclick="openFileInput()">
+                        <img src="../images/Añadir_archivo.png" alt="Añadir_Archivo" >
+                        <h3 style="margin-top: 10px;">Subir archivo</h3>
+                    </div>
+                    <input name="archivos" type="file" id="fileInput" style="display: none;" accept=".doc, .docx, .xls, .xlsx, .pdf, .pptx"/>
+                    
+            </div>
+        
+            <div class="bottom-section" id="uploadContainer">
+                <h2 style="padding-top: 20px; padding-left: 30px;">Ingrese los datos del archivo</h2>
+                <div style="display: flex; align-items: center; margin-bottom: 10px; margin-left: -250px;">
+                    <h3 style="margin-right: 20px;">Nombre del Archivo:</h3>
+                    <input type="archivo" id="archivo" name="archivo" placeholder="nombredelarchivo.pdf" readonly onchange="obtenerExtension()" >
+                    <input type="hidden" id="extensionArchivo" name="extensionArchivo">
+                </div>
+                <div class="form-input carrera" style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -250px;">
+                    <h3 style="margin-right: 95px;">Carrera:</h3>
+                    <select name="carrera" id="carrera" style=" margin-left:72px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px; margin-right: 15px;">
+                        <option value="">Seleccione una carrera...</option>
+                        <option value="1">Arquitectura</option>
+                        <option value="2">Ingeniería Bioquímica</option>
+                        <option value="3">Ingeniería Civil</option>
+                        <option value="4">Ingeniería Eléctrica</option>
+                        <option value="5">Ingeniería en Gestión Empresarial</option>
+                        <option value="6">Ingeniería en Sistemas Computacionales</option>
+                        <option value="7">Ingeniería Industrial</option>
+                        <option value="8">Ingeniería Mecatrónica</option>
+                        <option value="9">Ingeniería Química</option>
+                        <option value="10">Licenciatura en Administración</option>
+                    </select>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -250px;">
+                    <h3 style="margin-right: 90px;">Semestre:</h3>
+                    <select name="semestre" id="semestre" style=" margin-left:61px ; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px; margin-right: 15px;">
+                        <option value="">Seleccione un semestre...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+            
+                <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -250px;">
+                    <h3 style="margin-right: 35px;">Materia:</h3>
+                    <select name="materia" id="materia" style="margin-left:11px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px;"></select>
+                </div>
+            
+                <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -250px;">
+                    <h3 style="margin-right: 35px;">Categoria:</h3>
+                    <select name="categoria" id="categoria" style="margin-left:11px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px;"></select>
+                </div>
+                <br>
+                <h1><p><button type="submit" class="button" style="margin-top: 80px;">Subir</button></p></h1>
+
+                <!-- Botón con imagen -->
+                <buttonback style="margin-left: 15px;" class="back-button" onclick="mostrarAddFile()">
+                    <img src="../images/atras.png" alt="Atrás" width="100" height="100">
+                </buttonback>
+            </div>
+        </form>
+        <div class="left-section"> 
+            <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
+            <img src="../images/Mi_Perfil.png" alt="Mi_perfil" class="fotosperfil">
+                <a href="../perfil.php">Mi perfil</a>
+            <img src="../images/Subir.png" alt="Subir" class="fotosperfil" style="margin-top: 70px;  ">
+                <a href="SubirArchivo.html" style="margin-top: 50px;">Subir</a>
+            <img src="../images/Mis_archivos.png" alt="Mis_archivos" class="fotosperfil" style="margin-top: 130px; width: 40px; height: auto;">
+                <a href="CAMBIARHTML.html" style="margin-top: 55px;">Mis Archivos</a>
+            <img src="../images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
+                <a href="../login.html" style="margin-top: 260px;">Cerrar sesión</a>
+        </div>
+        
+    </div>
+
+    <script>
+        function openFileInput() {
+            document.getElementById('fileInput').click();
+        }
+
+        window.onload = function () {
+            var fileInput = document.getElementById('fileInput');
+            var uploadContainer = document.getElementById('uploadContainer');
+            var nombreArchivoInput = document.getElementById('archivo');
+
+            fileInput.addEventListener('change', function () {
+                if (fileInput.files.length > 0) {
+                    document.querySelector('.add-section').style.display = 'none';
+                    uploadContainer.style.display = 'block';
+                    var nombreArchivo = fileInput.files[0].name;
+                    nombreArchivoInput.value = nombreArchivo;
+                }
+            });
+        }
+
+        function mostrarAddFile() {
+            var uploadContainer = document.getElementById('uploadContainer');
+            var addFileContainer = document.getElementById('addFileContainer');
+
+            uploadContainer.style.display = 'none';
+            addFileContainer.style.display = 'block';
+        }
+
+        //DE AQUÍ PARA ABAJO DE LLENAN LOS SELECT
+        function cargarOpcionesSelect(url, idSelect) {
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById(idSelect);
+                data.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    select.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error al cargar opciones de select:', error));
+        }
+    
+        // Función para cargar las materias según la carrera y el semestre seleccionados
+        function cargarMaterias() {
+            const carrera = document.getElementById('carrera').value;
+            const semestre = document.getElementById('semestre').value;
+            const url = `obtener_materias.php`;
+            const data = new FormData();
+            data.append('carrera', carrera);
+            data.append('semestre', semestre);
+
+            fetch(url, {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById('materia');
+                select.innerHTML = ''; // Limpiar opciones anteriores
+                const optionElement = document.createElement('option');
+                optionElement.value = '';
+                optionElement.textContent = 'Seleccione una materia...';
+                select.appendChild(optionElement);
+                data.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    select.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error al cargar opciones de select:', error));
+        }
+
+        function cargarCategorias() {
+            const carrera = document.getElementById('carrera').value;
+            const semestre = document.getElementById('semestre').value;
+            const materia = document.getElementById('materia').value;
+
+            const formData = new FormData();
+            formData.append('carrera', carrera);
+            formData.append('semestre', semestre);
+            formData.append('materia', materia);
+
+            fetch('obtener_categorias.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById('categoria');
+                select.innerHTML = ''; // Limpiar opciones anteriores
+                const optionElement = document.createElement('option');
+                optionElement.value = '';
+                optionElement.textContent = 'Seleccione una categoria...';
+                select.appendChild(optionElement);
+                data.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    select.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error al cargar categorías:', error));
+        }
+
+        // Llamar a la función para cargar las categorías al seleccionar una carrera, semestre o materia
+        document.getElementById('carrera').addEventListener('change', cargarCategorias);
+        document.getElementById('semestre').addEventListener('change', cargarCategorias);
+        document.getElementById('materia').addEventListener('change', cargarCategorias);
+
+
+        // Llamar a la función para cargar las opciones de materia y categoría
+        window.addEventListener('DOMContentLoaded', () => {
+            cargarOpcionesSelect('obtener_categorias.php', 'categoria');
+        });
+    
+        // Llamar a la función para cargar las materias al seleccionar una carrera y un semestre
+        document.getElementById('carrera').addEventListener('change', cargarMaterias);
+        document.getElementById('semestre').addEventListener('change', cargarMaterias);
+
+        function obtenerExtension() {
+            var archivoInput = document.getElementById('archivo');
+            var nombreArchivo = archivoInput.value;
+            var extension = nombreArchivo.split('.').pop().toUpperCase();
+
+            // Asignar la extensión del archivo al campo oculto en el formulario
+            document.getElementById('extensionArchivo').value = extension;
+        }
+
+    </script>
+
+</body>
+</html>

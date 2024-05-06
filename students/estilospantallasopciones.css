@@ -1,0 +1,849 @@
+body {
+    max-width: 100vw; /* Establece el ancho máximo del cuerpo al ancho máximo de la ventana del navegador */
+    max-height: 100vh; /* Establece la altura máxima del cuerpo a la altura máxima de la ventana del navegador */
+    margin: 0;
+    overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    overflow-x: hidden; 
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center; 
+    position: relative;
+    color: white;
+    min-height: 100vh; 
+    zoom: reset;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+
+@media (max-width: 700px){
+    .logo-nexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 70%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .logo-nombrenexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 60%);
+        width: calc(100% - 75%); 
+        height: auto; 
+    }
+    
+    .logo-tecnm {
+        position: absolute;
+        top: calc(100% - 94%);
+        left: calc(100% - 99.5%);
+        width: calc(100% - 90%); 
+        height: auto;  
+    }
+    
+    .logo-ittepic {
+        position: absolute;
+        top: calc(100% - 95%);
+        right: calc(100% - 99%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+        position: center;
+        top: 0;
+        left: 0;
+        padding-left: calc(100% - 50%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        padding-top: 10%;
+        width: 100%;
+        height: 20%; /* 20% de la pantalla */
+        background-color: #202d35; /* Color para el 20% */
+    }
+    
+    .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 15%;
+        padding-top: 1%;
+        padding-left: 0.5%;
+        width: 83%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #2A677C; /* Color para el 80% */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:10px;
+        overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    }
+    
+    .bottom-section::-webkit-scrollbar {
+        width: 12%; /* Ancho de la barra de desplazamiento */
+    }
+
+    .bottom-section::-webkit-scrollbar-thumb {
+        background-color: #385c74; /* Color de la barra de desplazamiento */
+        border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
+    }
+
+    .fotosarchivo {
+        position: absolute;
+        top: 10%;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
+    
+    input[type="archivo"]{
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        margin-left: calc(100% - 55%);
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-top: -20px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+
+    
+    input[type="archivo"],
+    button {
+        border: none;
+        background-color: #f2f2f2;
+        border-radius: 50px;
+        margin-bottom: 0.5%;
+        padding: 5px 10px;
+        height: 30px;
+        width: calc(100% - 60%);
+        text-align: left; /* Alinea el texto a la izquierda */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño de la letra */
+        margin-top: -10%;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    input[type="archivo"]:focus,
+    button:focus {
+        outline: none;
+        background-color: #385c74;
+
+    }
+
+    button {
+        background-color: #65A7D3;
+        color:rgb(255, 255, 255);
+        cursor: pointer;
+        transition: background-color 0.5s;
+        text-align: center; /* Alinea el texto del botón al centro */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 10px; /* Cambiar el tamaño del texto */
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 9999;
+        height: 20%; 
+        width: 40%;
+        margin-left: 5%;
+        margin-top: 4%;
+        border-radius: 50px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    button:hover {
+        background-color: #65A7D3;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    /* Estilo cuando se hace clic */
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    
+    .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 0px;
+        width: 15%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
+    }
+
+    .left-section a {
+        color: white;
+        font-size: 10%;
+        padding-left: calc(100% - 70%);
+        text-decoration: none; /* Quita el subrayado predeterminado */
+        display: block;
+        margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
+        margin-top: calc(100% - 95%);
+    }
+
+    .left-section a:hover {
+        left: calc(100%- 70%);
+        text-decoration: underline; /* Añade subrayado al pasar el ratón */
+        padding-left: calc(100%- 70%);
+        font-size: 10%;
+    }
+
+    
+    .fotosperfil {
+        position: absolute;
+        top: calc(100% - 98%);
+        left: calc(100% - 95%);
+        width: 10px; 
+        height: auto;
+        margin-bottom:1%; 
+        padding-top: 1%;
+    }
+    
+    /* Estilos para el texto en los combobox */
+    select {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #747272; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    /* Estilos para las opciones del combobox */
+    option {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #575656; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0%; /* Empezando después del 20% */
+        left: 11%;
+        width: 590px;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 530px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+    
+    .back-button {
+        position: absolute;
+        bottom: 30px; /* Distancia desde la parte inferior */
+        left: 25px; /* Distancia desde la parte izquierda */
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    
+    .recent-files,
+    .recommended-files {
+        width:  100%; /* Divide el espacio horizontalmente */
+        float: center; /* Alinea los contenedores en línea horizontal */
+        margin-left: 8%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 95%;
+        text-align: left;
+        max-width: 80%; /* Puedes ajustar el ancho máximo según tus necesidades */
+        margin-top: 3%; /* Espacio entre los contenedores */
+
+    }
+    
+    .recent-files ul,
+    .recommended-files ul {
+        list-style: none; /* Quita los puntos de la lista */
+        padding: 0; /* Elimina el espacio interior de la lista */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 180px;
+        margin-top: -1%;
+
+    }
+    
+    .recent-files li,
+    .recommended-files li {
+        margin-bottom: 0.5%; /* Espacio entre elementos de la lista */
+        font-size: 10%;
+    }
+    
+    .recent-files img,
+    .recommended-files img {
+        width: 8%; /* Tamaño de la imagen del archivo */
+        height: auto;
+        margin-right: 10%; /* Espacio entre la imagen y el texto */
+        vertical-align: middle; /* Alinea verticalmente la imagen */
+        bottom: 30px;
+    }
+     
+}
+
+@media(min-width: 701px) and (max-width:1799px){
+    .logo-nexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 70%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .logo-nombrenexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 60%);
+        width: calc(100% - 75%); 
+        height: auto; 
+    }
+    
+    .logo-tecnm {
+        position: absolute;
+        top: calc(100% - 94%);
+        left: calc(100% - 99.5%);
+        width: calc(100% - 90%); 
+        height: auto;  
+    }
+    
+    .logo-ittepic {
+        position: absolute;
+        top: calc(100% - 95%);
+        right: calc(100% - 99%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+        position: center;
+        top: 0;
+        left: 0;
+        padding-left: calc(100% - 50%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        padding-top: 10%;
+        width: 100%;
+        height: 20%; /* 20% de la pantalla */
+        background-color: #202d35; /* Color para el 20% */
+    }
+    
+    .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 15%;
+        padding-top: 1%;
+        padding-left: 2%;
+        width: 83%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #2A677C; /* Color para el 80% */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:15px;
+        overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    }
+    
+    .bottom-section::-webkit-scrollbar {
+        width: 12%; /* Ancho de la barra de desplazamiento */
+    }
+
+    .bottom-section::-webkit-scrollbar-thumb {
+        background-color: #385c74; /* Color de la barra de desplazamiento */
+        border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
+    }
+
+    .fotosarchivo {
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
+    
+    input[type="archivo"]{
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        margin-left: calc(100% - 55%);
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-top: -20px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+
+    
+    input[type="archivo"],
+    button {
+        border: none;
+        background-color: #f2f2f2;
+        border-radius: 50px;
+        margin-bottom: 0.5%;
+        padding: 5px 10px;
+        height: 30px;
+        width: calc(100% - 60%);
+        text-align: left; /* Alinea el texto a la izquierda */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño de la letra */
+        margin-top: -10%;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    input[type="archivo"]:focus,
+    button:focus {
+        outline: none;
+        background-color: #385c74;
+
+    }
+
+    button {
+        background-color: #65A7D3;
+        color:rgb(255, 255, 255);
+        cursor: pointer;
+        transition: background-color 0.5s;
+        text-align: center; /* Alinea el texto del botón al centro */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 25px; /* Cambiar el tamaño del texto */
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 9999;
+        height: 12%; 
+        width: 90%;
+        margin-left: -22%;
+        margin-top: 4%;
+        border-radius: 50px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    button:hover {
+        background-color: #65A7D3;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    /* Estilo cuando se hace clic */
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    
+    .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 0px;
+        width: 15%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
+    }
+
+    .left-section a {
+        color: white;
+        font-size: (100% - 95%);
+        padding-left: calc(100% - 70%);
+        text-decoration: none; /* Quita el subrayado predeterminado */
+        display: block;
+        margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
+        margin-top: calc(100% - 95%);
+    }
+
+    .left-section a:hover {
+        left: calc(100%- 70%);
+        text-decoration: underline; /* Añade subrayado al pasar el ratón */
+        padding-left: calc(100%- 70%);
+        font-size: (100% - 95%);
+    }
+
+    
+    .fotosperfil {
+        position: absolute;
+        top: calc(100% - 98%);
+        left: calc(100% - 95%);
+        width: calc(100% - 80%); 
+        height: auto;
+        margin-bottom: calc(100% - 85%); 
+        padding-top: calc(100% - 99%);
+    }
+    
+    /* Estilos para el texto en los combobox */
+    select {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #747272; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    /* Estilos para las opciones del combobox */
+    option {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #575656; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0%; /* Empezando después del 20% */
+        left: 11%;
+        width: 590px;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 530px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+    
+    .back-button {
+        position: absolute;
+        bottom: 30px; /* Distancia desde la parte inferior */
+        left: 25px; /* Distancia desde la parte izquierda */
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    
+    .recent-files,
+    .recommended-files {
+        width:  100%; /* Divide el espacio horizontalmente */
+        float: center; /* Alinea los contenedores en línea horizontal */
+        margin-left: 8%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 95%;
+        text-align: left;
+        max-width: 80%; /* Puedes ajustar el ancho máximo según tus necesidades */
+        margin-top: 3%; /* Espacio entre los contenedores */
+
+    }
+    
+    .recent-files ul,
+    .recommended-files ul {
+        list-style: none; /* Quita los puntos de la lista */
+        padding: 0; /* Elimina el espacio interior de la lista */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 180px;
+        margin-top: -1%;
+
+    }
+    
+    .recent-files li,
+    .recommended-files li {
+        margin-bottom: 0.5%; /* Espacio entre elementos de la lista */
+        font-size: 10%;
+    }
+    
+    .recent-files img,
+    .recommended-files img {
+        width: 8%; /* Tamaño de la imagen del archivo */
+        height: auto;
+        margin-right: 10%; /* Espacio entre la imagen y el texto */
+        vertical-align: middle; /* Alinea verticalmente la imagen */
+        bottom: 30px;
+    }
+    
+}
+
+@media(min-width: 1800px){
+    .logo-nexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 70%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .logo-nombrenexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 60%);
+        width: calc(100% - 75%); 
+        height: auto; 
+    }
+    
+    .logo-tecnm {
+        position: absolute;
+        top: calc(100% - 94%);
+        left: calc(100% - 99.5%);
+        width: calc(100% - 90%); 
+        height: auto;  
+    }
+    
+    .logo-ittepic {
+        position: absolute;
+        top: calc(100% - 95%);
+        right: calc(100% - 99%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+        position: center;
+        top: 0;
+        left: 0;
+        padding-left: calc(100% - 50%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        padding-top: 10%;
+        width: 100%;
+        height: 20%; /* 20% de la pantalla */
+        background-color: #202d35; /* Color para el 20% */
+    }
+    
+    .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 15%;
+        padding-top: 1%;
+        padding-left: 2%;
+        width: 83%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #2A677C; /* Color para el 80% */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:15px;
+        overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    }
+    
+    .bottom-section::-webkit-scrollbar {
+        width: 12%; /* Ancho de la barra de desplazamiento */
+    }
+
+    .bottom-section::-webkit-scrollbar-thumb {
+        background-color: #385c74; /* Color de la barra de desplazamiento */
+        border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
+    }
+
+    .fotosarchivo {
+        position: absolute;
+        top: 20%;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
+    
+    input[type="archivo"]{
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        margin-left: calc(100% - 55%);
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-top: -20px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+
+    
+    input[type="archivo"],
+    button {
+        border: none;
+        background-color: #f2f2f2;
+        border-radius: 50px;
+        margin-bottom: 0.5%;
+        padding: 5px 10px;
+        height: 30px;
+        width: calc(100% - 60%);
+        text-align: left; /* Alinea el texto a la izquierda */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño de la letra */
+        margin-top: -10%;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    input[type="archivo"]:focus,
+    button:focus {
+        outline: none;
+        background-color: #385c74;
+
+    }
+
+    button {
+        background-color: #65A7D3;
+        color:rgb(255, 255, 255);
+        cursor: pointer;
+        transition: background-color 0.5s;
+        text-align: center; /* Alinea el texto del botón al centro */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 50px; /* Cambiar el tamaño del texto */
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 9999;
+        height: 12%; 
+        width: 90%;
+        margin-left: -22%;
+        margin-top: 4%;
+        border-radius: 50px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    button:hover {
+        background-color: #65A7D3;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    /* Estilo cuando se hace clic */
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        text-decoration: none; /* Quita el subrayado predeterminado */
+
+    }
+
+    
+    .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 0px;
+        width: 15%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
+    }
+
+    .left-section a {
+        color: white;
+        font-size: 350%;
+        padding-left: calc(100% - 70%);
+        text-decoration: none; /* Quita el subrayado predeterminado */
+        display: block;
+        margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
+        margin-top: calc(100% - 95%);
+    }
+
+    .left-section a:hover {
+        left: calc(100%- 70%);
+        text-decoration: underline; /* Añade subrayado al pasar el ratón */
+        padding-left: calc(100%- 70%);
+        font-size: 100%;
+    }
+
+    
+    .fotosperfil {
+        position: absolute;
+        top: calc(100% - 98%);
+        left: calc(100% - 95%);
+        width: calc(100% - 80%); 
+        height: auto;
+        margin-bottom: 60%; 
+        padding-top: calc(100% - 99%);
+    }
+    
+    /* Estilos para el texto en los combobox */
+    select {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #747272; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    /* Estilos para las opciones del combobox */
+    option {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #575656; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0%; /* Empezando después del 20% */
+        left: 11%;
+        width: 590px;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 530px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+    
+    .back-button {
+        position: absolute;
+        bottom: 30px; /* Distancia desde la parte inferior */
+        left: 25px; /* Distancia desde la parte izquierda */
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    
+    .recent-files,
+    .recommended-files {
+        width:  100%; /* Divide el espacio horizontalmente */
+        float: center; /* Alinea los contenedores en línea horizontal */
+        margin-left: 8%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 95%;
+        text-align: left;
+        max-width: 80%; /* Puedes ajustar el ancho máximo según tus necesidades */
+        margin-top: 3%; /* Espacio entre los contenedores */
+
+    }
+    
+    .recent-files ul,
+    .recommended-files ul {
+        list-style: none; /* Quita los puntos de la lista */
+        padding: 0; /* Elimina el espacio interior de la lista */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 180px;
+        margin-top: -1%;
+
+    }
+    
+    .recent-files li,
+    .recommended-files li {
+        margin-bottom: 0.5%; /* Espacio entre elementos de la lista */
+        font-size: 10%;
+    }
+    
+    .recent-files img,
+    .recommended-files img {
+        width: 8%; /* Tamaño de la imagen del archivo */
+        height: auto;
+        margin-right: 10%; /* Espacio entre la imagen y el texto */
+        vertical-align: middle; /* Alinea verticalmente la imagen */
+        bottom: 30px;
+    }
+       
+    
+}
