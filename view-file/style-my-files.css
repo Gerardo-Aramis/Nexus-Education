@@ -1081,8 +1081,50 @@ body {
         color: rgb(0, 0, 0);
     }
 
-    .sin-borde {
-        border-collapse: collapse;
-        border: none;
-    }
+  /* Estilos para la tabla */
+#tabla {
+    width: 90%;
+    left: -10%;
+    border-collapse: collapse;
+    margin-top: 1%;
+    border-radius: 50px;
+}
+
+.sin-borde {
+    border-collapse: collapse;
+    border: none;
+}
+
+/* Estilos para encabezado */
+#tabla th{
+    padding: 8px;
+    text-align: center;
+    color:black;
+    width: 10px;
+    
+}
+
+ /* Estilos para filas */
+ #tabla td{
+    padding: 8px;
+    text-align: center;
+    color:black;
+    width: 10px;
+    
+}
+
+/* Primera columna de imágenes */
+td:first-child {
+    width:8%; /* Ancho establecido para la columna de las imágenes */
+    text-align: center;
+
+}
+
+.fotosarchivo { 
+    max-width: none; /* Asegura que la imagen respete el ancho fijo */
+    width: 50%; 
+    height: 15%;
+    margin-left: 25%;
+}
+
     }
