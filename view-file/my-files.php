@@ -54,11 +54,14 @@
 
     <div class="bottom-section">
         <div>
-            <input style="background-color: #ffffff; display: inline-block;" type="archivo" id="archivo" name="archivo" placeholder="Buscar" required>
-            <button style=" display: inline-block; margin-left: -40px; background-image: url('images/buscar.png'); background-size: cover; background-repeat: no-repeat; border: none; background-color: transparent; border-radius: 0;"> </button>
+            <form id="searchForm">
+                <input style="background-color: #ffffff; display: inline-block;" type="archivo" id="archivo" name="archivo" placeholder="Buscar" required>
+                <button type="button" id="searchButton" style=" display: inline-block; margin-left: -40px; background-image: url('../images/buscar.png'); background-size: cover; background-repeat: no-repeat; border: none; background-color: transparent; border-radius: 0;"> </button>
+            </form>
         </div>
         
         <div>
+        <div id="resultadosBusqueda">
         <?php
             session_start(); // Iniciar la sesión
 
@@ -90,7 +93,7 @@
                     $userID = $row['userID'];
 
                     // Consulta SQL para obtener los archivos subidos por el usuario
-                    $sqlGetUserFiles = "SELECT fileType, fileName, filePath FROM Files WHERE userID = ?";
+                    $sqlGetUserFiles = "SELECT fileType, fileName, filePath, authorizationStatus, fileUploadDate FROM Files WHERE userID = ? ORDER BY fileUploadDate DESC";
                     $paramsGetUserFiles = array($userID);
                     $stmtGetUserFiles = sqlsrv_query($conn, $sqlGetUserFiles, $paramsGetUserFiles);
 
@@ -106,6 +109,9 @@
                             $fileType = $row['fileType'];
                             $fileName = $row['fileName'];
                             $filePath = $row['filePath'];
+                            $authorizationStatus = $row['authorizationStatus'];
+                            $fileUploadDate = $row['fileUploadDate'];
+                            $fileUploadDate = $fileUploadDate->format('Y-m-d H:i:s');
 
                             // Determinar la imagen del archivo según el tipo de archivo
                             $imageSrc = "";
@@ -133,6 +139,8 @@
                             echo "<img src='$imageSrc' alt='Archivo' class='fotosarchivo'>";
                             echo "</a></td>";
                             echo "<td>$fileName</td>";
+                            echo "<td>$authorizationStatus</td>";
+                            echo "<td>$fileUploadDate</td>";
                             echo "</tr>";
                         }
 
@@ -146,12 +154,71 @@
             // Cerrar la conexión
             sqlsrv_close($conn);
             ?>
-
+        </div>
         </div>
     </div>
 
 
   </div>
+
+  <script>
+    // Esperar a que el documento esté completamente cargado
+    document.addEventListener("DOMContentLoaded", function() {
+        // Obtener el formulario y el botón de búsqueda por su ID
+        var searchForm = document.getElementById("searchForm");
+        var searchButton = document.getElementById("searchButton");
+        var archivoInput = document.getElementById("archivo");
+
+        // Agregar un event listener al botón de búsqueda
+        searchButton.addEventListener("click", function() {
+            buscarArchivos();
+        });
+
+        // Agregar un event listener para la tecla Enter en el campo de búsqueda
+archivoInput.addEventListener("keyup", function(event) {
+    // Verificar si la tecla presionada es la tecla Enter (código de tecla 13)
+    if (event.keyCode === 13) {
+        // Prevenir el comportamiento predeterminado del Enter
+        event.preventDefault();
+        
+        // Realizar la búsqueda de archivos
+        buscarArchivos();
+    }
+});
+
+
+
+        // Función para realizar la búsqueda de archivos
+function buscarArchivos() {
+    console.log("Buscar archivos...");
+    // Obtener el valor del campo de búsqueda
+    var searchTerm = archivoInput.value;
+
+    // Crear una nueva instancia de XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    // Configurar la solicitud
+    xhr.open("GET", "search-my-files.php?term=" + searchTerm, true);
+
+    // Configurar la función de callback para manejar la respuesta del servidor
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Limpiar la tabla
+            document.getElementById("resultadosBusqueda").innerHTML = "";
+
+            // Agregar los resultados de la búsqueda a la tabla
+            document.getElementById("resultadosBusqueda").innerHTML = xhr.responseText;
+        }
+    };
+
+    // Enviar la solicitud
+    xhr.send();
+}
+
+    });
+</script>
+
+
 
 </body>
 </html>
