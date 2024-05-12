@@ -310,10 +310,15 @@ body {
     #tabla {
         width: 90%;
         left: -10%;
-        border-collapse: collapse;
         margin-top: 1%;
-        border-radius: 50px;
+        /*border-radius: 50px;*/
     }
+
+    .sin-borde {
+        border-collapse: collapse;
+        border: none;
+    }
+    
     /* Estilos para encabezado */
     #tabla th{
         padding: 8px;
@@ -326,7 +331,7 @@ body {
     /* Estilos para filas */
     #tabla td{
         padding: 8px;
-        text-align: left;
+        text-align: center;
         color:black;
         width: 10px;
         
@@ -634,10 +639,15 @@ body {
     #tabla {
         width: 90%;
         left: -10%;
-        border-collapse: collapse;
         margin-top: 1%;
-        border-radius: 50px;
+        /*border-radius: 50px;*/
     }
+
+    .sin-borde {
+        border-collapse: collapse;
+        border: none;
+    }
+
     /* Estilos para encabezado */
     #tabla th{
         padding: 8px;
@@ -650,7 +660,7 @@ body {
     /* Estilos para filas */
     #tabla td{
         padding: 8px;
-        text-align: left;
+        text-align: center;
         color:black;
         width: 10px;
         
@@ -962,10 +972,15 @@ body {
     #tabla {
         width: 90%;
         left: -10%;
-        border-collapse: collapse;
         margin-top: 1%;
-        border-radius: 50px;
+        /*border-radius: 50px;*/
     }
+
+    .sin-borde {
+        border-collapse: collapse;
+        border: none;
+    }
+
     /* Estilos para encabezado */
     #tabla th{
         padding: 8px;
@@ -978,7 +993,7 @@ body {
     /* Estilos para filas */
     #tabla td{
         padding: 8px;
-        text-align: left;
+        text-align: center;
         color:black;
         width: 10px;
         
@@ -997,11 +1012,6 @@ body {
         width: 50%; 
         height: 15%;
         margin-left: 25%;
-    }
-
-    .sin-borde {
-        border-collapse: collapse;
-        border: none;
     }
 
     }
