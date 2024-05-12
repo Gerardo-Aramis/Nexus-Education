@@ -7,9 +7,55 @@
   <link rel="stylesheet" href="style-my-files.css">
   <link href="images/logo.png" rel="shortcut icon">
 
+  <!-- Aquí va el código CSS para el modal -->
   <style>
+/* Estilos para la ventana modal */
+.modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);            
+        }
+
+        .modal-content {
+            background-color: #202D35;
+            border: 2px solid #202D35; /* Cambia el color del borde a rojo (#ff0000) */
+            width: 30%; /* Ancho deseado de la ventana modal */
+            max-width: 800px; /* Ancho máximo permitido */
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-button {
+    background-color: #202D35 !important;
+    color: white !important;
+    border: none !important;
+    /* Otros estilos necesarios con !important */
+}
 
   </style>
+
 </head>
 <body>
     <div class="container">
@@ -125,7 +171,7 @@
                                 case "PPTX":
                                     $imageSrc = "../images/Archivo_Powerpoint.png";
                                     break;
-                                case "XLS":
+                                case "XLSX":
                                     $imageSrc = "../images/Archivo_Xls.png";
                                     break;
                                 // Agregar más casos según los tipos de archivo que tengas
@@ -158,64 +204,130 @@
         </div>
     </div>
 
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>¿Qué deseas hacer?</p>
+        <div>
+            <button id="deleteButton" class="modal-button">Eliminar</button>
+        </div>
+        <div>    
+            <button id="editButton" class="modal-button">Modificar</button>
+        </div>
+    </div>
+</div>
+    <!--COLOR AL DAR CLIC EN ALGUNA DEL DISEÑO 676767  -->
 
-  </div>
+
+</div>
+
 
   <script>
-    // Esperar a que el documento esté completamente cargado
-    document.addEventListener("DOMContentLoaded", function() {
-        // Obtener el formulario y el botón de búsqueda por su ID
-        var searchForm = document.getElementById("searchForm");
-        var searchButton = document.getElementById("searchButton");
-        var archivoInput = document.getElementById("archivo");
+  // Esperar a que el documento esté completamente cargado
+  document.addEventListener("DOMContentLoaded", function() {
+    // Obtener el formulario y el botón de búsqueda por su ID
+    var searchForm = document.getElementById("searchForm");
+    var searchButton = document.getElementById("searchButton");
+    var archivoInput = document.getElementById("archivo");
 
-        // Agregar un event listener al botón de búsqueda
-        searchButton.addEventListener("click", function() {
-            buscarArchivos();
-        });
+    // Agregar un event listener al botón de búsqueda
+    searchButton.addEventListener("click", function() {
+      buscarArchivos();
+    });
 
-        // Agregar un event listener para la tecla Enter en el campo de búsqueda
-archivoInput.addEventListener("keyup", function(event) {
-    // Verificar si la tecla presionada es la tecla Enter (código de tecla 13)
-    if (event.keyCode === 13) {
+    // Agregar un event listener para la tecla Enter en el campo de búsqueda
+    archivoInput.addEventListener("keyup", function(event) {
+      // Verificar si la tecla presionada es la tecla Enter (código de tecla 13)
+      if (event.keyCode === 13) {
         // Prevenir el comportamiento predeterminado del Enter
         event.preventDefault();
         
         // Realizar la búsqueda de archivos
         buscarArchivos();
-    }
-});
+      }
+    });
 
+    // Función para realizar la búsqueda de archivos
+    function buscarArchivos() {
+      console.log("Buscar archivos...");
+      // Obtener el valor del campo de búsqueda
+      var searchTerm = archivoInput.value;
 
+      // Crear una nueva instancia de XMLHttpRequest
+      var xhr = new XMLHttpRequest();
 
-        // Función para realizar la búsqueda de archivos
-function buscarArchivos() {
-    console.log("Buscar archivos...");
-    // Obtener el valor del campo de búsqueda
-    var searchTerm = archivoInput.value;
+      // Configurar la solicitud
+      xhr.open("GET", "search-my-files.php?term=" + searchTerm, true);
 
-    // Crear una nueva instancia de XMLHttpRequest
-    var xhr = new XMLHttpRequest();
-
-    // Configurar la solicitud
-    xhr.open("GET", "search-my-files.php?term=" + searchTerm, true);
-
-    // Configurar la función de callback para manejar la respuesta del servidor
-    xhr.onreadystatechange = function() {
+      // Configurar la función de callback para manejar la respuesta del servidor
+      xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            // Limpiar la tabla
-            document.getElementById("resultadosBusqueda").innerHTML = "";
+          // Limpiar la tabla
+          document.getElementById("resultadosBusqueda").innerHTML = "";
 
-            // Agregar los resultados de la búsqueda a la tabla
-            document.getElementById("resultadosBusqueda").innerHTML = xhr.responseText;
+          // Agregar los resultados de la búsqueda a la tabla
+          document.getElementById("resultadosBusqueda").innerHTML = xhr.responseText;
         }
+      };
+
+      // Enviar la solicitud
+      xhr.send();
+    }
+
+    // Obtener todas las filas de la tabla
+    var rows = document.querySelectorAll("table tbody tr");
+
+    // Agregar un event listener para el clic en cada fila
+    rows.forEach(function(row) {
+      row.addEventListener("click", function() {
+        // Restablecer el color de fondo de todas las filas
+        rows.forEach(function(row) {
+          row.style.backgroundColor = ""; // Restablecer el color de fondo a su valor predeterminado
+        });
+
+        // Establecer el color de fondo de la fila seleccionada
+        this.style.backgroundColor = "#676767";
+      });
+    });
+
+    // Agregar un event listener para el doble clic en cada fila
+    rows.forEach(function(row) {
+      row.addEventListener("dblclick", function() {
+        // Mostrar el modal
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+      });
+    });
+
+    // Cerrar el modal cuando se hace clic en la "x"
+    var closeButton = document.getElementsByClassName("close")[0];
+    closeButton.addEventListener("click", function() {
+      var modal = document.getElementById("myModal");
+      modal.style.display = "none";
+    });
+
+    // Cerrar el modal cuando se hace clic fuera de él
+    window.onclick = function(event) {
+      var modal = document.getElementById("myModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
     };
 
-    // Enviar la solicitud
-    xhr.send();
-}
-
+    // Manejar el clic en el botón de eliminar
+    var deleteButton = document.getElementById("deleteButton");
+    deleteButton.addEventListener("click", function() {
+      // Aquí puedes agregar la lógica para eliminar el archivo
+      alert("Archivo eliminado");
     });
+
+    // Manejar el clic en el botón de modificar
+    var editButton = document.getElementById("editButton");
+    editButton.addEventListener("click", function() {
+      // Aquí puedes agregar la lógica para modificar el archivo
+      alert("Archivo modificado");
+    });
+  });
 </script>
 
 
