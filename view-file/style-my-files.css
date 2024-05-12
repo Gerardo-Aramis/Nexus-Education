@@ -105,16 +105,6 @@ body {
         border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
     }
 
-    .fotosarchivo { 
-        max-width: none; /* Asegura que la imagen respete el ancho fijo */
-        width: 90%; 
-        height: 15%;
-        
-    }
-    
-    td{
-        padding-left: 3%;
-    }
     input[type="archivo"]{
         border: 1px solid #ccc;
         border-radius: 30px;
@@ -207,21 +197,6 @@ body {
 
     }
 
-    table{
-        width: 90%;
-        height: auto;
-        margin-left: 2%;
-        margin-top: 1%;
-        table-layout: fixed;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 100%;
-        font-weight: bold;
-    }
-
-    td:first-child {
-        width: 10%; /* Ancho establecido para la columna de las imágenes */
-
-    }
     button:hover {
         background-color: #65A7D3;
     }
@@ -318,45 +293,6 @@ body {
         padding: 0;
     }
     
-    .recent-files,
-    .recommended-files {
-        width:  100%; /* Divide el espacio horizontalmente */
-        float: center; /* Alinea los contenedores en línea horizontal */
-        margin-left: 8%;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 95%;
-        text-align: left;
-        max-width: 80%; /* Puedes ajustar el ancho máximo según tus necesidades */
-        margin-top: 3%; /* Espacio entre los contenedores */
-
-    }
-    
-    .recent-files ul,
-    .recommended-files ul {
-        list-style: none; /* Quita los puntos de la lista */
-        padding: 0; /* Elimina el espacio interior de la lista */
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 180px;
-        margin-top: -1%;
-
-    }
-    
-    .recent-files li,
-    .recommended-files li {
-        margin-bottom: 0.5%; /* Espacio entre elementos de la lista */
-        font-size: 10%;
-    }
-    
-    .recent-files img,
-    .recommended-files img {
-        width: 8%; /* Tamaño de la imagen del archivo */
-        height: auto;
-        margin-right: 10%; /* Espacio entre la imagen y el texto */
-        vertical-align: middle; /* Alinea verticalmente la imagen */
-        bottom: 30px;
-    }
-
-      
     /* Estilos para filas impares */
     tr:nth-child(odd) {
         background-color: #D9D9D9;
@@ -370,11 +306,46 @@ body {
         color: rgb(0, 0, 0);
     }
 
-    .sin-borde {
+      /* Estilos para la tabla */
+    #tabla {
+        width: 90%;
+        left: -10%;
         border-collapse: collapse;
-        border: none;
+        margin-top: 1%;
+        border-radius: 50px;
     }
+    /* Estilos para encabezado */
+    #tabla th{
+        padding: 8px;
+        text-align: center;
+        color:black;
+        width: 10px;
+        
+    }
+
+    /* Estilos para filas */
+    #tabla td{
+        padding: 8px;
+        text-align: left;
+        color:black;
+        width: 10px;
+        
+    }
+
+/* Primera columna de imágenes */
     
+    td:first-child {
+        width:10%; /* Ancho establecido para la columna de las imágenes */
+        text-align: center;
+
+    }
+
+    .fotosarchivo { 
+        max-width: none; /* Asegura que la imagen respete el ancho fijo */
+        width: 50%; 
+        height: 15%;
+        margin-left: 25%;
+    }
 }
 
 @media(min-width: 651px) and (max-width:1799px){
@@ -459,16 +430,6 @@ body {
         border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
     }
 
-    .fotosarchivo { 
-        max-width: none; /* Asegura que la imagen respete el ancho fijo */
-        width: 90%; 
-        height: 15%;
-        
-    }
-    
-    td{
-        padding-left: 3%;
-    }
     input[type="archivo"]{
         border: 1px solid #ccc;
         border-radius: 30px;
@@ -558,33 +519,8 @@ body {
         height:23px; 
         width:25px;
         align-self: flex-start; /* Alinea el botón hacia arriba */
-
     }
-
-    table{
-        width: 90%;
-        height: auto;
-        margin-left: 2%;
-        margin-top: 1%;
-        table-layout: fixed;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 100%;
-        font-weight: bold;
-    }
-
-    td:first-child {
-        width: 10%; /* Ancho establecido para la columna de las imágenes */
-
-    }
-    button:hover {
-        background-color: #65A7D3;
-    }
-
-    /* Estilo cuando se hace clic */
-    button:active {
-        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
-    }
-
+    
     
     .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
         position: absolute;
@@ -671,46 +607,16 @@ body {
         cursor: pointer;
         padding: 0;
     }
-    
-    .recent-files,
-    .recommended-files {
-        width:  100%; /* Divide el espacio horizontalmente */
-        float: center; /* Alinea los contenedores en línea horizontal */
-        margin-left: 8%;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 95%;
-        text-align: left;
-        max-width: 80%; /* Puedes ajustar el ancho máximo según tus necesidades */
-        margin-top: 3%; /* Espacio entre los contenedores */
 
-    }
-    
-    .recent-files ul,
-    .recommended-files ul {
-        list-style: none; /* Quita los puntos de la lista */
-        padding: 0; /* Elimina el espacio interior de la lista */
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 180px;
-        margin-top: -1%;
-
-    }
-    
-    .recent-files li,
-    .recommended-files li {
-        margin-bottom: 0.5%; /* Espacio entre elementos de la lista */
-        font-size: 10%;
-    }
-    
-    .recent-files img,
-    .recommended-files img {
-        width: 8%; /* Tamaño de la imagen del archivo */
-        height: auto;
-        margin-right: 10%; /* Espacio entre la imagen y el texto */
-        vertical-align: middle; /* Alinea verticalmente la imagen */
-        bottom: 30px;
+    button:hover {
+        background-color: #65A7D3;
     }
 
-      
+    /* Estilo cuando se hace clic */
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+    }
+
     /* Estilos para filas impares */
     tr:nth-child(odd) {
         background-color: #D9D9D9;
@@ -724,9 +630,45 @@ body {
         color: rgb(0, 0, 0);
     }
 
-    .sin-borde {
+      /* Estilos para la tabla */
+    #tabla {
+        width: 90%;
+        left: -10%;
         border-collapse: collapse;
-        border: none;
+        margin-top: 1%;
+        border-radius: 50px;
+    }
+    /* Estilos para encabezado */
+    #tabla th{
+        padding: 8px;
+        text-align: center;
+        color:black;
+        width: 10px;
+        
+    }
+
+    /* Estilos para filas */
+    #tabla td{
+        padding: 8px;
+        text-align: left;
+        color:black;
+        width: 10px;
+        
+    }
+
+/* Primera columna de imágenes */
+    
+    td:first-child {
+        width:10%; /* Ancho establecido para la columna de las imágenes */
+        text-align: center;
+
+    }
+
+    .fotosarchivo { 
+        max-width: none; /* Asegura que la imagen respete el ancho fijo */
+        width: 50%; 
+        height: 15%;
+        margin-left: 25%;
     }
     
 }
@@ -814,17 +756,6 @@ body {
         border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
     }
 
-    .fotosarchivo { 
-        max-width: none; /* Asegura que la imagen respete el ancho fijo */
-        width: 90%; 
-        height: 15%;
-        
-    }
-    
-    td{
-        padding-left: 3%;
-        font-size: 40px;
-    }
 
     input[type="archivo"]{
         border: 1px solid #ccc;
@@ -918,21 +849,6 @@ body {
 
     }
 
-    table{
-        width: 90%;
-        height: auto;
-        margin-left: 2%;
-        margin-top: 1%;
-        table-layout: fixed;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 100%;
-        font-weight: bold;
-    }
-
-    td:first-child {
-        width: 10%; /* Ancho establecido para la columna de las imágenes */
-
-    }
     button:hover {
         background-color: #65A7D3;
     }
@@ -1029,45 +945,6 @@ body {
         padding: 0;
     }
     
-    .recent-files,
-    .recommended-files {
-        width:  100%; /* Divide el espacio horizontalmente */
-        float: center; /* Alinea los contenedores en línea horizontal */
-        margin-left: 8%;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 95%;
-        text-align: left;
-        max-width: 80%; /* Puedes ajustar el ancho máximo según tus necesidades */
-        margin-top: 3%; /* Espacio entre los contenedores */
-
-    }
-    
-    .recent-files ul,
-    .recommended-files ul {
-        list-style: none; /* Quita los puntos de la lista */
-        padding: 0; /* Elimina el espacio interior de la lista */
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 180px;
-        margin-top: -1%;
-
-    }
-    
-    .recent-files li,
-    .recommended-files li {
-        margin-bottom: 0.5%; /* Espacio entre elementos de la lista */
-        font-size: 10%;
-    }
-    
-    .recent-files img,
-    .recommended-files img {
-        width: 8%; /* Tamaño de la imagen del archivo */
-        height: auto;
-        margin-right: 10%; /* Espacio entre la imagen y el texto */
-        vertical-align: middle; /* Alinea verticalmente la imagen */
-        bottom: 30px;
-    }
-
-      
     /* Estilos para filas impares */
     tr:nth-child(odd) {
         background-color: #D9D9D9;
@@ -1081,50 +958,45 @@ body {
         color: rgb(0, 0, 0);
     }
 
-  /* Estilos para la tabla */
-#tabla {
-    width: 90%;
-    left: -10%;
-    border-collapse: collapse;
-    margin-top: 1%;
-    border-radius: 50px;
-}
+      /* Estilos para la tabla */
+    #tabla {
+        width: 90%;
+        left: -10%;
+        border-collapse: collapse;
+        margin-top: 1%;
+        border-radius: 50px;
+    }
+    /* Estilos para encabezado */
+    #tabla th{
+        padding: 8px;
+        text-align: center;
+        color:black;
+        width: 10px;
+        
+    }
 
-.sin-borde {
-    border-collapse: collapse;
-    border: none;
-}
-
-/* Estilos para encabezado */
-#tabla th{
-    padding: 8px;
-    text-align: center;
-    color:black;
-    width: 10px;
-    
-}
-
- /* Estilos para filas */
- #tabla td{
-    padding: 8px;
-    text-align: center;
-    color:black;
-    width: 10px;
-    
-}
+    /* Estilos para filas */
+    #tabla td{
+        padding: 8px;
+        text-align: left;
+        color:black;
+        width: 10px;
+        
+    }
 
 /* Primera columna de imágenes */
-td:first-child {
-    width:8%; /* Ancho establecido para la columna de las imágenes */
-    text-align: center;
+    
+    td:first-child {
+        width:10%; /* Ancho establecido para la columna de las imágenes */
+        text-align: center;
 
-}
+    }
 
-.fotosarchivo { 
-    max-width: none; /* Asegura que la imagen respete el ancho fijo */
-    width: 50%; 
-    height: 15%;
-    margin-left: 25%;
-}
+    .fotosarchivo { 
+        max-width: none; /* Asegura que la imagen respete el ancho fijo */
+        width: 50%; 
+        height: 15%;
+        margin-left: 25%;
+    }
 
     }

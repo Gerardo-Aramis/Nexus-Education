@@ -100,15 +100,15 @@
                     if ($stmtGetUserFiles === false) {
                         die("Error al obtener los archivos del usuario: " . print_r(sqlsrv_errors(), true));
                     } else {
-                        echo "<table id='tabla' class='sin-borde'>";
-                        echo "<thead>";
-                        echo "<tr>";
-                        echo "<th>Tipo archivo</th>";
-                        echo " <th>Nombre del Archivo</th>";
-                        echo " <th>Estatus de Autorización</th>";
-                        echo "<th>Fecha de Publicación</th>";
-                        echo "</tr>";
-                        echo "</thead>";
+                        echo "<table id='tabla class='sin-borde'";
+                            echo "<thead>";
+                                echo "<tr>";
+                                echo "<th>Tipo archivo</th>";
+                                echo " <th>Nombre del Archivo</th>";
+                                echo " <th>Estatus de Autorización</th>";
+                                echo "<th>Fecha de Publicación</th>";
+                                echo "</tr>";
+                            echo "</thead>";
                         echo "<tbody>";
 
                         // Iterar sobre los resultados y construir las filas de la tabla
@@ -132,7 +132,7 @@
                                 case "PPTX":
                                     $imageSrc = "../images/Archivo_Powerpoint.png";
                                     break;
-                                case "XLS":
+                                case "XLSX":
                                     $imageSrc = "../images/Archivo_Xls.png";
                                     break;
                                 // Agregar más casos según los tipos de archivo que tengas
