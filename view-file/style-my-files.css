@@ -999,4 +999,9 @@ body {
         margin-left: 25%;
     }
 
+    .sin-borde {
+        border-collapse: collapse;
+        border: none;
+    }
+
     }
