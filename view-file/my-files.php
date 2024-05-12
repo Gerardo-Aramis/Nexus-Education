@@ -8,7 +8,10 @@
   <link href="images/logo.png" rel="shortcut icon">
 
   <style>
-
+    .sin-borde {
+        border-collapse: collapse;
+        border: none;
+    }
   </style>
 </head>
 <body>
@@ -100,7 +103,7 @@
                     if ($stmtGetUserFiles === false) {
                         die("Error al obtener los archivos del usuario: " . print_r(sqlsrv_errors(), true));
                     } else {
-                        echo "<table id='tabla class='sin-borde' ";
+                        echo "<table id='tabla class='sin-borde'>";
                             echo "<thead>";
                                 echo "<tr>";
                                 echo "<th>Tipo archivo</th>";
