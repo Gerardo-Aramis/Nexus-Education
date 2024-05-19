@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Mis Archivos - Nexus Education</title>
   <link rel="stylesheet" href="style-my-files.css">
-  <link href="images/logo.png" rel="shortcut icon">
+  <link href="../images/logo.png" rel="shortcut icon">
 
   <!-- Aquí va el código CSS para el modal -->
   <style>
@@ -91,7 +91,7 @@
         </div>
         <div>
             <img style="margin-top: 85%;" src="../images/buscar.png" alt="Mis_archivos" class="fotosperfil">
-            <a href="buscar.html">Buscar</a>
+            <a href="../buscar/buscar.php">Buscar</a>
         </div>
         <div>
             <img style="margin-top: 200%;" src="../images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil"> 
@@ -113,8 +113,10 @@
         <div>
         <div id="resultadosBusqueda">
         <?php
-            session_start(); // Iniciar la sesión
 
+        // Verificar si se ha iniciado sesión
+        session_start();
+        
             $serverName = "IA-27";
             $connectionInfo = array(
                 "Database"=> "NexusEducation",
@@ -143,7 +145,8 @@
                     $userID = $row['userID'];
 
                     // Consulta SQL para obtener los archivos subidos por el usuario
-                    $sqlGetUserFiles = "SELECT fileType, fileName, filePath, authorizationStatus, fileUploadDate FROM Files WHERE userID = ? ORDER BY fileUploadDate DESC";
+                    $sqlGetUserFiles = "SELECT fileType, fileName, filePath, authorizationStatus, fileUploadDate FROM Files WHERE userID = ? AND (authorizationStatus = 'Aceptado' OR 
+                    authorizationStatus = 'En Espera' OR authorizationStatus = 'Rechazado') ORDER BY fileUploadDate DESC";
                     $paramsGetUserFiles = array($userID);
                     $stmtGetUserFiles = sqlsrv_query($conn, $sqlGetUserFiles, $paramsGetUserFiles);
 
@@ -168,7 +171,7 @@
                             $filePath = $row['filePath'];
                             $authorizationStatus = $row['authorizationStatus'];
                             $fileUploadDate = $row['fileUploadDate'];
-                            $fileUploadDate = $fileUploadDate->format('Y-m-d H:i:s');
+                            $fileUploadDate = $fileUploadDate->format('Y-m-d H:i:s') . '.' . sprintf('%03d', $fileUploadDate->format('u') / 1000);
 
                             // Determinar la imagen del archivo según el tipo de archivo
                             $imageSrc = "";
@@ -182,7 +185,9 @@
                                 case "PPTX":
                                     $imageSrc = "../images/Archivo_Powerpoint.png";
                                     break;
-                                case "XLSX":
+                                case "XLS":
+                                  $imageSrc = "../images/Archivo_Xls.png";
+                                    break;
                                 case "XLSX":
                                     $imageSrc = "../images/Archivo_Xls.png";
                                     break;
@@ -192,13 +197,19 @@
                             }
 
                             // Imprimir la fila de la tabla con el ícono correspondiente y el nombre del archivo
-                            echo "<tr>";
+                            echo "<tr data-file-name=\"" . $fileName . "\" data-file-upload-date=\"" . $fileUploadDate . "\">";
                             echo "<td><a href='view-file.html?id=$filePath&nombre=$fileName'>";
                             echo "<img src='$imageSrc' alt='Archivo' class='fotosarchivo'>";
                             echo "</a></td>";
                             echo "<td>$fileName</td>";
                             echo "<td>$authorizationStatus</td>";
                             echo "<td>$fileUploadDate</td>";
+                            //COLUMNAS OCULTAS
+                            //SUBJETC -> MATERIA
+                            //CATEGORY -> CATEGORIA
+                            //SEMESTRE
+                            //CARRERA
+                            //*TRAERME TODO CON SUBCONSULTAS
                             echo "</tr>";
                         }
 
@@ -216,133 +227,235 @@
         </div>
     </div>
 
-    <div id="myModal" class="modal">
+<!--COLOR AL DAR CLIC EN ALGUNA DEL DISEÑO 676767  -->
+<div id="modalOpciones" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <p>¿Qué deseas hacer?</p>
+        <div>    
+            <button id="modifyButton" class="modal-button">Modificar</button>
+        </div>
+
         <div>
             <button id="deleteButton" class="modal-button">Eliminar</button>
         </div>
-        <div>    
-            <button id="editButton" class="modal-button">Modificar</button>
-        </div>
+        
     </div>
 </div>
-    <!--COLOR AL DAR CLIC EN ALGUNA DEL DISEÑO 676767  -->
 
+    <!-- MODAL CONFIRMAR ELIMINACIÓN  -->
+    <div id="confirmar-eliminar" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>¿Estás seguro de eliminar la publicación?</p>
 
+        <form id="eliminarForm" action="delete-file.php" method="POST">
+            <input type="hidden" name="fileNameDelete" id="fileNameDelete" value="">
+           <input type="hidden" name="fileUploadDateDelete" id="fileUploadDateDelete" value="">
+            <div>
+                <button type="submit" class="modal-button">Sí</button>
+            </div>
+            <div>
+                <button type="button" id="noButton" class="modal-button">No</button>
+            </div>
+        </form>
+    </div>
 </div>
 
+<!-- MODAL CONFIRMAR MODIFICACIÓN  -->
+<div id="confirmar-modificar" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>¿Estás seguro de modificar la publicación?</p>
+        <form id="modificarForm" action="pre-modify.php" method="POST">
+            <input type="hidden" name="fileNameModify" id="fileNameModify" value="">
+            <input type="hidden" name="fileUploadDateModify" id="fileUploadDateModify" value="">
+            <div>
+                <button type="submit" class="modal-button">Sí</button>
+            </div>
+            <div>
+                <button type="button" id="noButton" class="modal-button">No</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-  <script>
-  // Esperar a que el documento esté completamente cargado
+</div>
+<script>
   document.addEventListener("DOMContentLoaded", function() {
-    // Obtener el formulario y el botón de búsqueda por su ID
-    var searchForm = document.getElementById("searchForm");
-    var searchButton = document.getElementById("searchButton");
-    var archivoInput = document.getElementById("archivo");
+    //VARIABLES
+  var searchButton = document.getElementById("searchButton");
+  var archivoInput = document.getElementById("archivo");
+  var nombreArchivoSeleccionado;
+  var fechaPublicacionSeleccionada;
 
-    // Agregar un event listener al botón de búsqueda
-    searchButton.addEventListener("click", function() {
-      buscarArchivos();
-    });
+  // Agregar listeners al cargar la página
+  agregarListeners();
 
-    // Agregar un event listener para la tecla Enter en el campo de búsqueda
-    archivoInput.addEventListener("keyup", function(event) {
-      // Verificar si la tecla presionada es la tecla Enter (código de tecla 13)
-      if (event.keyCode === 13) {
-        // Prevenir el comportamiento predeterminado del Enter
-        event.preventDefault();
-        
-        // Realizar la búsqueda de archivos
-        buscarArchivos();
-      }
-    });
+  // Definir listeners para los elementos que no cambian
+  var primeraModal = document.getElementById("modalOpciones");
+  var segundaModal = document.getElementById("confirmar-eliminar");
+  var tercerModal = document.getElementById("confirmar-modificar");
+  var closeButton1 = primeraModal.querySelector(".close");
+  closeButton1.addEventListener("click", function() {
+    cerrarModal("modalOpciones");
+  });
 
-    // Función para realizar la búsqueda de archivos
-    function buscarArchivos() {
-      console.log("Buscar archivos...");
-      // Obtener el valor del campo de búsqueda
-      var searchTerm = archivoInput.value;
+  //CERRAR ELIMINAR AL DAR CLIC EN LA X
+  var closeButton2 = segundaModal.querySelector(".close");
+  closeButton2.addEventListener("click", function() {
+    cerrarModal("confirmar-eliminar");
+  });
 
-      // Crear una nueva instancia de XMLHttpRequest
-      var xhr = new XMLHttpRequest();
+  //CERRAR ELIMINAR AL DAR CLIC EN LA X
+  var closeButton2 = tercerModal.querySelector(".close");
+  closeButton2.addEventListener("click", function() {
+    cerrarModal("confirmar-modificar");
+  });
 
-      // Configurar la solicitud
-      xhr.open("GET", "search-my-files.php?term=" + searchTerm, true);
+  //CAMBIAR DEL MODAL OPCIONES A CONFIRMAR ELIMINAR
+  var deleteButton = document.getElementById("deleteButton");
+  deleteButton.addEventListener("click", function() {
+    cerrarModal("modalOpciones");
+    mostrarModal("confirmar-eliminar");
+  });
+  
+  // CAMBIAR DEL MODAL OPCIONES A CONFIRMAR MODIFICAR
+var modifyButton = document.getElementById("modifyButton");
+modifyButton.addEventListener("click", function() {
+  cerrarModal("modalOpciones");
+  mostrarModal("confirmar-modificar");
+});
 
-      // Configurar la función de callback para manejar la respuesta del servidor
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          // Limpiar la tabla
-          document.getElementById("resultadosBusqueda").innerHTML = "";
+  //ACCIONES AL DAR CLIC EN SÍ AL ELIMINAR
+  var siButton = document.querySelector("#confirmar-eliminar button:nth-of-type(1)");
+  siButton.addEventListener("click", function() {
+    cerrarModal("confirmar-eliminar");
+  });
 
-          // Agregar los resultados de la búsqueda a la tabla
-          document.getElementById("resultadosBusqueda").innerHTML = xhr.responseText;
-        }
-      };
+  // Obtener referencia al botón "Sí" y agregar un evento de clic
+var eliminarButton = document.querySelector("#eliminarForm button[type='submit']");
+eliminarButton.addEventListener("click", function(event) {
+    // Obtener la fila actual
+    var fila = document.querySelector("tr.selected");
 
-      // Enviar la solicitud
-      xhr.send();
-    }
+    // Obtener los datos de la fila
+    var fileName = fila.dataset.fileName;
+    var fileUploadDate = fila.dataset.fileUploadDate;
 
-    // Obtener todas las filas de la tabla
+    document.getElementById("fileNameDelete").value = fileName;
+    document.getElementById("fileUploadDateDelete").value = fileUploadDate;
+    // Enviar el formulario
+    document.getElementById("eliminarForm").submit();
+});
+
+// Obtener referencia al botón "Sí" y agregar un evento de clic
+var modificarButton = document.querySelector("#modificarForm button[type='submit']");
+modificarButton.addEventListener("click", function(event) {
+    // Evitar que el formulario se envíe automáticamente
+    //event.preventDefault();
+
+    // Obtener la fila actual
+    var fila = document.querySelector("tr.selected");
+
+    // Obtener los datos de la fila
+    var fileName = fila.dataset.fileName;
+    var fileUploadDate = fila.dataset.fileUploadDate;
+
+    document.getElementById("fileNameModify").value = fileName;
+    document.getElementById("fileUploadDateModify").value = fileUploadDate;
+
+    // Enviar el formulario
+    document.getElementById("modificarForm").submit();
+});
+
+  //CERRAR MODAL AL DAR CLIC EN NO AL ELIMINAR
+  var noButton = document.getElementById("noButton");
+  noButton.addEventListener("click", function() {
+    cerrarModal("confirmar-eliminar");
+  });
+
+  // ACCIONES AL DAR CLIC EN SÍ AL MODIFICAR
+var siButton = document.querySelector("#confirmar-modificar button:nth-of-type(1)");
+  siButton.addEventListener("click", function() {
+    cerrarModal("confirmar-modificar");
+  });
+
+// CERRAR MODAL AL DAR CLIC EN NO AL MODIFICAR
+var noButton = tercerModal.querySelector("#noButton");
+noButton.addEventListener("click", function() {
+  cerrarModal("confirmar-modificar");
+});
+
+  // Función para agregar listeners a los elementos dinámicos
+  function agregarListeners() {
     var rows = document.querySelectorAll("table tbody tr");
-
-    // Agregar un event listener para el clic en cada fila
-    rows.forEach(function(row) {
-      row.addEventListener("click", function() {
-        // Restablecer el color de fondo de todas las filas
-        rows.forEach(function(row) {
-          row.style.backgroundColor = ""; // Restablecer el color de fondo a su valor predeterminado
-        });
-
-        // Establecer el color de fondo de la fila seleccionada
-        this.style.backgroundColor = "#676767";
-      });
-    });
-
-    // Agregar un event listener para el doble clic en cada fila
     rows.forEach(function(row) {
       row.addEventListener("dblclick", function() {
-        // Mostrar el modal
-        var modal = document.getElementById("myModal");
-        modal.style.display = "block";
+        mostrarModal("modalOpciones");
+
+
+      });
+
+      row.addEventListener("click", function() {
+        nombreArchivoSeleccionado = row.querySelector('td:nth-child(2)').textContent;
+        fechaPublicacionSeleccionada = row.querySelector('td:nth-child(4)').textContent;
+        rows.forEach(function(row) {
+          row.style.backgroundColor = "";
+        });
+        
+        this.style.backgroundColor = "#676767";
+
+        rows.forEach(function(f) {
+                f.classList.remove("selected");
+            });
+            // Agregar la clase 'selected' a la fila clicada
+            this.classList.add("selected");
       });
     });
+  }
 
-    // Cerrar el modal cuando se hace clic en la "x"
-    var closeButton = document.getElementsByClassName("close")[0];
-    closeButton.addEventListener("click", function() {
-      var modal = document.getElementById("myModal");
-      modal.style.display = "none";
-    });
+  // Agregar listener al botón de búsqueda
+  searchButton.addEventListener("click", buscarArchivos);
 
-    // Cerrar el modal cuando se hace clic fuera de él
-    window.onclick = function(event) {
-      var modal = document.getElementById("myModal");
-      if (event.target == modal) {
-        modal.style.display = "none";
+  // Función para buscar archivos
+  function buscarArchivos() {
+    console.log("Buscar archivos...");
+    var searchTerm = archivoInput.value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "search-my-files.php?term=" + searchTerm, true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        document.getElementById("resultadosBusqueda").innerHTML = xhr.responseText;
+        agregarListeners(); // Agregar listeners después de cargar los resultados de la búsqueda
       }
     };
+    xhr.send();
+  }
 
-    // Manejar el clic en el botón de eliminar
-    var deleteButton = document.getElementById("deleteButton");
-    deleteButton.addEventListener("click", function() {
-      // Aquí puedes agregar la lógica para eliminar el archivo
-      alert("Archivo eliminado");
-    });
+  // Función para mostrar un modal
+  function mostrarModal(idModal) {
+    var modal = document.getElementById(idModal);
+    modal.style.display = "block";
+  }
 
-    // Manejar el clic en el botón de modificar
-    var editButton = document.getElementById("editButton");
-    editButton.addEventListener("click", function() {
-      // Aquí puedes agregar la lógica para modificar el archivo
-      alert("Archivo modificado");
-    });
+  // Función para cerrar un modal
+  function cerrarModal(idModal) {
+    var modal = document.getElementById(idModal);
+    modal.style.display = "none";
+  }
+
+  // Cerrar el modal cuando se hace clic fuera de él
+  window.addEventListener("click", function(event) {
+    if (event.target.classList.contains("modal")) {
+      cerrarModal("modalOpciones");
+      cerrarModal("confirmar-eliminar");
+      cerrarModal("confirmar-modificar");
+    }
   });
+
+});
 </script>
-
-
 
 </body>
 </html>

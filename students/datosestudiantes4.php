@@ -1,13 +1,13 @@
 <?php
     // Establecer la conexión con la base de datos
     $serverName = "IA-27";
-    $connectionInfo = array(
-        "Database"=> "NexusEducation",
-        "UID"=> "sa",
-        "PWD"=> "20SQL22",
-        "CharacterSet" => "UTF-8"
+    $connectionOptions = array(
+    "Database"=> "NexusEducation",
+    "UID"=> "sa",
+    "PWD"=> "20SQL22",
+    "CharacterSet" => "UTF-8"
     );
-    $conn = sqlsrv_connect($serverName, $connectionInfo);
+    $conn = sqlsrv_connect($serverName, $connectionOptions);
 
     // Verificar si se recibieron los parámetros 'carrera' y 'semestre'
     if (isset($_GET['carrera']) && isset($_GET['semestre'])) {
@@ -16,9 +16,9 @@
         $semestre = $_GET['semestre'];
 
         // Consulta SQL para obtener los datos de los estudiantes filtrados por carrera y semestre
-        $sql = "SELECT email, names, apellidoPaterno, apellidoMaterno, semester 
-                FROM [User] 
-                WHERE carreerID = ? AND semester = ?";
+        $sql = "SELECT noCtrol, semester, names, apellidoPaterno, apellidoMaterno,
+        (SELECT typeName FROM UserType WHERE userTypeID = U.userTypeID) AS TipoUsuario, email 
+        FROM [User] U WHERE carreerID = ? AND semester = ?";
         $params = array($carrera, $semestre);
 
         // Ejecutar la consulta SQL con los parámetros correspondientes

@@ -75,10 +75,10 @@ try {
     $ruta =$resultado->id;
 
     // Preparar la declaración SQL para insertar un nuevo archivo
-    $sqlInsertFile = "INSERT INTO Files ([fileName], fileType, fileSize, filePath, authorizationStatus, userID, subjectID, CategoryID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sqlInsertFile = "INSERT INTO Files ([fileName], fileType, fileSize, filePath, authorizationStatus, userID, subjectID, CategoryID, fileUploadDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Preparar la declaración
-    $paramsInsertFile = array($nombre, strtoupper($extension), $tamano, $ruta, "En Espera", $userID, $materia, $categoria);
+    $paramsInsertFile = array($nombre, strtoupper($extension), $tamano, $ruta, "En Espera", $userID, $materia, $categoria, GETDATE());
     $stmtInsertFile = sqlsrv_query($conn, $sqlInsertFile, $paramsInsertFile);
 
     // Verificar si la consulta fue exitosa

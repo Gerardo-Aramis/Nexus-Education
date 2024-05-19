@@ -1,12 +1,12 @@
 <?php
-    $serverName = "IA-27";
-    $connectionInfo = array(
-        "Database"=> "NexusEducation",
-        "UID"=> "sa",
-        "PWD"=> "20SQL22",
-        "CharacterSet" => "UTF-8"
-    );
-    $conn = sqlsrv_connect($serverName, $connectionInfo);
+$serverName = "IA-27";
+$connectionOptions = array(
+ "Database"=> "NexusEducation",
+"UID"=> "sa",
+"PWD"=> "20SQL22",
+"CharacterSet" => "UTF-8"
+);
+    $conn = sqlsrv_connect($serverName, $connectionOptions);
 
     // Verificar si se recibió el parámetro 'semestre'
     if (isset($_GET['semestre'])) {
@@ -14,8 +14,9 @@
         $semestre = $_GET['semestre'];
 
         // Consulta SQL para obtener los datos de los estudiantes filtrados por semestre
-        $sql = "SELECT email, names, apellidoPaterno, apellidoMaterno, semester 
-                FROM [User] 
+        $sql = "SELECT noCtrol, semester, names, apellidoPaterno, apellidoMaterno,
+        (SELECT typeName FROM UserType WHERE userTypeID = U.userTypeID) AS TipoUsuario, email 
+        FROM [User] U 
                 WHERE semester = ?";
         $params = array($semestre);
 

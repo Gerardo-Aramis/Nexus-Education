@@ -1,16 +1,18 @@
 <?php
 // Establecer la conexión con la base de datos
 $serverName = "IA-27";
-$connectionInfo = array(
-    "Database"=> "NexusEducation",
-    "UID"=> "sa",
-    "PWD"=> "20SQL22",
-    "CharacterSet" => "UTF-8"
+$connectionOptions = array(
+ "Database"=> "NexusEducation",
+"UID"=> "sa",
+"PWD"=> "20SQL22",
+"CharacterSet" => "UTF-8"
 );
-$conn = sqlsrv_connect($serverName, $connectionInfo);
+$conn = sqlsrv_connect($serverName, $connectionOptions);
 
 // Consulta SQL para obtener los datos de los estudiantes
-$sql = "SELECT email, names, apellidoPaterno, apellidoMaterno, semester FROM [User]";
+$sql = "SELECT noCtrol, semester, names, apellidoPaterno, apellidoMaterno,
+(SELECT typeName FROM UserType WHERE userTypeID = U.userTypeID) AS TipoUsuario, email 
+FROM [User] U";
 $stmt = sqlsrv_query($conn, $sql);
 
 // Almacenar los resultados en un array

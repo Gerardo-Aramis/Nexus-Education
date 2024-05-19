@@ -18,8 +18,6 @@ if ($conn === false) {
     die("No se pudo establecer la conexión: " . print_r(sqlsrv_errors(), true));
 }
 
-echo $conn;
-
 // Obtener el userID del usuario si está en sesión
 if (isset($_SESSION['email'])) {
     $email = $_SESSION['email'];
@@ -35,29 +33,29 @@ if (isset($_SESSION['email'])) {
 } else {
     die("Error: No se encontró la sesión del usuario.");
 }
-echo "Email de sesión: " . $_SESSION['email'] . "<br>";
-
-echo "ID USER: " . $userID . "<br>";
 
 // Obtener los datos enviados desde el script JavaScript
-$nombreArchivo = $_POST['fileName'];
-$fechaPublicacion = $_POST['fileUploadDate'];
-echo "Nombre de archivo: " . $nombreArchivo . "<br>";
+$nombreArchivo = $_POST['fileNameDelete'];
+$fechaPublicacion = $_POST['fileUploadDateDelete'];
 
 // Consulta para actualizar el estado del archivo a 'Eliminado'
 $sqlEliminarArchivo = "UPDATE Files SET authorizationStatus = 'Eliminado' WHERE [fileName] = ? AND userID = ? AND fileUploadDate = ?";
-$params = array($nombreArchivo, $userID, $fechaPublicacion);
-$stmtEliminarArchivo = sqlsrv_query($conn, $sqlEliminarArchivo, $params);
 
-if ($stmtEliminarArchivo === false) {
-    die("Error al actualizar el estado del archivo: " . print_r(sqlsrv_errors(), true));
-} else {
+// Preparar la consulta
+$stmtEliminarArchivo = sqlsrv_prepare($conn, $sqlEliminarArchivo, array(&$nombreArchivo, &$userID, &$fechaPublicacion));
+
+
+// Ejecutar la consulta
+if (sqlsrv_execute($stmtEliminarArchivo)) {
+    // La actualización fue exitosa
     // Redireccionar después de eliminar el archivo
-    header("Location: view-file.html");
+    header("Location: my-files.php");
+    exit;
+} else {
+    // La actualización falló
+    die("Error al actualizar el estado del archivo: " . print_r(sqlsrv_errors(), true));
 }
 
-// Cerrar la conexión y liberar recursos
-sqlsrv_free_stmt($stmtGetUserID);
+// Cerrar la consulta
 sqlsrv_free_stmt($stmtEliminarArchivo);
-sqlsrv_close($conn);
 ?>

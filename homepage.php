@@ -14,14 +14,12 @@
 <body>
 
     <div class="container">
-        
-        
+    
     <div class="top-section">
         <img src="images/tecnm.png" alt="Logo Tecnm" class="logo-tecnm">
         <img src="images/ittepic.png" alt="Logo Tec" class="logo-ittepic">
         <img src="images/nexus2.png" alt="Logo Nexus" class="logo-nexus">
         <img src="images/nombrenexus.png" alt="Logo Nombre Nexus" class="logo-nombrenexus">
-
     </div>
 
     <div class="left-section" > 
@@ -39,17 +37,22 @@
             <a href="view-file/my-files.php">Mis Archivos</a>
         </div>
         <div>
-            <img style="margin-top: 200%;" src="images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil"> 
-            <a  style="margin-top: 135%;"  href="login.html">Cerrar sesión</a>
+            <img style="margin-top: 85%;" src="images/buscar.png" alt="Mis_archivos" class="fotosperfil">
+            <a href="buscar/buscar.php">Buscar</a>
         </div>
+        <div>
+            <img style="margin-top: 200%;" src="images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil"> 
+            <a  style="margin-top: 105%;"  href="login.html">Cerrar sesión</a>
+        </div>
+    </div>
         <?php
 session_start();
 
-$serverName = "IA-27";
+$serverName = "25.41.90.44\\SQLEXPRESS"; 
 $connectionInfo = array(
-    "Database"=> "NexusEducation",
-    "UID"=> "sa",
-    "PWD"=> "20SQL22",
+    "Database" => "NexusEducation",
+    "UID" => "log_userweb", 
+    "PWD" => "nexus123", 
     "CharacterSet" => "UTF-8"
 );
 
@@ -89,7 +92,7 @@ if (isset($_SESSION['email'])) {
             $sqlGetRecentFiles = "
             SELECT filePath 
             FROM Files 
-            WHERE subjectID IN (SELECT subjectID FROM Subject WHERE carreerID = ?) 
+            WHERE subjectID IN (SELECT subjectID FROM Subject WHERE carreerID = ?) AND authorizationStatus = 'Aceptado'
             ORDER BY fileID DESC
             OFFSET 0 ROWS FETCH NEXT 3 ROWS ONLY
         ";
@@ -121,12 +124,6 @@ sqlsrv_close($conn);
        </div>
 
      <!-- Botones búsqueda y filtrado -->
-       
-       <div>
-            <input style="background-color: #ffffff; display: inline-block;" type="archivo" id="archivo" name="archivo" placeholder="Buscar" required>
-            <button style=" display: inline-block; margin-left: -40px; background-image: url('images/buscar.png'); background-size: cover; background-repeat: no-repeat; border: none; background-color: transparent; border-radius: 0;"> </button>
-            <button style=" display: inline-block; margin-left: -60px; background-image: url('images/image.png'); background-size: cover; background-repeat: no-repeat; border: none; background-color: transparent; border-radius: 0;"> </button>
-        </div>
     
         <!-- Lista de archivos recientes -->
         <div class="recent-files">
@@ -139,11 +136,11 @@ sqlsrv_close($conn);
                   <li>
                   <?php
 
-                    $serverName = "IA-27";
+                    $serverName = "25.41.90.44\\SQLEXPRESS"; 
                     $connectionInfo = array(
-                        "Database"=> "NexusEducation",
-                        "UID"=> "sa",
-                        "PWD"=> "20SQL22",
+                        "Database" => "NexusEducation",
+                        "UID" => "log_userweb", 
+                        "PWD" => "nexus123", 
                         "CharacterSet" => "UTF-8"
                     );
 
@@ -183,7 +180,7 @@ sqlsrv_close($conn);
                                 $sqlGetRecentFiles = "
                                 SELECT filePath, fileName
                                 FROM Files 
-                                WHERE subjectID IN (SELECT subjectID FROM Subject WHERE carreerID = ?) 
+                                WHERE subjectID IN (SELECT subjectID FROM Subject WHERE carreerID = ?) AND authorizationStatus = 'Aceptado'
                                 ORDER BY fileID DESC
                                 OFFSET 0 ROWS FETCH NEXT 3 ROWS ONLY
                             ";
@@ -233,11 +230,11 @@ sqlsrv_close($conn);
             <li>
             <?php
 
-$serverName = "IA-27";
+$serverName = "25.41.90.44\\SQLEXPRESS"; 
 $connectionInfo = array(
-    "Database"=> "NexusEducation",
-    "UID"=> "sa",
-    "PWD"=> "20SQL22",
+    "Database" => "NexusEducation",
+    "UID" => "log_userweb", 
+    "PWD" => "nexus123", 
     "CharacterSet" => "UTF-8"
 );
 
@@ -275,9 +272,9 @@ if (isset($_SESSION['email'])) {
             // Consulta SQL para obtener las rutas de los tres últimos archivos subidos relacionados con el subjectID
             
             $sqlGetRecentFiles = "
-            SELECT TOP 3 filePath, fileName
+            SELECT TOP 3 filePath, [fileName]
             FROM Files 
-            WHERE subjectID IN (SELECT subjectID FROM Subject WHERE carreerID = ?) 
+            WHERE subjectID IN (SELECT subjectID FROM Subject WHERE carreerID = ?) AND authorizationStatus = 'Aceptado'
             ORDER BY NEWID()
         ";
         $paramsGetRecentFiles = array($carreerID);
@@ -318,6 +315,8 @@ sqlsrv_close($conn);
 
 
   </div>
+
+</div>
 
 </body>
 </html>

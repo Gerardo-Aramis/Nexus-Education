@@ -29,7 +29,8 @@
             $userID = $row['userID'];
 
             // Consulta SQL para obtener los archivos subidos por el usuario y coincidentes con el término de búsqueda
-            $sqlSearchFiles = "SELECT fileType, fileName, filePath, authorizationStatus, fileUploadDate FROM Files WHERE userID = ? AND fileName LIKE ? ORDER BY fileUploadDate DESC";
+            $sqlSearchFiles = "SELECT fileType, fileName, filePath, authorizationStatus, fileUploadDate FROM Files WHERE userID = ? AND fileName LIKE ? AND (authorizationStatus = 'Aceptado' OR 
+            authorizationStatus = 'En Espera' OR authorizationStatus = 'Rechazado') ORDER BY fileUploadDate DESC";
             $paramsSearchFiles = array($userID, '%' . $_GET['term'] . '%');
             $stmtSearchFiles = sqlsrv_query($conn, $sqlSearchFiles, $paramsSearchFiles);
 
@@ -37,7 +38,15 @@
                 die("Error al buscar archivos: " . print_r(sqlsrv_errors(), true));
             } else {
                 // Inicio de la tabla de resultados
-                $output = "<table class='sin-borde'>";
+                $output = "<table id='tabla class='sin-borde'>";
+                $output .= "<thead>";
+                $output .=  "<tr>";
+                $output .=  "<th>Tipo archivo</th>";
+                $output .=  " <th>Nombre del Archivo</th>";
+                $output .=  " <th>Estatus de Autorización</th>";
+                $output .=  "<th>Fecha de Publicación</th>";
+                $output .=  "</tr>";
+                $output .=  "</thead>";
                 $output .= "<tbody>";
 
                 // Iterar sobre los resultados y construir las filas de la tabla
@@ -60,7 +69,7 @@
                         case "PPTX":
                             $imageSrc = "../images/Archivo_Powerpoint.png";
                             break;
-                        case "XLS":
+                        case "XLSX":
                             $imageSrc = "../images/Archivo_Xls.png";
                             break;
                         // Agregar más casos según los tipos de archivo que tengas

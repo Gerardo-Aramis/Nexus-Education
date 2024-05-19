@@ -30,7 +30,7 @@ function sendOTP() {
 			otp_btn.addEventListener('click', () => {
 				if (otp_inp.value == otp_val) {
 					alert("Identidad Verificada");
-					window.location.href = "password-recovery.html";
+					window.location.href = "password-recovery.html?email=",email;
 				}
 				else {
 					alert("Código no válido.");
