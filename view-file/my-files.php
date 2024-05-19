@@ -117,16 +117,16 @@
         // Verificar si se ha iniciado sesión
         session_start();
         
-            $serverName = "IA-27";
-            $connectionInfo = array(
-                "Database"=> "NexusEducation",
-                "UID"=> "sa",
-                "PWD"=> "20SQL22",
-                "CharacterSet" => "UTF-8"
-            );
+        $serverName = "25.41.90.44\\SQLEXPRESS"; 
+        $connectionOptions = array(
+            "Database" => "NexusEducation",
+            "UID" => "log_userweb", 
+            "PWD" => "nexus123", 
+            "CharacterSet" => "UTF-8"
+        );
 
             // Establecer la conexión a la base de datos
-            $conn = sqlsrv_connect($serverName, $connectionInfo);
+            $conn = sqlsrv_connect($serverName, $connectionOptions);
 
             // Verificar la conexión
             if ($conn === false) {

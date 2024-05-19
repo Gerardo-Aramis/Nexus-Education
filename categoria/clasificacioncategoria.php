@@ -1,9 +1,9 @@
 <?php
-$serverName = "IA-27";
+$serverName = "25.41.90.44\\SQLEXPRESS"; 
 $connectionOptions = array(
-    "Database"=> "NexusEducation",
-    "UID"=> "sa",
-    "PWD"=> "20SQL22",
+    "Database" => "NexusEducation",
+    "UID" => "log_userweb", 
+    "PWD" => "nexus123", 
     "CharacterSet" => "UTF-8"
 );
 

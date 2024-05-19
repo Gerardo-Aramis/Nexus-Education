@@ -1,14 +1,14 @@
 <?php
-$serverName = "IA-27";
-$connectionInfo = array(
-    "Database"=> "NexusEducation",
-    "UID"=> "sa",
-    "PWD"=> "20SQL22",
+$serverName = "25.41.90.44\\SQLEXPRESS"; 
+$connectionOptions = array(
+    "Database" => "NexusEducation",
+    "UID" => "log_userweb", 
+    "PWD" => "nexus123", 
     "CharacterSet" => "UTF-8"
 );
 
 // Establecer la conexión con la base de datos
-$conn = sqlsrv_connect($serverName, $connectionInfo);
+$conn = sqlsrv_connect($serverName, $connectionOptions);
 if( $conn === false ) {
   echo "No se estableció la conexión. ";
   die(print_r(sqlsrv_errors(), true));
