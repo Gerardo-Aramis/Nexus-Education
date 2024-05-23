@@ -1,0 +1,797 @@
+body {
+    max-width: 100vw; /* Establece el ancho máximo del cuerpo al ancho máximo de la ventana del navegador */
+    max-height: 100vh; /* Establece la altura máxima del cuerpo a la altura máxima de la ventana del navegador */
+    margin: 0;
+    overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    overflow-x: hidden; 
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center; 
+    position: relative;
+    color: white;
+    min-height: 100vh; 
+    zoom: reset;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+
+@media (max-width: 700px){
+    .logo-nexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 70%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .logo-nombrenexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 60%);
+        width: calc(100% - 75%); 
+        height: auto; 
+    }
+    
+    .logo-tecnm {
+        position: absolute;
+        top: calc(100% - 94%);
+        left: calc(100% - 99.5%);
+        width: calc(100% - 90%); 
+        height: auto;  
+    }
+    
+    .logo-ittepic {
+        position: absolute;
+        top: calc(100% - 95%);
+        right: calc(100% - 99%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+        position: center;
+        top: 0;
+        left: 0;
+        padding-left: calc(100% - 50%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        padding-top: 10%;
+        width: 100%;
+        height: 500px; /* 20% de la pantalla */
+        background-color: #202d35; /* Color para el 20% */
+    }
+    
+    .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 15%;
+        padding-top: 1%;
+        padding-left: 2%;
+        width: 83%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #2A677C; /* Color para el 80% */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1%;
+        overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    }
+    
+    .bottom-section::-webkit-scrollbar {
+        width: 12%; /* Ancho de la barra de desplazamiento */
+    }
+
+    .bottom-section::-webkit-scrollbar-thumb {
+        background-color: #385c74; /* Color de la barra de desplazamiento */
+        border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
+    }
+
+    .fotosarchivo {
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
+    
+    #comentarios {
+        margin-top: 5%;
+        margin-left: 0%;
+    }
+
+    .comentario {
+        padding: 1%; /* Aumenta el espacio alrededor del comentario */
+        margin-bottom: 0; /* Aumenta el espacio entre los comentarios */
+        position: relative;
+        width: 200%; /* Ajusta el ancho del comentario */
+        max-width: 100%; /* Ancho máximo del comentario */
+        height: auto;
+        overflow: auto; /* Agrega overflow para evitar que los botones se muevan fuera del contenedor */
+    }
+
+    .comentario > p {
+        margin: 0; /* Eliminar el margen predeterminado del párrafo */
+        font-size: 16px; /* Aumenta el tamaño del texto del comentario */
+    }
+
+    .comentario-border {
+        border: 2px solid rgb(255, 255, 255);
+        padding-left: 0.5%;
+        display: inline-block;
+        width: calc(100% - 70px); /* Ajusta el ancho del recuadro al 100% del comentario menos el espacio para el botón */
+        vertical-align: top; /* Alinea los elementos al inicio */
+        border-radius: 15px;
+        margin-top: 2%;
+    }
+
+    .nombre {
+        font-weight: bold;
+        margin-bottom: 2%; /* Espacio entre el nombre y el comentario */
+        font-size: 10px; /* Aumenta el tamaño del texto del nombre */
+    }
+
+    .opciones {
+        position: absolute; /* Posición absoluta para superponer el botón sobre el comentario */
+        top: 10px; /* Alinea el botón con la parte superior del comentario */
+        right: 15%; /* Alinea el botón con el borde derecho del comentario */
+        padding: 1px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        width: 5%; /* Ancho del botón */
+        height: 5%; /* Altura del botón */
+        transition: transform 0.15s ease; /* Transición suave para la animación */
+    }
+
+    .opciones img {
+        width: 100%; /* Ajusta el tamaño de la imagen dentro del botón */
+    }
+
+    .shrink {
+        transform: scale(0.8); /* Escala el botón al 80% */
+    }
+
+
+    button {
+        width: 20%; /* Ancho del botón */
+        height: 20%; /* Altura del botón */
+        background-color: #65A7D3;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 0px; /* Aumenta el tamaño del texto del botón */
+        vertical-align: top; /* Alinea los elementos al inicio */
+        transition: background-color 0.5s;
+        text-align: absolute; /* Alinea el texto del botón al centro */
+        border-radius: 50px;
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-style: italic;
+        z-index: 9999;
+        align-self: flex-start; /* Alinea el botón hacia arriba */
+    }
+
+    button:hover {
+        background-color: none;
+    }
+
+    /* Estilo cuando se hace clic */
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+    }
+
+
+    .comentario-info {
+        display: inline-block;
+        width: calc(100% - 50px); /* Ajusta el ancho del contenedor al 100% menos el espacio para el botón */
+        vertical-align: top; /* Alinea los elementos al inicio */
+        position: relative; /* Asegura que el contenido fluya alrededor del botón */
+    }
+    
+    .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 0px;
+        width: 15%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
+    }
+
+    .left-section a {
+        color: white;
+        font-size: calc(100% - 90%);
+        padding-left: calc(100% - 70%);
+        text-decoration: none; /* Quita el subrayado predeterminado */
+        display: block;
+        margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
+        margin-top: calc(100% - 95%);
+    }
+
+    .left-section a:hover {
+        left: calc(100%- 70%);
+        text-decoration: underline; /* Añade subrayado al pasar el ratón */
+        padding-left: calc(100%- 70%);
+    }
+
+    
+    .fotosperfil {
+        position: absolute;
+        top: calc(100% - 98%);
+        left: calc(100% - 95%);
+        width: calc(100% - 80%); 
+        height: auto;
+        margin-bottom: calc(100% - 85%); 
+        padding-top: calc(100% - 99%);
+    }
+    
+    /* Estilos para el texto en los combobox */
+    select {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #747272; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    /* Estilos para las opciones del combobox */
+    option {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #575656; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0px; /* Empezando después del 20% */
+        left: 135px;
+        width: 590px;
+        height: auto; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: autp; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+    
+    .back-button {
+        position: absolute;
+        bottom: 30px; /* Distancia desde la parte inferior */
+        left: 25px; /* Distancia desde la parte izquierda */
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    
+    .recent-files,
+    .recommended-files {
+        width:  100%; /* Divide el espacio horizontalmente */
+        float: center; /* Alinea los contenedores en línea horizontal */
+        margin-left: 8%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1%;
+        text-align: left;
+        max-width: 80%; /* Puedes ajustar el ancho máximo según tus necesidades */
+        margin-top: 5%; /* Espacio entre los contenedores */
+
+    }
+    
+    .recent-files ul,
+    .recommended-files ul {
+        list-style: none; /* Quita los puntos de la lista */
+        padding: 0; /* Elimina el espacio interior de la lista */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1%;
+        margin-top: 3%;
+
+    }
+    
+    .recent-files li,
+    .recommended-files li {
+        margin-bottom: 1%; /* Espacio entre elementos de la lista */
+        font-size: 1%;
+    }
+    
+    .recent-files img,
+    .recommended-files img {
+        width: 8%; /* Tamaño de la imagen del archivo */
+        height: auto;
+        margin-right: 10%; /* Espacio entre la imagen y el texto */
+        vertical-align: middle; /* Alinea verticalmente la imagen */
+        bottom: 30px;
+    }
+    
+    
+}
+
+@media(min-width: 701px) and (max-width:1799px){
+    .logo-nexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 70%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .logo-nombrenexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 60%);
+        width: calc(100% - 75%); 
+        height: auto; 
+    }
+    
+    .logo-tecnm {
+        position: absolute;
+        top: calc(100% - 94%);
+        left: calc(100% - 99.5%);
+        width: calc(100% - 90%); 
+        height: auto;  
+    }
+    
+    .logo-ittepic {
+        position: absolute;
+        top: calc(100% - 95%);
+        right: calc(100% - 99%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+        position: center;
+        top: 0;
+        left: 0;
+        padding-left: calc(100% - 50%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        padding-top: 10%;
+        width: 100%;
+        height: 500px; /* 20% de la pantalla */
+        background-color: #202d35; /* Color para el 20% */
+    }
+    
+    .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 15%;
+        padding-top: 1%;
+        padding-left: 2%;
+        width: 83%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #2A677C; /* Color para el 80% */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:15px;
+        overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    }
+    
+    .bottom-section::-webkit-scrollbar {
+        width: 12%; /* Ancho de la barra de desplazamiento */
+    }
+
+    .bottom-section::-webkit-scrollbar-thumb {
+        background-color: #385c74; /* Color de la barra de desplazamiento */
+        border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
+    }
+
+    .fotosarchivo {
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
+    
+    #comentarios {
+        margin-top: 5%;
+        margin-left: -60%;
+    }
+
+    .comentario {
+        padding: 2%; /* Aumenta el espacio alrededor del comentario */
+        margin-bottom: 0; /* Aumenta el espacio entre los comentarios */
+        position: relative;
+        width: 160%; /* Ajusta el ancho del comentario */
+        max-width: 160%; /* Ancho máximo del comentario */
+        height: auto;
+        overflow: auto; /* Agrega overflow para evitar que los botones se muevan fuera del contenedor */
+    }
+
+    .comentario > p {
+        margin: 0; /* Eliminar el margen predeterminado del párrafo */
+        font-size: 16px; /* Aumenta el tamaño del texto del comentario */
+    }
+
+    .comentario-border {
+        border: 2px solid rgb(255, 255, 255);
+        padding-left: 0.5%;
+        display: inline-block;
+        width: calc(100% - 70px); /* Ajusta el ancho del recuadro al 100% del comentario menos el espacio para el botón */
+        vertical-align: top; /* Alinea los elementos al inicio */
+        border-radius: 15px;
+        margin-top: 2%;
+    }
+
+    .nombre {
+        font-weight: bold;
+        margin-bottom: 2%; /* Espacio entre el nombre y el comentario */
+        font-size: 15px; /* Aumenta el tamaño del texto del nombre */
+    }
+
+    .opciones {
+        position: absolute; /* Posición absoluta para superponer el botón sobre el comentario */
+        top: 15px; /* Alinea el botón con la parte superior del comentario */
+        right: 40%; /* Alinea el botón con el borde derecho del comentario */
+        padding: 1px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        width: 8%; /* Ancho del botón */
+        height: 8%; /* Altura del botón */
+        transition: transform 0.15s ease; /* Transición suave para la animación */
+    }
+
+    .opciones img {
+        width: 100%; /* Ajusta el tamaño de la imagen dentro del botón */
+    }
+
+    .shrink {
+        transform: scale(0.8); /* Escala el botón al 80% */
+    }
+
+
+    button {
+        width: 10%; /* Ancho del botón */
+        height: 10%; /* Altura del botón */
+        background-color: #65A7D3;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 0px; /* Aumenta el tamaño del texto del botón */
+        vertical-align: top; /* Alinea los elementos al inicio */
+        transition: background-color 0.5s;
+        text-align: absolute; /* Alinea el texto del botón al centro */
+        border-radius: 50px;
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-style: italic;
+        z-index: 9999;
+        align-self: flex-start; /* Alinea el botón hacia arriba */
+    }
+
+    button:hover {
+        background-color: none;
+    }
+
+    /* Estilo cuando se hace clic */
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+    }
+
+
+    .comentario-info {
+        display: inline-block;
+        width: 50%; /* Ajusta el ancho del contenedor al 100% menos el espacio para el botón */
+        vertical-align: top; /* Alinea los elementos al inicio */
+        position: relative; /* Asegura que el contenido fluya alrededor del botón */
+    }
+
+    .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 0px;
+        width: 15%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
+    }
+
+    .left-section a {
+        color: white;
+        padding-left: calc(100% - 70%);
+        text-decoration: none; /* Quita el subrayado predeterminado */
+        display: block;
+        margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
+        margin-top: calc(100% - 95%);
+        
+    }
+
+    .left-section a:hover {
+        text-decoration: underline; /* Añade subrayado al pasar el ratón */
+        padding-left: calc(100% - 70%);
+    }
+    .fotosperfil {
+        position: absolute;
+        top: calc(100% - 98%);
+        left: calc(100% - 95%);
+        width: calc(100% - 80%); 
+        height: auto;
+        margin-bottom: calc(100% - 85%); 
+        padding-top: calc(100% - 99%);
+    }
+    
+    /* Estilos para el texto en los combobox */
+    select {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #747272; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0%; /* Empezando después del 20% */
+        left: 21%;
+        width: 35%;
+        height: auto; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+        text-align: left;
+    }
+
+    /* Estilos para el mensaje */
+    .center-section h4 {
+        position: relative;
+        float:left;
+        margin-left: -30%;
+    }
+
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 530px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+ 
+}
+
+@media(min-width: 1800px){
+    .logo-nexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 70%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .logo-nombrenexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 60%);
+        width: calc(100% - 75%); 
+        height: auto; 
+    }
+    
+    .logo-tecnm {
+        position: absolute;
+        top: calc(100% - 94%);
+        left: calc(100% - 99.5%);
+        width: calc(100% - 90%); 
+        height: auto;  
+    }
+    
+    .logo-ittepic {
+        position: absolute;
+        top: calc(100% - 95%);
+        right: calc(100% - 99%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+        position: center;
+        top: 0;
+        left: 0;
+        padding-left: calc(100% - 50%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        padding-top: 10%;
+        width: 100%;
+        height: 500px; /* 20% de la pantalla */
+        background-color: #202d35; /* Color para el 20% */
+    }
+    
+    .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 15%;
+        padding-top: 1%;
+        padding-left: 2%;
+        width: 83%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #2A677C; /* Color para el 80% */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: calc(100% + 150%);
+        overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    }
+    
+    .bottom-section::-webkit-scrollbar {
+        width: 12%; /* Ancho de la barra de desplazamiento */
+    }
+
+    .bottom-section::-webkit-scrollbar-thumb {
+        background-color: #385c74; /* Color de la barra de desplazamiento */
+        border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
+    }
+
+    .fotosarchivo {
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        width: 1%; 
+        height: auto; 
+        margin-bottom: calc(100% - 95%);
+    }
+    
+    #comentarios {
+        margin-top: 5%;
+        margin-left: -15%;
+    }
+
+    .comentario {
+        padding: 2%; /* Aumenta el espacio alrededor del comentario */
+        margin-bottom: 0; /* Aumenta el espacio entre los comentarios */
+        position: relative;
+        width: 80%; /* Ajusta el ancho del comentario */
+        max-width: 100%; /* Ancho máximo del comentario */
+        height: auto;
+        overflow: auto; /* Agrega overflow para evitar que los botones se muevan fuera del contenedor */
+        font-size: 40px;
+    }
+
+    .comentario > p {
+        margin: 0; /* Eliminar el margen predeterminado del párrafo */
+        font-size: 50px; /* Aumenta el tamaño del texto del comentario */
+    }
+
+    .comentario-border {
+        border: 2px solid rgb(255, 255, 255);
+        padding-left: 0.5%;
+        display: inline-block;
+        width: calc(100% - 70px); /* Ajusta el ancho del recuadro al 100% del comentario menos el espacio para el botón */
+        vertical-align: top; /* Alinea los elementos al inicio */
+        border-radius: 15px;
+        margin-top: 2%;
+    }
+
+    .nombre {
+        font-weight: bold;
+        margin-bottom: 2%; /* Espacio entre el nombre y el comentario */
+        font-size: 40px; /* Aumenta el tamaño del texto del nombre */
+    }
+
+    .opciones {
+        position: absolute; /* Posición absoluta para superponer el botón sobre el comentario */
+        top: 80px; /* Alinea el botón con la parte superior del comentario */
+        right: -5%; /* Alinea el botón con el borde derecho del comentario */
+        padding: 1px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        width: 12%; /* Ancho del botón */
+        height: 12%; /* Altura del botón */
+        transition: transform 0.15s ease; /* Transición suave para la animación */
+    }
+
+    .opciones img {
+        width: 100%; /* Ajusta el tamaño de la imagen dentro del botón */
+    }
+
+    .shrink {
+        transform: scale(0.8); /* Escala el botón al 80% */
+    }
+
+
+    button {
+        width: 20%; /* Ancho del botón */
+        height: 20%; /* Altura del botón */
+        background-color: #65A7D3;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 0px; /* Aumenta el tamaño del texto del botón */
+        vertical-align: top; /* Alinea los elementos al inicio */
+        transition: background-color 0.5s;
+        text-align: absolute; /* Alinea el texto del botón al centro */
+        border-radius: 50px;
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-style: italic;
+        z-index: 9999;
+        align-self: flex-start; /* Alinea el botón hacia arriba */
+    }
+
+    button:hover {
+        background-color: none;
+    }
+
+    /* Estilo cuando se hace clic */
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+    }
+
+
+    .comentario-info {
+        display: inline-block;
+        width: calc(100% - 50px); /* Ajusta el ancho del contenedor al 100% menos el espacio para el botón */
+        vertical-align: top; /* Alinea los elementos al inicio */
+        position: relative; /* Asegura que el contenido fluya alrededor del botón */
+    }
+    
+    .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 0px;
+        width: 15%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
+    }
+
+    .left-section a {
+        color: white;
+        font-size: 55px;
+        padding-left: calc(100% - 70%);
+        text-decoration: none; /* Quita el subrayado predeterminado */
+        display: block;
+        margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
+        margin-top: calc(100% - 95%);
+    }
+
+    .left-section a:hover {
+        left: calc(100%- 70%);
+        text-decoration: underline; /* Añade subrayado al pasar el ratón */
+        padding-left: calc(100%- 70%);
+    }
+
+    
+    .fotosperfil {
+        position: absolute;
+        top: calc(100% - 98%);
+        left: calc(100% - 95%);
+        width: calc(100% - 80%); 
+        height: auto;
+        margin-bottom: calc(100% - 85%); 
+        padding-top: calc(100% - 99%);
+    }
+        
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0%; /* Empezando después del 20% */
+        left: 19%;
+        width: 35%;
+        height: auto; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 530px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+ 
+    
+    
+}

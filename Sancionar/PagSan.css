@@ -1,0 +1,51 @@
+body{
+    background: #2A677C;
+}
+
+.alerta{
+    position: absolute;
+    width: 25%;
+    height: 40%;
+    top: 15%;
+    right: 37%;
+}
+.msj{
+    position: absolute;
+    top: 55%;
+    right: 20%;
+    font-size: 150%;
+    color: white;
+}
+
+.msj2{
+    position: absolute;
+    top: 60%;
+    right: 33%;
+    font-size: 150%;
+    color: white;
+}
+
+.Contacto{
+    position: absolute;
+    top: 68%;
+    right: 40%;
+    font-size: 150%;
+    color: rgb(4, 186, 199);
+}
+
+.Regresar{
+    background: #0E3C54;
+    position: absolute;
+    top: 90%;
+    right: 45%;
+    border-radius: 30px;
+    color: White;
+    cursor: pointer;
+    border: unset;
+    padding: 10px 30px;
+    font-weight: bold;
+}
+
+.Regresar:hover{
+    background: #a6d3e2; 
+}

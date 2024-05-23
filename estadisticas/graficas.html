@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Education</title>
+    <link rel="stylesheet" href="estilosgraficas.css">
+    <link rel="icon" href="images/nexus2.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOP SECTION ES LA PARTE AZUL DE ARRIBA CON LOS LOGOS-->
+        <div class="top-section">
+            <a href="principalmoderador.html"><img src="images/tecnm.png" alt="Logo Tecnm" class="logo-tecnm"></a>
+            <img src="images/ittepic.png" alt="Logo Tec Tepic" class="logo-ittepic">
+            <a href="principalmoderador.html">
+                <img src="images/nexus2.png" alt="Logo Nexus" class="logo-nexus"><a href="principalmoderador.html">
+            </a>
+            <a href="principalmoderador.html"><img src="images/nombrenexus.png" alt="Logo nombre Nexus" class="logo-nombrenexus"></a>
+
+        </div>
+        
+        <!-- SECCION AZUL DE FONDO-->
+        <div class="bottom-section">
+            <div class="center-section" >
+            <!-- SECCION AZUL ENCIMA DE LA ANTERIOR QUE TIENE LOS COMBOBOX Y BOTON DE BUSCAR-->
+            <h1 style="margin-left: -4%;" >Estadísticas</h1>
+             
+            <!-- COMBOBOX GRAFICAS-->
+            <div class="graficacombo" style=" display: flex; ">
+                <label>Tipo</label>
+                <select class="graficacombo" name="grafica" id="grafica">
+                    <option value="1">Usuarios por carrera</option>
+                    <option value="2">Archivos subidos por carrera</option>
+                    <option value="3">Tipos de usuario</option>
+                    <option value="4">Materias con más archivos en la plataforma</option>
+                </select>
+            </div>
+            <form id="searchForm">
+                <button type="submit">Buscar</button>
+            </form>
+            <div class='button-container'>
+                <button type='submit' id='descargarBtn' name='Descargar' style="background-image: url('images/descarga - icono blanco.png'); background-size: 65% auto; background-repeat: no-repeat; background-position: center; border-radius: 40px;  width: 45px; height: 45px;"></button>
+            </div>
+
+                  <!-- SECCION BLANCA -->
+                <div class="center-sectionwhite" >
+                    <div class="encabezado-azul" >
+                        <h2 style="color: white; padding: 10px;">Gráfica</h2>
+                    </div>
+                    <!-- MOSTRAR GRAFICAS -->
+                    <canvas style=" margin-top: 2%; width: 350px; height: 300px;" id="myChart"></canvas> <!-- Aquí estableces la altura fija -->
+                </div>           
+            </div>
+               
+        </div>
+
+        
+        <div class="left-section"> 
+            
+            <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR --><a href="principalmoderador.html">
+            <img src="images/moderador.png" alt="moderador" class="fotosperfil" style="margin-left: -17px; margin-top: -15px; width: 50px; height: auto;"></a>
+            <a href="principalmoderador.html"><img src="images/textomoderador.png" alt="textomoderador" class="fotosperfil" style="margin-left: 30px; margin-top: -5px; width: 150px; height: auto;"></a>
+            
+            <img src="images/validar.png" alt="Validar" class="fotosperfil" style="margin-left: -17px; margin-top: 5px; width: 125px; height: auto;">
+                <a href="validar.html" style="margin-left: 25px; margin-top: 80px;">Validar</a>
+            <img src="images/reporte.png" alt="reporte" class="fotosperfil" style="margin-left: -10px; margin-top: 75px; width: 130px; height: auto; ">
+                <a href="reporte.html" style="margin-left: 25px; margin-top: 70px;">Reporte</a>
+            <img src="images/categoria.png" alt="categoria" class="fotosperfil" style="margin-left: -12px; margin-top: 175px; width: 140px; height: auto;">
+                <a href="organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
+            <img src="images/crearmoderador.png" alt="Validar" class="fotosperfil" style="margin-left: 10px; margin-top: 320px; width: 55px; height: auto;">
+                <a href="opcionesestudiantes.html" style="margin-left: 25px; margin-top: 70px;">Estudiantes</a>
+            <img src="images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
+                <a href="../login.html" style="margin-left: 7px; margin-top: 80px;">Cerrar sesión</a>
+        </div>
+        
+    </div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var selectedOption = document.getElementById('grafica').value;
+            if (selectedOption === '1') {
+                fetchUsersByCareer();
+            } else if (selectedOption === '2') {
+                fetchDataFiles();
+            } else if (selectedOption === '3') {
+                fetchUserTypes();
+            } else if (selectedOption === '4') {
+                fetchMostPopularSubjects();
+            }
+        });
+    
+        function fetchUsersByCareer() {
+            fetch('graficas1.php')
+                .then(response => response.json())
+                .then(data => {
+                    var labels = data.map(item => item.carreerName);
+                    var userCounts = data.map(item => item.userCount);
+                    renderUsersByCareerChart(labels, userCounts);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    
+        function renderUsersByCareerChart(labels, data) {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            if (window.myChart instanceof Chart) {
+                window.myChart.destroy();
+            }
+            window.myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Usuarios por carrera',
+                        data: data,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    
+        function fetchDataFiles() {
+            fetch('graficas2.php') // Ajusta el nombre del archivo PHP que proporciona los datos
+                .then(response => response.json())
+                .then(data => {
+                    var careerLabels = data.map(item => item.carreerName); // Cambiar a item.carreerName
+                    var fileCounts = data.map(item => item.fileCount);
+                    renderChart(careerLabels, fileCounts);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        function renderChart(careerLabels,fileCounts) {            
+            var ctx = document.getElementById('myChart').getContext('2d');
+            if (window.myChart instanceof Chart) {
+                window.myChart.destroy();
+            }
+            window.myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: careerLabels,
+                    datasets: [{
+                        label: 'Archivos subidos por carrera',
+                        data: fileCounts,
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    
+        function fetchUserTypes() {
+            fetch('graficas3.php')
+                .then(response => response.json())
+                .then(data => {
+                    var typeNames = data.map(item => item.typeName);
+                    var userCounts = data.map(item => item.userCount);
+                    renderUserTypesChart(typeNames, userCounts);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+    
+            function renderUserTypesChart(labels, data) {
+                var ctx = document.getElementById('myChart').getContext('2d');
+                if (window.myChart instanceof Chart) {
+                    window.myChart.destroy();
+                }
+                window.myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Usuarios por tipo',
+                            data: data,
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            }
+
+            function fetchMostPopularSubjects() {
+                fetch('graficas4.php') // Ajusta el nombre del archivo PHP que proporciona los datos
+                    .then(response => response.json())
+                    .then(data => {
+                        var subjectName = data.map(item => item.subjectName);
+                        var fileCounts = data.map(item => item.fileCount);
+                        renderMostPopularSubjectsChart(subjectName, fileCounts);
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+            }
+
+            function renderMostPopularSubjectsChart(subjectLabels, fileCounts) {
+                var ctx = document.getElementById('myChart').getContext('2d');
+                if (window.myChart instanceof Chart) {
+                    window.myChart.destroy();
+                }
+                window.myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: subjectLabels,
+                        datasets: [{
+                            label: 'Archivos subidos por materia',
+                            data: fileCounts,
+                            backgroundColor: 'rgba(255, 159, 64, 0.5)',
+                            borderColor: 'rgba(255, 159, 64, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            }
+
+    </script>
+    
+    <script>
+        // Agrega un evento de clic al botón de Descargar
+        document.getElementById('descargarBtn').addEventListener('click', function() {
+            // Obtén los datos de la gráfica actual
+            var chartData = obtenerDatosGrafica();
+    
+            // Crea un archivo CSV con los datos de la gráfica
+            var csv = convertirAFormatoCSV(chartData);
+    
+            // Descarga el archivo CSV
+            descargarArchivo(csv, 'datos_grafica.csv');
+        });
+    
+        // Función para obtener los datos de la gráfica actual
+        function obtenerDatosGrafica() {
+            var chartData = window.myChart.data.datasets[0].data;
+            var labels = window.myChart.data.labels;
+            var datos = labels.map((label, index) => ({ label: label, valor: chartData[index] }));
+            return datos;
+        }
+    
+        // Función para convertir los datos en formato CSV
+        function convertirAFormatoCSV(data) {
+            var csv = 'Parametro,Cantidad\n';
+            data.forEach(item => {
+                csv += item.label + ',' + item.valor + '\n';
+            });
+            return csv;
+        }
+    
+        // Función para descargar un archivo
+        function descargarArchivo(data, filename) {
+            var blob = new Blob([data], { type: 'text/csv' });
+            if (window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveBlob(blob, filename);
+            } else {
+                var elem = window.document.createElement('a');
+                elem.href = window.URL.createObjectURL(blob);
+                elem.download = filename;
+                document.body.appendChild(elem);
+                elem.click();
+                document.body.removeChild(elem);
+            }
+        }
+    </script>
+    
+    
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+ /* Estilos CSS aquí */
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #2A677C;
+}
+
+.rectangulo-superior {
+    background-color: #202D35; 
+    height: 100px; 
+    width: 100%; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 999; 
+}
+
+.rectangulo-izquierdo {
+    background-color: #0E3C54; 
+    width: 200px; 
+    height: 100%; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 999; 
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #2A677C;
+    border-radius: 5px;
+    position: absolute;
+    top: 15%;
+    right: 15%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+   /* Tamaño predeterminado para cada columna */
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+img.icon {
+    vertical-align: middle;
+    margin-right: 10px;
+    cursor: pointer; 
+}
+
+.actions {
+    display: flex; 
+    align-items: center; 
+}
+
+.actions button{
+    background: unset;
+    border: unset;
+    cursor: pointer;
+}
+
+.actions button:hover{
+    color: #202D35;
+}
+
+.actions img {
+    margin-right: 10px; 
+}
+
+.BarraTit{
+    background-color: #f2f2f2;
+    color: #2A677C;
+}
+
+.ArchName{
+    color: white;
+}
+
+/* Estilos para la ventana modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);            
+}
+
+.modal-content {
+    background-color: #202D35;
+    border: 2px solid #202D35; /* Cambia el color del borde a rojo (#ff0000) */
+    width: 30%; /* Ancho deseado de la ventana modal */
+    max-width: 800px; /* Ancho máximo permitido */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: white;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.Moderador{
+    position: absolute;
+    top: 16%;
+    right: 65%;
+    width: 64px;
+    height: 64px;
+}
+
+.titModerador{
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    font-size: 20px;
+    color: white;
+}
+
+.Validar{
+    position: absolute;
+    top: 33%;
+    right: 68%;
+    width: 45px;
+    height: 45px;
+}
+
+.titValidar{
+    position: absolute;
+    top: 36%;
+    right: 33%;
+    font-size: 20px;
+    color: white;
+}
+
+.Reporte{
+    position: absolute;
+    top: 44%;
+    right: 65%;
+    width: 45px;
+    height: 45px;
+}
+
+.titReporte{
+    position: absolute;
+    top: 47%;
+    right: 21%;
+    font-size: 20px;
+    color: white;
+}
+
+.Categorias{
+    position: absolute;
+    top: 55%;
+    right: 68%;
+    width: 35px;
+    height: 35px;
+}
+
+.titCategorias{
+    position: absolute;
+    top: 58%;
+    right: 15%;
+    font-size: 20px;
+    color: white;
+}
+
+.Estudiante{
+    position: absolute;
+    top: 64%;
+    right: 65%;
+    width: 49px;
+    height: 49px;
+}
+
+.titEstudiante{
+    position: absolute;
+    top: 69%;
+    right: 15%;
+    font-size: 20px;
+    color: white;
+}
+
+.CerrarSesion{
+    position: absolute;
+    top: 88%;
+    right: 68%;
+    width: 45px;
+    height: 45px;
+}
+
+.titCerrarSesion{
+    position: absolute;
+    top: 90%;
+    right: 2%;
+    font-size: 20px;
+    color: white;
+}
+
+.nexus{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    right: 90%;
+}
+
+.InterfazTit{
+    position: fixed;
+    position: absolute;
+    top: 10%;
+    right: 40%;
+    z-index: 9999;
+    color: white;
+}
+
+.Opciones{
+    position: absolute;
+    top: 68%;
+    right: 2%;
+}
+
+.b1, .b2, .b3{
+    color: white;
+    background: #202D35;
+    border: unset;
+    cursor: pointer;
+    font-size: 120%;
+    padding: 5px 12px;
+    border-radius: 20px; 
+}
+
+.b1:hover, .b2:hover, .b3:hover{
+    background: #35B6E3;
+}
