@@ -29,13 +29,17 @@ function sendOTP() {
 
 			otp_btn.addEventListener('click', () => {
 				if (otp_inp.value == otp_val) {
+					//console.log('Correo electrónico enviado:', email.value);
 					alert("Identidad Verificada");
-					window.location.href = "password-recovery.html?email=",email;
+					
+					const redirectUrl = "password-recovery.html?email=" + encodeURIComponent(email.value);
+					//console.log('Redirect URL:', redirectUrl); // Debug
+					window.location.href = redirectUrl;
 				}
 				else {
 					alert("Código no válido.");
 				}
-			})
+			});
 		}
 	}
 );

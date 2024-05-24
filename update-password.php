@@ -14,9 +14,8 @@ if( $conn === false ) {
 }
 
 $email = $_POST['email'];
-$new_password = $_POST['new_password'];
-$confirm_new_password = $_POST['confirm_new_password'];
-
+#$new_password = $_POST['new_password'];
+$new_password = password_hash(htmlspecialchars(trim($_POST['new_password'])), PASSWORD_BCRYPT);
 #echo "$username $new_password $confirm_new_password";
 
 $consulta = "UPDATE [User] SET passwordd = '$new_password' WHERE email = '$email'";

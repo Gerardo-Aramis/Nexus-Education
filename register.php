@@ -101,3 +101,9 @@ if ($resultadoFoto === false) {
 
 sqlsrv_close($conn);
 ?>
+
+<script>
+    setTimeout(function() {
+        window.location.href = "register.html"; // Redireccionar después de 3 segundos
+    }, 1000); // 1000 milisegundos = 1 segundos
+</script>
