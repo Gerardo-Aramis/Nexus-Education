@@ -1,0 +1,110 @@
+body{
+    background: linear-gradient(to bottom, #202D35 50%, #2A677C 50%);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+    font-size: 20px;
+}
+
+.form-container{
+    width: 45%;
+    height: 60%;
+    background-color: #0E3C54;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    margin-top:2%;
+    padding:20px;
+    position: center;
+    display: flex; /* Utiliza flexbox */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra horizontalmente los elementos */
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label{
+    margin-left: -40%;
+}
+
+input,button{
+    border-radius: 30px;
+    border: unset;
+    padding: 10px 30px;
+    width:150%;
+    height:20px;
+    margin-left: -40%;
+}
+
+button{
+    background-color: #35B6E3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10%;
+    width:70%;
+    height:32px;
+    margin-top: 4%;
+}
+
+p{
+    font-weight: lighter;
+    font-size: 14px;
+    
+}
+
+a{
+   color: white; 
+}
+
+#logo1{
+    width: 15%;
+    padding: 10px;
+    left: 0px;
+}
+
+#logo2{
+    width: 8%;
+    padding: 10px;
+    right: 0px;
+}
+
+header img{
+    position: fixed;
+    top: 0;   
+}
+
+.logo3, .logo4 {
+    height: auto;
+    position: absolute;
+    top: 0%;
+    width: 7%;
+}
+
+.logo3 {
+    left: 35%;
+    top: 0%;
+}
+
+.logo4 {
+    left: 45%; /* Ajusta el valor según sea necesario */
+    top:3%;
+    width: 20%;
+}
+
+/* Estilos para el mensaje de bienvenida */
+.bienvenida {
+    position: fixed; /* Posición fija en la ventana del navegador */
+    bottom: 0px; /* Ajusta la distancia desde la parte inferior según sea necesario */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajusta para centrar completamente */
+    color: white; /* Color del texto */
+    font-size: 14px; /* Tamaño del texto */
+    font-weight: bold; /* Peso de la fuente */
+}
