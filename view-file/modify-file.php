@@ -110,7 +110,7 @@ if (isset($_FILES['archivos'])) {
                                 fileType = ?,
                                 fileSize = ?,
                                 filePath = ?,
-                                authorizationStatus = ?,
+                                authorizationStatus = 'En Espera',
                                 userID = ?,
                                 subjectID = ?,
                                 CategoryID = ?,
@@ -118,7 +118,7 @@ if (isset($_FILES['archivos'])) {
                             WHERE fileID = ?";
 
         // Preparar la declaración
-        $paramsUpdateFile = array($nombre, strtoupper($extension), $tamano, $ruta, "En Espera", $userID, $materia, $categoria, $fileID);
+        $paramsUpdateFile = array($nombre, strtoupper($extension), $tamano, $ruta, $userID, $materia, $categoria, $fileID);
         $stmtUpdateFile = sqlsrv_query($conn, $sqlUpdateFile, $paramsUpdateFile);
 
         // Verificar si la consulta fue exitosa

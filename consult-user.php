@@ -19,18 +19,16 @@ if ($conn === false) {
 }
 
 $email = $_POST['user'];
-$passwordd = $_POST['password'];
-#$passwordd = password_hash(htmlspecialchars(trim($_POST['passwordd'])), PASSWORD_BCRYPT);
+$password = $_POST['password'];
 
-// Consulta SQL para verificar el usuario
-$consulta = "SELECT * FROM [User] WHERE email = ? AND passwordd = ?";
-$resultado = sqlsrv_prepare($conn, $consulta, array(&$email, &$passwordd));
+// Consulta SQL para obtener el hash de la contraseña
+$consulta = "SELECT passwordd FROM [User] WHERE email = ?";
+$resultado = sqlsrv_prepare($conn, $consulta, array(&$email));
 
 if ($resultado === false) {
     echo "Ha ocurrido un error al consultar los datos.";
     die (print_r(sqlsrv_errors(), true));
 }
-
 
 if (!sqlsrv_execute($resultado)) {
     echo "Ha ocurrido un error al consultar los datos.";
@@ -39,40 +37,56 @@ if (!sqlsrv_execute($resultado)) {
 
 // Verificar si se encontraron resultados
 if (sqlsrv_has_rows($resultado)) {
-
-    // Redirigir de manera segura si el usuario existe
-    session_start();
-    $_SESSION['email'] = $email;
-
-    // Obtener el tipo de usuario y la fecha de sanción
     $fila = sqlsrv_fetch_array($resultado);
-    $typeUser = $fila['userTypeID'];
-    $fecSanc = $fila['fin_sancion'];
+    $password_hash = $fila['passwordd'];
 
+    // Verificar la contraseña hasheada
+    if (password_verify($password, $password_hash)) {
+        // Iniciar sesión
+        session_start();
+        $_SESSION['email'] = $email;
 
-    // Obtener la fecha actual
-    $fechaActual = new DateTime();
+        // Obtener el tipo de usuario y la fecha de sanción
+        $consulta_usuario = "SELECT userTypeID, fin_sancion FROM [User] WHERE email = ?";
+        $resultado_usuario = sqlsrv_prepare($conn, $consulta_usuario, array(&$email));
 
-    // Verificar si la fecha de sanción está establecida y es posterior a la fecha actual
-    if ($typeUser == 1 && $fechaActual <  $fecSanc) {
-        header("Location: Sancionar/PagSan.html");
-        exit();
-    } elseif ($typeUser == 1 &&  $fecSanc  < $fechaActual) {
-        header("Location: homepage.php");
-        exit();
-    } elseif ($typeUser == 2) {
-        header("Location: estadisticas/principalmoderador.html");
-        exit();
+        if (!sqlsrv_execute($resultado_usuario)) {
+            echo "Ha ocurrido un error al consultar los datos.";
+            die (print_r(sqlsrv_errors(), true));
+        }
+
+        $fila_usuario = sqlsrv_fetch_array($resultado_usuario);
+        $typeUser = $fila_usuario['userTypeID'];
+        $fecSanc = $fila_usuario['fin_sancion'];
+
+        // Obtener la fecha actual
+        $fechaActual = new DateTime();
+
+        // Verificar el tipo de usuario y la fecha de sanción
+        if ($typeUser == 1 && $fechaActual <  $fecSanc) {
+            header("Location: Sancionar/PagSan.html");
+            exit();
+        } elseif ($typeUser == 1 &&  $fecSanc  < $fechaActual) {
+            header("Location: homepage.php");
+            exit();
+        } elseif ($typeUser == 2) {
+            header("Location: login.html?Est-Mod=true");
+            exit;
+        } else {
+            header("Location: Sancionar/PagSan.html");
+            exit();
+        }
     } else {
-        header("Location: Sancionar/PagSan.html");
+        // Contraseña incorrecta
+        echo "<script>alert('Contraseña incorrecta');</script>";
+        echo "<script>window.history.back();</script>";
         exit();
     }
-} 
-
-else {
-    echo "<script>";
-    echo "window.history.back();"; // Regresa a la página anterior sin recargar
-    echo "</script>";
+} else {
+    // Usuario no encontrado
+    echo "<script>alert('Usuario no encontrado');</script>";
+    echo "<script>window.history.back();</script>";
+    exit();
 }
 
 sqlsrv_close($conn);

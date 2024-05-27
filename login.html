@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Nexus Education</title>
-    <link rel="stylesheet" href="login-style.css">
+    <link rel="stylesheet" href="login-styles.css">  
     <link href="images/logo.png" rel="shortcut icon">
+
 </head>
 <body>
     
@@ -35,6 +36,68 @@
     <div class="bienvenida">
         <h1>¡Bienvenidos Tigres!</h1>
     </div>
+    <div class = "Est-Mod" >
+        <img class = "Cancelar" src="images/cancelar.png" alt="cancelar">
+        <h1 class = "MsjEmer">Bienvenido.</h1>
+        <h1 class = "MsjEmer">¿Deseas entrar como estudiante o moderador?</h1>
+        <button class="VenEmer" id="estudianteBtn">Estudiante</button>
+        <button class="VenEmer" id="moderadorBtn">Moderador</button>
+    </div>
+
+    <script>
+        // Añade un event listener al icono de Cancelar
+        document.querySelector(".Cancelar").addEventListener("click", function() {
+            // Oculta el div con la clase "Est-Mod"
+            let estModDiv = document.querySelector(".Est-Mod");
+            if (estModDiv) { // Verifica si se encontró el div
+                estModDiv.style.display = "none";
+            }
+        });
+    </script>
+    
+    
+    <script>
+        // Función para obtener los parámetros GET de la URL
+        function getQueryParams() {
+            let params = {};
+            window.location.search.substring(1).split("&").forEach(function(part) {
+                let item = part.split("=");
+                params[item[0]] = decodeURIComponent(item[1]);
+            });
+            return params;
+        }
+    
+        // Muestra el div si el parámetro Est-Mod está presente y es igual a "true"
+        let queryParams = getQueryParams();
+        if (queryParams["Est-Mod"] === "true") {
+            let estModDiv = document.querySelector(".Est-Mod");
+            if (estModDiv) { // Verifica si se encontró el div
+                estModDiv.style.display = "block"; // Cambia flex a block
+            }
+        }
+    </script>
+    
+    
+    
+
+<script>
+    // Obtener los botones
+    var estudianteBtn = document.getElementById("estudianteBtn");
+    var moderadorBtn = document.getElementById("moderadorBtn");
+
+    // Añadir un listener de eventos al botón de estudiante
+    estudianteBtn.addEventListener("click", function() {
+        // Redirigir a la página de estudiante
+        window.location.href = "homepage.php";
+    });
+
+    // Añadir un listener de eventos al botón de moderador
+    moderadorBtn.addEventListener("click", function() {
+        // Redirigir a la página de moderador
+        window.location.href = "estadisticas/principalmoderador.html";
+    });
+</script>
+
 <script src= "login.js"></script>
 
 </body>

@@ -78,10 +78,10 @@ try {
     $ruta =$resultado->id;
 
     // Preparar la declaración SQL para insertar un nuevo archivo
-    $sqlInsertFile = "INSERT INTO Files ([fileName], fileType, fileSize, filePath, authorizationStatus, userID, subjectID, CategoryID, fileUploadDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sqlInsertFile = "INSERT INTO [Files] ([fileName], fileType, fileSize, [filePath], authorizationStatus, userID, subjectID, CategoryID, fileUploadDate) VALUES (?, ?, ?, ?, 'En Espera', ?, ?, ?, GETDATE())";
 
     // Preparar la declaración
-    $paramsInsertFile = array($nombre, strtoupper($extension), $tamano, $ruta, "En Espera", $userID, $materia, $categoria, GETDATE());
+    $paramsInsertFile = array($nombre, strtoupper($extension), $tamano, $ruta, $userID, $materia, $categoria);
     $stmtInsertFile = sqlsrv_query($conn, $sqlInsertFile, $paramsInsertFile);
 
     // Verificar si la consulta fue exitosa
@@ -97,6 +97,7 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
+
 
 // Cerrar la conexión a la base de datos
 sqlsrv_close($conn);
