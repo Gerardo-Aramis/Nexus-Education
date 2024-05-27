@@ -1,12 +1,18 @@
 <?php
- $serverName = "25.41.90.44\\SQLEXPRESS"; 
- $connectionOptions = array(
-     "Database" => "NexusEducation",
-     "UID" => "log_userweb", 
-     "PWD" => "nexus123", 
-     "CharacterSet" => "UTF-8"
- );
-    $conn = sqlsrv_connect($serverName, $connectionOptions);
+
+$serverName = "tcp:nexus-education.database.windows.net,1433";
+$connectionInfo = array(
+    "Database" => "NexusEducation",
+    "UID" => "nexus_admin", 
+    "PWD" => "Nxs#1#Edctn", 
+    "CharacterSet" => "UTF-8",
+    "LoginTimeout" => 30, 
+    "Encrypt" => 1, 
+    "TrustServerCertificate" => 0
+);
+
+// Establecer la conexión a la base de datos
+$conn = sqlsrv_connect($serverName, $connectionInfo);
 
     if ($conn === false) {
         die(json_encode(array("error" => sqlsrv_errors())));

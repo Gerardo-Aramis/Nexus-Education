@@ -7,14 +7,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
     // Verificar si la sanción es por 3 días
     if ($sancion === "3") {
         // Realizar la conexión a la base de datos
-        $serverName = "25.41.90.44\\SQLEXPRESS"; 
-        $connectionOptions = array(
+        
+        $serverName = "tcp:nexus-education.database.windows.net,1433";
+        $connectionInfo = array(
             "Database" => "NexusEducation",
-            "UID" => "log_userweb", 
-            "PWD" => "nexus123", 
-            "CharacterSet" => "UTF-8"
+            "UID" => "nexus_admin", 
+            "PWD" => "Nxs#1#Edctn", 
+            "CharacterSet" => "UTF-8",
+            "LoginTimeout" => 30, 
+            "Encrypt" => 1, 
+            "TrustServerCertificate" => 0
         );
-        $conn = sqlsrv_connect($serverName, $connectionOptions);
+
+        // Establecer la conexión a la base de datos
+        $conn = sqlsrv_connect($serverName, $connectionInfo);
         if ($conn === false) {
             echo "No se estableció la conexión.";
             die (print_r(sqlsrv_errors(), true));
@@ -34,14 +40,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
 
     } elseif($sancion === "6"){
          // Realizar la conexión a la base de datos
-         $serverName = "25.41.90.44\\SQLEXPRESS"; 
-         $connectionOptions = array(
-             "Database" => "NexusEducation",
-             "UID" => "log_userweb", 
-             "PWD" => "nexus123", 
-             "CharacterSet" => "UTF-8"
-         );
-         $conn = sqlsrv_connect($serverName, $connectionOptions);
+         
+    $serverName = "tcp:nexus-education.database.windows.net,1433";
+    $connectionInfo = array(
+        "Database" => "NexusEducation",
+        "UID" => "nexus_admin", 
+        "PWD" => "Nxs#1#Edctn", 
+        "CharacterSet" => "UTF-8",
+        "LoginTimeout" => 30, 
+        "Encrypt" => 1, 
+        "TrustServerCertificate" => 0
+    );
+
+    // Establecer la conexión a la base de datos
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
          if ($conn === false) {
              echo "No se estableció la conexión.";
              die (print_r(sqlsrv_errors(), true));
@@ -60,14 +72,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
          sqlsrv_close($conn);
     }elseif($sancion === "permanentemente"){
         // Realizar la conexión a la base de datos
-        $serverName = "25.41.90.44\\SQLEXPRESS"; 
-        $connectionOptions = array(
-            "Database" => "NexusEducation",
-            "UID" => "log_userweb", 
-            "PWD" => "nexus123", 
-            "CharacterSet" => "UTF-8"
-        );
-        $conn = sqlsrv_connect($serverName, $connectionOptions);
+        
+    $serverName = "tcp:nexus-education.database.windows.net,1433";
+    $connectionInfo = array(
+        "Database" => "NexusEducation",
+        "UID" => "nexus_admin", 
+        "PWD" => "Nxs#1#Edctn", 
+        "CharacterSet" => "UTF-8",
+        "LoginTimeout" => 30, 
+        "Encrypt" => 1, 
+        "TrustServerCertificate" => 0
+    );
+
+    // Establecer la conexión a la base de datos
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
         if ($conn === false) {
             echo "No se estableció la conexión.";
             die (print_r(sqlsrv_errors(), true));
@@ -86,14 +104,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
         sqlsrv_close($conn);
     }elseif($sancion === "Quitar"){
        // Realizar la conexión a la base de datos
-       $serverName = "25.41.90.44\\SQLEXPRESS"; 
-        $connectionOptions = array(
+      
+        $serverName = "tcp:nexus-education.database.windows.net,1433";
+        $connectionInfo = array(
             "Database" => "NexusEducation",
-            "UID" => "log_userweb", 
-            "PWD" => "nexus123", 
-            "CharacterSet" => "UTF-8"
+            "UID" => "nexus_admin", 
+            "PWD" => "Nxs#1#Edctn", 
+            "CharacterSet" => "UTF-8",
+            "LoginTimeout" => 30, 
+            "Encrypt" => 1, 
+            "TrustServerCertificate" => 0
         );
-       $conn = sqlsrv_connect($serverName, $connectionOptions);
+
+        // Establecer la conexión a la base de datos
+        $conn = sqlsrv_connect($serverName, $connectionInfo);
        if ($conn === false) {
            echo "No se estableció la conexión.";
            die (print_r(sqlsrv_errors(), true));
@@ -254,15 +278,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
     </div>
 </div>
 <?php
-$serverName = "25.41.90.44\\SQLEXPRESS"; 
-$connectionOptions = array(
+
+$serverName = "tcp:nexus-education.database.windows.net,1433";
+$connectionInfo = array(
     "Database" => "NexusEducation",
-    "UID" => "log_userweb", 
-    "PWD" => "nexus123", 
-    "CharacterSet" => "UTF-8"
+    "UID" => "nexus_admin", 
+    "PWD" => "Nxs#1#Edctn", 
+    "CharacterSet" => "UTF-8",
+    "LoginTimeout" => 30, 
+    "Encrypt" => 1, 
+    "TrustServerCertificate" => 0
 );
 
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+// Establecer la conexión a la base de datos
+$conn = sqlsrv_connect($serverName, $connectionInfo);
 if ($conn === false) {
     echo "No se estableció la conexión.";
     die (print_r(sqlsrv_errors(), true));
