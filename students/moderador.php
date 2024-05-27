@@ -1,13 +1,19 @@
 <?php
-// Establecer conexión a la base de datos
-$serverName = "25.41.90.44\\SQLEXPRESS"; 
-$connectionOptions = array(
-    "Database" => "NexusEducation",
-    "UID" => "log_userweb", 
-    "PWD" => "nexus123", 
-    "CharacterSet" => "UTF-8"
-);
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+    
+    $serverName = "tcp:nexus-education.database.windows.net,1433";
+    $connectionInfo = array(
+        "Database" => "NexusEducation",
+        "UID" => "nexus_admin", 
+        "PWD" => "Nxs#1#Edctn", 
+        "CharacterSet" => "UTF-8",
+        "LoginTimeout" => 30, 
+        "Encrypt" => 1, 
+        "TrustServerCertificate" => 0
+    );
+    
+    // Establecer la conexión a la base de datos
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
+
 if ($conn === false) {
     die("No se estableció la conexión: " . print_r(sqlsrv_errors(), true));
 }
@@ -78,225 +84,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus Education</title>
-    <link rel="stylesheet" href="estilospantallas.css">
+    <link rel="stylesheet" href="estilospantallasmoderador.css">
     <link href="../images/logo.png" rel="shortcut icon">
 
     <style>
-         input[type="text"] {
-            width: 500px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 30px;
-            margin-top: -20px;
-            margin-left: 100px;
-            background-color: #ffffff;
-            color: #000000;
-            font-family: Arial, sans-serif; /* Cambiar la fuente */
-            font-size: 18px; /* Cambiar el tamaño del texto */
-        }
-
-        input[type="text"]:read-only {
-            background-color: #f2f2f2;
-            color: #777777;
-            font-family: Arial, sans-serif; /* Cambiar la fuente */
-            font-size: 18px; /* Cambiar el tamaño del texto */
-        }
-
-
-        .container {
-            width: 100%;
-            height: 100vh;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; 
-            position: relative;
-            color: white;
-        }
-
-        .logo-nexus {
-            position: absolute;
-            top: 10px;
-            left: 415px;
-            width: 110px; 
-            height: auto; 
-        }
-
-        .logo-nombrenexus {
-            position: absolute;
-            top: 17px;
-            left: 535px;
-            width: 400px; 
-            height: auto; 
-        }
-
-        .logo-tecnm {
-            position: absolute;
-            top: 30px;
-            left: 20px;
-            width: 170px; 
-            height: auto; 
-        }
-
-        .logo-ittepic {
-            position: absolute;
-            top: 15px;
-            left: 1240px;
-            width: 100px; 
-            height: auto; 
-        }
-
-        .container {
-            position: relative;
-            width: 1400px;
-            height: 641px;
-            overflow: hidden;
-        }
-
-        .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding-left: 550px; /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
-            padding-top: 20px;
-            width: 1400px;
-            height: 128.2px; /* 20% de la pantalla */
-            background-color: #202d35; /* Color para el 20% */
-        }
-
-        .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
-            position: absolute;
-            top: 20%; /* Empezando después del 20% */
-            left: 200px;
-            padding-left: 430px;
-            width: 1200px;
-            height: 512.8px; /* 80% de la pantalla */
-            background-color: #2A677C; /* Color para el 80% */
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .fotosarchivo {
-            position: absolute;
-            top: 60px;
-            left: 400px;
-            width: 125px; 
-            height: auto; 
-        }
-
-        button {
-            background-color: #65A7D3;
-            color:black;
-            cursor: pointer;
-            transition: background-color 0.5s;
-            height: 40px;
-            width: 300px; /* Ajuste del ancho del botón */
-            text-align: center; /* Alinea el texto del botón al centro */
-            margin-bottom: 10px; /* Espacio entre botones */
-            border-radius: 50px;
-            font-family: Arial, sans-serif; /* Cambiar la fuente */
-            font-size: 22px; /* Cambiar el tamaño del texto */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        button:hover {
-            background-color: #65A7D3;
-        }
-
-        /* Estilo cuando se hace clic */
-        button:active {
-            transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
-        }
-
-        .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
-            position: absolute;
-            top: 20%; /* Empezando después del 20% */
-            left: 0;
-            width: 200px;
-            height: 512.8px; /* 80% de la pantalla */
-            background-color: #0E3C54; /* Color para el 80% */
-            padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
-        }
-
-        .left-section a {
-            color: white;
-            font-size: 18px;
-            padding-left: 70px;
-            text-decoration: none; /* Quita el subrayado predeterminado */
-            display: block;
-            margin-bottom: 35px; /* Espacio entre cada enlace */
-            margin-top:20px
-        }
-
-        .left-section a:hover {
-            left: 20px;
-            text-decoration: underline; /* Añade subrayado al pasar el ratón */
-            padding-left: 70px;
-        }
-
-
-        .fotosperfil {
-            position: absolute;
-            top: 22px;
-            left: 15px;
-            width: 45px; 
-            height: auto; 
-        }
-
-        /* Estilos para el texto en los combobox */
-        select {
-            font-family: Arial, sans-serif; /* Cambiar la fuente */
-            font-size: 16px; /* Cambiar el tamaño del texto */
-            color: #747272; /* Cambiar el color del texto */
-            /* Otros estilos según tus preferencias */
-        }
-
-        /* Estilos para las opciones del combobox */
-        option {
-            font-family: Arial, sans-serif; /* Cambiar la fuente */
-            font-size: 16px; /* Cambiar el tamaño del texto */
-            color: #575656; /* Cambiar el color del texto */
-            /* Otros estilos según tus preferencias */
-        }
-
-        .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
-            position: absolute;
-            top: 0px; /* Empezando después del 20% */
-            left: 135px;
-            width: 590px;
-            height: 512.8px; /* 80% de la pantalla */
-            background-color: #0E3C54; /* Color para el 80% */
-            padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
-            padding-left: 300px;
-        }
-
-        .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
-            position: absolute;
-            top: 100px; /* Empezando después del 20% */
-            left: 30px;
-            width: 520px;
-            height: 530px; /* 80% de la pantalla */
-            background-color: #ffffffe1; /* Color para el 80% */
-            padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
-            padding-left: 310px;
-        }
-
-        .back-button {
-            position: absolute;
-            bottom: 30px; /* Distancia desde la parte inferior */
-            left: 25px; /* Distancia desde la parte izquierda */
-            border: none;
-            background: none;
-            cursor: pointer;
-            padding: 0;
-        }
+         
     </style>
 </head>
 <body>
@@ -304,12 +96,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container">
         
     <div class="top-section">
-        <img style="margin-left:-375px;" src="../images/nexus.png" alt="Logo Nexus" class="logo-nexus">
-        <h1 style="margin-left: 100px;">Crear moderador</h1>
+        <a href="../homepage.php" style="margin-top: 50px;">
+        <img src="../images/nexus.png" alt="Logo Nexus" class="logo-nexus"></a>
+        <h1 >Crear moderador</h1>
     </div>
+
     <div class="bottom-section">
         <form action="#" method="POST">
-            <div style="display: flex; align-items: center; margin-top: 45px; margin-left: -110px;">
+            <div style="display: flex; align-items: center;">
                 <h3 style="margin-right: -80px; color:rgb(255, 255, 255); margin-bottom: 45px; padding-top: 10px;">Número de control</h3>
                 <input style="width: 300px;" type="text" id="noControl" name="noControl" value="<?php echo isset($datosUsuario['noCtrol']) ? $datosUsuario['noCtrol'] : ''; ?>" placeholder="Buscar" required <?php echo isset($datosUsuario) ? 'readonly' : ''; ?>>
                 <button style="font-size: 20px;width: 30px;height: 30px; margin: 100px; margin-top: -285px; margin-left: 280px; background-image: url('images/buscar.png'); background-size: cover; background-repeat: no-repeat; border: none; background-color: transparent; border-radius: 0;"></button>
@@ -355,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <div class="left-section"> 
             <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
-            <img src="../images/moderador.png" alt="moderador" class="fotosperfil" style="margin-left: -17px; margin-top: -15px; width: 50px; height: auto;">
+            <img src="images/moderador.png" alt="moderador" class="fotosperfil" style="margin-left: -17px; margin-top: -15px; width: 50px; height: auto;">
             <img src="../images/textomoderador.png" alt="textomoderador" class="fotosperfil" style="margin-left: 30px; margin-top: -5px; width: 150px; height: auto;">
 
             <img src="../images/validar.png" alt="Validar" class="fotosperfil" style="margin-left: -17px; margin-top: 5px; width: 125px; height: auto;">
@@ -367,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <img src="../images/crearmoderador.png" alt="Validar" class="fotosperfil" style="margin-left: 10px; margin-top: 320px; width: 55px; height: auto;">
                 <a href="opcionesestudiantes.html" style="margin-left: 25px; margin-top: 70px;">Estudiantes</a>
             <img src="../images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
-                <a href="login.html" style="margin-left: 7px; margin-top: 80px;">Cerrar sesión</a>
+                <a href="../login.html" style="margin-left: 7px; margin-top: 80px;">Cerrar sesión</a>
 
         </div>
     

@@ -12,14 +12,42 @@
     }
 
     .archivo-container button {
-        padding: 10px 20px; /* Ajusta el padding para aumentar el tamaño del botón */
+        padding: 10px 30px; /* Ajusta el padding para aumentar el tamaño del botón */
         font-size: 14px; /* Ajusta el tamaño del texto del botón */
         white-space: nowrap; /* Evita que el texto se divida en varias líneas */
         overflow: hidden; /* Oculta cualquier parte del texto que no quepa */
         text-overflow: ellipsis; /* Agrega puntos suspensivos al final del texto si no cabe */
         margin: 10px; /* Añade un margen para separar los botones */
-        min-width: 120px; /* Establece un ancho mínimo para el botón */
+        min-width: 140px; /* Establece un ancho mínimo para el botón */
     }
+    
+    button {
+        width: 10px; /* Ancho del botón */
+        height: 30px; /* Altura del botón */
+        background-color: #65A7D3;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        font-size: 0px; /* Aumenta el tamaño del texto del botón */
+        vertical-align: top; /* Alinea los elementos al inicio */
+        transition: background-color 0.5s;
+        text-align: absolute; /* Alinea el texto del botón al centro */
+        border-radius: 5px;
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-style: italic;
+        z-index: 9999;
+        align-self: flex-start; /* Alinea el botón hacia arriba */
+        display: inline-block; /* Para que los botones se muestren en línea */
+
+    }
+        
+        .button-container {
+        display: flex;
+        gap: 10px; /* Espacio entre los botones */
+}
+.button-container form {
+    margin: 0; /* Eliminar cualquier margen */
+}
   </style>
 </head>
 <body>
@@ -123,14 +151,19 @@
                 echo "<div class='iframe-container'><iframe src='$enlace_drive' width='60%' height='500px'></iframe></div>"; // Cargar el archivo dentro del iframe
 
                 // Construir la URL completa para descargar el archivo
+                echo "<div style='display: flex; gap: 20px; align-items: center; justify-content: center; margin-top: 10px;'>";
+
                 $enlace_descarga = "https://drive.google.com/uc?export=download&id=$filePath"; 
-                echo "<a href='$enlace_descarga'><button>Descargar</button></a>";
+                echo "<a href='$enlace_descarga'>
+                <button>Descargar</button>
+                </a>";
                 
                 // Botón para agregar comentario
                 echo "<form action='agregar_comentario.php' method='POST'>";
                 echo "<input type='hidden' name='archivo_id' value='$archivoID'>"; // Pasar el ID del archivo como valor oculto
-                echo "<button type='submit'>Comentario</button>";
+                echo "<button type='submit'>Comentarios</button>";
                 echo "</form>";
+                echo "</div>";
                 echo "</div>";
             }
 

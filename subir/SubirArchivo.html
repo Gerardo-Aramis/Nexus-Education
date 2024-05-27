@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />-->
     <title>Subir Archivo - Nexus Education</title>
-    <link rel="stylesheet" href="../style-page.css">
+    <link rel="stylesheet" href="subirarchivo.css">
     <link href="../images/logo.png" rel="shortcut icon">
     <style>
         .bottom-section {
@@ -57,63 +57,17 @@
         color: #000; /* Cambia el color del texto a negro */
     }
 
-        button {
-            background-color: #35B6E3;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.5s;
-            height: 40px;
-            width: 380px; /* Ajuste del ancho del botón */
-            text-align: center; /* Alinea el texto del botón al centro */
-            margin-top: 50px;
-            margin-left: -110px;
-            border-radius: 50px;
-            font-family: Arial, sans-serif; /* Cambiar la fuente */
-            font-size: 20px; /* Cambiar el tamaño del texto */
-        }
-
-        button:hover {
-            background-color: #005fcc;
-        }
-
-        /* Estilo cuando se hace clic */
-        button:active {
-            transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
-        }
-
-        buttonback {
-            background-color: #35B6E3;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            height: 30px;
-            width: calc(50% - 10px); /* Ajuste del ancho del botón */
-            border-radius: 50%; /* Para hacer el botón circular */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-        }
-
-        .back-button {
-            position: absolute;
-            bottom: 70px; /* Distancia desde la parte inferior */
-            left: -260px; /* Distancia desde la parte izquierda */
-            border: none;
-            background: none;
-            cursor: pointer;
-            padding: 0;
-        }
+       
 
     </style>
 </head>
-<body>
+<body >
 
     <div class="container">
         <div class="top-section">
             <a href="../homepage.php" style="margin-top: 50px;">
             <img src="../images/nexus.png" alt="Logo Nexus" class="logo-nexus"></a>
-            <h1 style="margin-left: 130px; ">Añadir archivo</h1>
+            <h1 >Añadir archivo</h1>
         </div>
         <form id="uploadForm" action="upload.php" method="POST" enctype="multipart/form-data">
             <div class="add-section" id="addFileContainer">
@@ -188,17 +142,28 @@
                 </buttonback>
             </div>
         </form>
-        <div class="left-section"> 
+        <div class="left-section" > 
             <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
-            <img src="../images/Mi_Perfil.png" alt="Mi_perfil" class="fotosperfil">
-                <a href="../perfil.php">Mi perfil</a>
-            <img src="../images/Subir.png" alt="Subir" class="fotosperfil" style="margin-top: 70px;  ">
-                <a href="SubirArchivo.html" style="margin-top: 50px;">Subir</a>
-            <img src="../images/Mis_archivos.png" alt="Mis_archivos" class="fotosperfil" style="margin-top: 130px; width: 40px; height: auto;">
-                <a href="CAMBIARHTML.html" style="margin-top: 55px;">Mis Archivos</a>
-            <img src="../images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
-                <a href="../login.html" style="margin-top: 260px;">Cerrar sesión</a>
-        </div>
+            <div>
+                <img src="../images/Mi_Perfil.png" alt="Mi_perfil" class="fotosperfil">
+                <a href="../profile.php">Mi perfil</a>
+            </div>
+            <div>
+                <img style="margin-top: 30%;" src="../images/Subir.png" alt="Subir" class="fotosperfil ">
+                <a href="../subir/SubirArchivo.html">Subir</a>
+            </div>
+            <div>
+                <img style="margin-top: 60%;" src="../images/Mis_archivos.png" alt="Mis_archivos" class="fotosperfil">
+                <a href="my-files.php">Mis Archivos</a>
+            </div>
+            <div>
+                <img style="margin-top: 85%;" src="../images/buscar.png" alt="Mis_archivos" class="fotosperfil">
+                <a href="buscar.html">Buscar</a>
+            </div>
+            <div>
+                <img style="margin-top: 200%;" src="../images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil"> 
+                <a  style="margin-top: 110%;"  href="../login.html">Cerrar sesión</a>
+            </div>
         
     </div>
 

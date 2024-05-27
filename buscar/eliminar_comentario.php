@@ -22,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Establecer la conexión a la base de datos
         $conn = sqlsrv_connect($serverName, $connectionInfo);
-        $conn = sqlsrv_connect($serverName, $connectionOptions);
 
         // Verificar la conexión
         if ($conn === false) {

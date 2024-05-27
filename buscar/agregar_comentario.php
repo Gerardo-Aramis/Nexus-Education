@@ -24,7 +24,7 @@ if (isset($_POST['archivo_id'])) {
                 "Encrypt" => 1, 
                 "TrustServerCertificate" => 0
             );
-            
+    
             // Establecer la conexión a la base de datos
             $conn = sqlsrv_connect($serverName, $connectionInfo);
 
@@ -50,6 +50,7 @@ if (isset($_POST['archivo_id'])) {
                         // Manejar el error
                     } else {
                         // Comentario insertado correctamente
+                        header("Location: buscar.php");
                     }
                 } else {
                     // Manejar el error
@@ -182,7 +183,7 @@ if (isset($_POST['archivo_id'])) {
                     "Encrypt" => 1, 
                     "TrustServerCertificate" => 0
                 );
-                
+        
                 // Establecer la conexión a la base de datos
                 $conn = sqlsrv_connect($serverName, $connectionInfo);
                     if ($conn === false) {

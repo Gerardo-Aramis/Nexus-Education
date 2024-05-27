@@ -70,7 +70,7 @@ if (sqlsrv_has_rows($resultado)) {
             header("Location: homepage.php");
             exit();
         } elseif ($typeUser == 2) {
-            header("Location: login.html?Est-Mod=true");
+            header("Location: index.html?Est-Mod=true");
             exit;
         } else {
             header("Location: Sancionar/PagSan.html");
