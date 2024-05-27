@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Modificar Archivo</title>
+  <link rel="stylesheet" href="estilosmodificararchivo.css">
+  <link rel="icon" href="images/nexus2.png" type="image/x-icon">
+
+  <style>
+.materiacombo {
+    width: 485px; /* Modifica el ancho según tus necesidades */
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+ 
+<!-- PARTE DE ARRIBA - TITULOS -->
+    <div class="top-section">
+        <a href="../homepage.php">
+            <img src="../images/nexus.png" alt="Logo Nexus" class="logo-nexus">
+        </a>
+        <h1>Modificar Archivo</h1>
+    </div>
+
+<!-- BARRA DE LA IZQUIERDA -->
+    <div class="left-section"> 
+        <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
+        <div>
+            <img src="images/Mi_Perfil.png" alt="Mi_perfil" class="fotosperfil">
+            <a href="miperfil.html">Mi perfil</a>
+        </div>
+        <div>
+            <img style="margin-top: 30%;" src="images/Subir.png" alt="Subir" class="fotosperfil ">
+            <a href="subir.html">Subir</a>
+        </div>
+        <div>
+            <img style="margin-top: 60%;" src="images/Mis_archivos.png" alt="Mis_archivos" class="fotosperfil">
+            <a href="misarchivos.html">Mis Archivos</a>
+        </div>
+        <div>
+            <img style="margin-top: 85%;" src="images/buscar.png" alt="Mis_archivos" class="fotosperfil">
+            <a href="buscar.html">Buscar</a>
+        </div>
+        <div>
+            <img style="margin-top: 200%;" src="images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil"> 
+            <a style="margin-top: 110%;" href="CAMBIARHTML.html">Cerrar sesión</a>
+        </div>
+    </div>
+
+ <!-- PARTE AZUL DE CONTENIDO -->
+    <div class="bottom-section" >
+        <form id="uploadForm" action="modify-file.php" method="POST" enctype="multipart/form-data">
+        <div style="display: flex; align-items: center;">
+            <a href="my-files.php" ><img src="images/atras - icono blanco.png" alt="Descripción de la imagen" style=" width: 5%; height:auto;"></a>
+        </div>
+
+        <input type="hidden" name="fileID" id="fileID" value="">
+
+        <h2 style="text-align: center; margin-top: 0%;">Realice las modificaciones a la publicación</h2>
+        <div>
+            <labeln>Nombre del archivo</labeln>
+            <input style="background-color: #ffffff; display: inline-block;" type="archivo" id="archivo" name="archivo" placeholder="Seleccione un archivo..." required>
+
+            <button class="buttonimg" type="button" style= "background-image: url('images/Anadir_archivo.png'); background-size: cover; background-repeat: no-repeat; border: none; background-color: transparent; border-radius: 0;" onclick="openFileInput()"> </button>
+            <input name="archivos" type="file" id="fileInput" style="display: none;" accept=".doc, .docx, .xls, .xlsx, .pdf, .pptx"/>
+
+        </div>
+        
+        <div class="carreracombo-container">
+            <label>Carrera</label>
+            <select class="carreracombo" name="carrera" id="carrera">
+                <option value="1">Arquitectura</option>
+                <option value="2">Ingeniería Bioquímica</option>
+                <option value="3">Ingeniería Civil</option>
+                <option value="4">Ingeniería Eléctrica</option>
+                <option value="5">Ingeniería en Gestión Empresarial</option>
+                <option value="6">Ingeniería en Sistemas Computacionales</option>
+                <option value="7">Ingeniería Industrial</option>
+                <option value="8">Ingeniería Mecatrónica</option>
+                <option value="9">Ingeniería Química</option>
+                <option value="10">Licenciatura en Administración</option>
+            </select>
+        </div>
+
+        <div class="semestremateria">
+    
+            <!-- COMBO BOX SEMESTRE-->
+            <div >
+                <div class="semestrecombo">
+                    <label1 >Semestre</label1>
+                    <select class="semestrecombo" name="semestre" id="semestre" >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div >
+                <div class="materiacombo">
+                    <label2 >Materia</label2>
+                    <select class="materiacombo" name="materia" id="materia" ></select>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- COMBO BOX CATEGORIA-->
+            <div class="categoriaizq">
+                <label3 >Categoría</label3>
+                <select class="categoriacombo" name="categoria" id="categoria" ></select>
+            </div>
+
+        <button type="submit">Subir</button>
+    </form>
+    </div>
+</div>
+
+<script>
+    function openFileInput() {
+    // Hacer clic en el input de archivo
+    document.getElementById('fileInput').click();
+
+    // Obtener el input de archivo y el nombre del archivo seleccionado
+    var fileInput = document.getElementById('fileInput');
+    var nombreArchivoInput = document.getElementById('archivo');
+
+    // Verificar si se seleccionó un archivo
+    fileInput.addEventListener('change', function() {
+        if (fileInput.files.length > 0) {
+            // Mostrar el texto "Cargando archivo..." solo si se seleccionó un archivo
+            nombreArchivoInput.value = 'Cargando archivo...';
+            
+            // Obtener el nombre del archivo y mostrarlo en el input de texto
+            var nombreArchivo = fileInput.files[0].name;
+            nombreArchivoInput.value = nombreArchivo;
+        }
+    });
+
+    return false;
+}
+
+    document.addEventListener('DOMContentLoaded', function () {
+    // Función para obtener los parámetros de la URL
+    function obtenerParametrosURL() {
+        var parametros = {};
+        var partesURL = window.location.search.substr(1).split('&');
+        partesURL.forEach(function (parte) {
+            var parametro = parte.split('=');
+            parametros[parametro[0]] = decodeURIComponent(parametro[1]).replace(/\+/g, ' '); // Decodificar y reemplazar "+" con espacios
+        });
+        return parametros;
+    }
+
+    // Función para llenar los campos del formulario con la información recibida
+    function llenarCampos() {
+        var parametros = obtenerParametrosURL();
+        
+        // Llenar el nombre del archivo
+        document.getElementById('archivo').value = parametros.fileName;
+        document.getElementById('fileID').value = parametros.fileID;
+
+        // Agregar y seleccionar la opción de materia
+        const selectMateria = document.getElementById('materia');
+        const optionMateria = document.createElement('option');
+        optionMateria.value = parametros.subjectName;
+        optionMateria.textContent = parametros.subjectName;  
+        optionMateria.selected = true;  // Marca esta opción como seleccionada
+        selectMateria.appendChild(optionMateria);
+
+        // Agregar y seleccionar la opción de categoría
+        const selectCategoria = document.getElementById('categoria');
+        const optionCategoria = document.createElement('option');
+        optionCategoria.value = parametros.categoryName;
+        optionCategoria.textContent = parametros.categoryName;  
+        optionCategoria.selected = true;  // Marca esta opción como seleccionada
+        selectCategoria.appendChild(optionCategoria);
+
+        // Llenar el select de carrera
+        const selectCarrera = document.getElementById('carrera');
+        const carreraOption = selectCarrera.querySelector(`option[value="${parametros.carrerName}"]`);
+        if (carreraOption) {
+            carreraOption.selected = true;
+        }
+
+        // Llenar el select de semestre
+        const selectSemestre = document.getElementById('semestre');
+        const semestreOption = selectSemestre.querySelector(`option[value="${parametros.semester}"]`);
+        if (semestreOption) {
+            semestreOption.selected = true;
+        }
+    }
+
+    // Llenar campos al cargar la página
+    llenarCampos();
+});
+
+    //DE AQUÍ PARA ABAJO DE LLENAN LOS SELECT
+    function cargarOpcionesSelect(url, idSelect) {
+            fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById(idSelect);
+                data.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    select.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error al cargar opciones de select:', error));
+        }
+    
+        // Función para cargar las materias según la carrera y el semestre seleccionados
+        function cargarMaterias() {
+            const carrera = document.getElementById('carrera').value;
+            const semestre = document.getElementById('semestre').value;
+            const url = `obtener_materias.php`;
+            const data = new FormData();
+            data.append('carrera', carrera);
+            data.append('semestre', semestre);
+
+            fetch(url, {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById('materia');
+                select.innerHTML = ''; // Limpiar opciones anteriores
+                const optionElement = document.createElement('option');
+                optionElement.value = '';
+                optionElement.textContent = 'Seleccione una materia...';
+                select.appendChild(optionElement);
+                data.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    select.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error al cargar opciones de select:', error));
+        }
+
+        function cargarCategorias() {
+            const carrera = document.getElementById('carrera').value;
+            const semestre = document.getElementById('semestre').value;
+            const materia = document.getElementById('materia').value;
+
+            const formData = new FormData();
+            formData.append('carrera', carrera);
+            formData.append('semestre', semestre);
+            formData.append('materia', materia);
+
+            fetch('obtener_categorias.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById('categoria');
+                select.innerHTML = ''; // Limpiar opciones anteriores
+                const optionElement = document.createElement('option');
+                optionElement.value = '';
+                optionElement.textContent = 'Seleccione una categoria...';
+                select.appendChild(optionElement);
+                data.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    select.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error al cargar categorías:', error));
+        }
+
+        // Llamar a la función para cargar las categorías al seleccionar una carrera, semestre o materia
+        document.getElementById('carrera').addEventListener('change', cargarCategorias);
+        document.getElementById('semestre').addEventListener('change', cargarCategorias);
+        document.getElementById('materia').addEventListener('change', cargarCategorias);
+    
+        // Llamar a la función para cargar las materias al seleccionar una carrera y un semestre
+        document.getElementById('carrera').addEventListener('change', cargarMaterias);
+        document.getElementById('semestre').addEventListener('change', cargarMaterias);
+
+        function obtenerExtension() {
+            var archivoInput = document.getElementById('archivo');
+            var nombreArchivo = archivoInput.value;
+            var extension = nombreArchivo.split('.').pop().toUpperCase();
+
+            // Asignar la extensión del archivo al campo oculto en el formulario
+            document.getElementById('extensionArchivo').value = extension;
+        }
+</script>
+
+</body>
+</html>

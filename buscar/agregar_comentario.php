@@ -14,14 +14,19 @@ if (isset($_POST['archivo_id'])) {
             $comentario = $_POST['comentario'];
 
             // Insertar el comentario en la base de datos
-            $serverName = "25.41.90.44\\SQLEXPRESS"; 
-            $connectionOptions = array(
+            $serverName = "tcp:nexus-education.database.windows.net,1433";
+            $connectionInfo = array(
                 "Database" => "NexusEducation",
-                "UID" => "log_userweb", 
-                "PWD" => "nexus123", 
-                "CharacterSet" => "UTF-8"
+                "UID" => "nexus_admin", 
+                "PWD" => "Nxs#1#Edctn", 
+                "CharacterSet" => "UTF-8",
+                "LoginTimeout" => 30, 
+                "Encrypt" => 1, 
+                "TrustServerCertificate" => 0
             );
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+            
+            // Establecer la conexión a la base de datos
+            $conn = sqlsrv_connect($serverName, $connectionInfo);
 
             // Obtener el ID del usuario actual basado en el email
             $email = $_SESSION['email'];
@@ -167,14 +172,19 @@ $conn = sqlsrv_connect($serverName, $connectionOptions);
                 <!-- Aquí se agregarán los comentarios -->
                 <?php
                 // Obtener comentarios de la base de datos si se proporcionó el ID del archivo
-                $serverName = "25.41.90.44\\SQLEXPRESS"; 
-                $connectionOptions = array(
+                $serverName = "tcp:nexus-education.database.windows.net,1433";
+                $connectionInfo = array(
                     "Database" => "NexusEducation",
-                    "UID" => "log_userweb", 
-                    "PWD" => "nexus123", 
-                    "CharacterSet" => "UTF-8"
+                    "UID" => "nexus_admin", 
+                    "PWD" => "Nxs#1#Edctn", 
+                    "CharacterSet" => "UTF-8",
+                    "LoginTimeout" => 30, 
+                    "Encrypt" => 1, 
+                    "TrustServerCertificate" => 0
                 );
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+                
+                // Establecer la conexión a la base de datos
+                $conn = sqlsrv_connect($serverName, $connectionInfo);
                     if ($conn === false) {
                         die (print_r(sqlsrv_errors(), true));
                     }

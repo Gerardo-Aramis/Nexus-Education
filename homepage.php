@@ -48,17 +48,19 @@
         <?php
 session_start();
 
-$serverName = "25.41.90.44\\SQLEXPRESS"; 
+$serverName = "tcp:nexus-education.database.windows.net,1433";
 $connectionInfo = array(
     "Database" => "NexusEducation",
-    "UID" => "log_userweb", 
-    "PWD" => "nexus123", 
-    "CharacterSet" => "UTF-8"
+    "UID" => "nexus_admin", 
+    "PWD" => "Nxs#1#Edctn", 
+    "CharacterSet" => "UTF-8",
+    "LoginTimeout" => 30, 
+    "Encrypt" => 1, 
+    "TrustServerCertificate" => 0
 );
 
 // Establecer la conexión a la base de datos
 $conn = sqlsrv_connect($serverName, $connectionInfo);
-
 // Verificar la conexión
 if ($conn === false) {
     die("No se pudo establecer la conexión: " . print_r(sqlsrv_errors(), true));
@@ -135,18 +137,19 @@ sqlsrv_close($conn);
          
                   <li>
                   <?php
-
-                    $serverName = "25.41.90.44\\SQLEXPRESS"; 
+                    $serverName = "tcp:nexus-education.database.windows.net,1433";
                     $connectionInfo = array(
                         "Database" => "NexusEducation",
-                        "UID" => "log_userweb", 
-                        "PWD" => "nexus123", 
-                        "CharacterSet" => "UTF-8"
+                        "UID" => "nexus_admin", 
+                        "PWD" => "Nxs#1#Edctn", 
+                        "CharacterSet" => "UTF-8",
+                        "LoginTimeout" => 30, 
+                        "Encrypt" => 1, 
+                        "TrustServerCertificate" => 0
                     );
 
                     // Establecer la conexión a la base de datos
                     $conn = sqlsrv_connect($serverName, $connectionInfo);
-
                     // Verificar la conexión
                     if ($conn === false) {
                         die("No se pudo establecer la conexión: " . print_r(sqlsrv_errors(), true));
@@ -230,12 +233,15 @@ sqlsrv_close($conn);
             <li>
             <?php
 
-$serverName = "25.41.90.44\\SQLEXPRESS"; 
+$serverName = "tcp:nexus-education.database.windows.net,1433";
 $connectionInfo = array(
     "Database" => "NexusEducation",
-    "UID" => "log_userweb", 
-    "PWD" => "nexus123", 
-    "CharacterSet" => "UTF-8"
+    "UID" => "nexus_admin", 
+    "PWD" => "Nxs#1#Edctn", 
+    "CharacterSet" => "UTF-8",
+    "LoginTimeout" => 30, 
+    "Encrypt" => 1, 
+    "TrustServerCertificate" => 0
 );
 
 // Establecer la conexión a la base de datos

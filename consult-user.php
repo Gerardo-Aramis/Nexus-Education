@@ -1,10 +1,13 @@
 <?php
-$serverName = "25.41.90.44\\SQLEXPRESS"; 
+$serverName = "tcp:nexus-education.database.windows.net,1433";
 $connectionInfo = array(
     "Database" => "NexusEducation",
-    "UID" => "log_userweb", 
-    "PWD" => "nexus123", 
-    "CharacterSet" => "UTF-8"
+    "UID" => "nexus_admin", 
+    "PWD" => "Nxs#1#Edctn", 
+    "CharacterSet" => "UTF-8",
+    "LoginTimeout" => 30, 
+    "Encrypt" => 1, 
+    "TrustServerCertificate" => 0
 );
 
 $conn = sqlsrv_connect($serverName, $connectionInfo);
@@ -17,6 +20,7 @@ if ($conn === false) {
 
 $email = $_POST['user'];
 $passwordd = $_POST['password'];
+#$passwordd = password_hash(htmlspecialchars(trim($_POST['passwordd'])), PASSWORD_BCRYPT);
 
 // Consulta SQL para verificar el usuario
 $consulta = "SELECT * FROM [User] WHERE email = ? AND passwordd = ?";

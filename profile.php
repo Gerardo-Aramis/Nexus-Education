@@ -1,15 +1,19 @@
 <?php
 session_start();
 
-$serverName = "25.41.90.44\\SQLEXPRESS"; 
-    $connectionOptions = array(
-        "Database" => "NexusEducation",
-        "UID" => "log_userweb", 
-        "PWD" => "nexus123", 
-        "CharacterSet" => "UTF-8"
-    );
+$serverName = "tcp:nexus-education.database.windows.net,1433";
+$connectionInfo = array(
+    "Database" => "NexusEducation",
+    "UID" => "nexus_admin", 
+    "PWD" => "Nxs#1#Edctn", 
+    "CharacterSet" => "UTF-8",
+    "LoginTimeout" => 30, 
+    "Encrypt" => 1, 
+    "TrustServerCertificate" => 0
+);
 
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+// Establecer la conexión a la base de datos
+$conn = sqlsrv_connect($serverName, $connectionInfo);
 if ($conn === false) {
     echo "No se estableció la conexión.";
     die (print_r(sqlsrv_errors(), true));
@@ -412,7 +416,7 @@ sqlsrv_close($conn);
                 echo "<a href='login.html' class = 'CerrarSesion' >Cerrar sesión</a>";
             echo "<img src='images/nexus.png' alt='nexus' class= 'nexus'>";
             echo "<p class = 'Titulo'>Mi perfil</p>";
-            echo "<a href='homepage.html' class = 'retrn'>Volver</a></p>";
+            echo "<a href='homepage.php' class = 'retrn'>Volver</a></p>";
 
             // Agrega más campos según sea necesario
         }

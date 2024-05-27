@@ -1,0 +1,338 @@
+body {
+    background: #2A677C;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto; 
+    overflow: hidden; 
+    border-radius: 15px;
+}
+
+th, td {
+    border: 0px solid #dddddd;
+    text-align: left;
+    padding: 12px;
+}
+
+th {
+    background-color: #0E3C54;
+    color: white;
+}
+
+td {
+    background-color: #dddddd;
+    color: white;
+}
+
+tr:nth-child(even) td {
+    background-color: #317b99;
+}
+
+button {
+    border-radius: 30px;
+    padding: 8px 20px;
+    border: unset;
+    cursor: pointer;
+    background: #0E3C54;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #35B6E3;
+}
+
+select, input {
+    border-radius: 30px;
+    padding: 8px 15px;
+    border: unset;
+    background: #e6f1f5;
+    color: rgb(0, 0, 0);
+}
+
+a {
+    color: white;
+    text-decoration:d none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para la ventana modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #0E3C54;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #0E3C54;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 10px 8px 10px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    color: white;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 2;
+    color: white;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav { padding-top: 15px; }
+    .sidenav a { font-size: 18px; }
+}
+
+.Moderador,
+.Validar,
+.Reporte,
+.Categorias,
+.Estudiante,
+.CerrarSesion {
+    position: absolute;
+}
+
+.Moderador {
+    top: 9%;
+    right: 65%;
+    width: 64px;
+    height: 64px;
+}
+
+.Validar {
+    top: 28%;
+    right: 68%;
+    width: 45px;
+    height: 45px;
+}
+
+.Reporte {
+    top: 39%;
+    right: 65%;
+    width: 45px;
+    height: 45px;
+}
+
+.Categorias {
+    top: 50%;
+    right: 68%;
+    width: 35px;
+    height: 35px;
+}
+
+.Estudiante {
+    top: 59%;
+    right: 65%;
+    width: 49px;
+    height: 49px;
+}
+
+.CerrarSesion {
+    top: 80%;
+    right: 68%;
+    width: 45px;
+    height: 45px;
+}
+
+.titModerador,
+.titValidar,
+.titReporte,
+.titCategorias,
+.titEstudiante,
+.titCerrarSesion {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+}
+
+.titModerador { top: 13%; right: 25%; }
+.titValidar { top: 31%; right: 38%; }
+.titReporte { top: 42%; right: 31%; }
+.titCategorias { top: 53%; right: 25%; }
+.titEstudiante { top: 64%; right: 25%; }
+.titCerrarSesion { top: 82%; right: 15%; }
+
+.Tit {
+
+    position: absolute;
+    top: 0%;
+    right: 40%;
+}
+
+.Logo {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 6%;
+    height: 12%;
+}
+.SubTit{
+    margin-left: 18%;
+    margin-top: 10%;
+}
+.bus{
+    margin-left: 20%;
+}
+
+.lis{
+    margin-left: 18%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 95%; /* Ancho de la tabla */
+    margin: 20px auto; /* Margen superior e inferior de 20px y centrado horizontalmente */
+}
+
+.logo-nexus {
+        position: absolute;
+        top: calc(100% - 97.5%);
+        left: 2%;
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .logo-nombrenexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 60%);
+        width: calc(100% - 75%); 
+        height: auto; 
+    }
+    
+    .logo-tecnm {
+        position: absolute;
+        top: calc(100% - 94%);
+        left: calc(100% - 99.5%);
+        width: calc(100% - 90%); 
+        height: auto;  
+    }
+    
+    .logo-ittepic {
+        position: absolute;
+        top: calc(100% - 95%);
+        right: calc(100% - 99%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-left: calc(100% - 55%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        width: 100%;
+        height: 15.5%; 
+        background-color: #202d35; /* Color para el 20% */
+        bottom: 0;
+        padding-top: 2%;
+    }
+
+    .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 0px;
+        width: 15%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
+    }
+
+    .left-section a {
+        color: white;
+        font-size: (100% - 95%);
+        padding-left: calc(100% - 70%);
+        text-decoration: none; /* Quita el subrayado predeterminado */
+        display: block;
+        margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
+        margin-top: calc(100% - 95%);
+    }
+
+    .left-section a:hover {
+        left: calc(100%- 70%);
+        text-decoration: underline; /* Añade subrayado al pasar el ratón */
+        padding-left: calc(100%- 70%);
+        font-size: (100% - 95%);
+    }
+
+    .fotosperfil {
+        position: absolute;
+        top: calc(100% - 98%);
+        left: calc(100% - 95%);
+        width: calc(100% - 80%); 
+        height: auto;
+        margin-bottom: calc(100% - 85%); 
+        padding-top: calc(100% - 99%);
+    }
+    

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "nexuseducation",
+  "private_key_id": "39b9da529614ae5efbb74b79db69a6db826cb5b1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDH+ooACPX30ukb\nXXD5k9y2HGKFc7tjg2YgmHQHi4STxAE5p+ApgljmPAUtXwydwG0IfcaSHV0V/0Al\nf72sGzknEFXPJNVNvFdqg/UrQ7Oaq8GXwC3dPKs1ZzynQ0vjHSH/szrAqF/3Q5tS\nqTgSi0dPKibbAL6UUcBGIHbrif0k7OwnObWAYY08in8gzwm27SMXaJyu50Ls5r5B\nzB19UP98putacsJ6M+IYwRTuKtCKfChE3OlUBqSds5jOJICsPpNS0mtURH3n0UXv\nVfFM2E2AuwnkakSJuSh7Ye++7B0KzLD82/HrcHRkeWXK42hXMNxLsRtTJ0rMPEHt\nqCePpezzAgMBAAECggEAI/yMb+Qs6ytrom6GwYrfuW/TNOO2MXq4Wp5EpwTu1y56\n7/arSpz3xXrAjcEggpTZqiEEJlAda7Nyxiy+I6YEe2ifoHam4eXGL1dOu7njrK5C\n2L2PI1RjFOmeixT7p4ObFioZJQlHt7XVUiM8gW3J58+UjW2NXiB2AsidzdYXlVix\nj7C5loIWKuZSsPsw12JLyi212Kt2dCrKO1D8dYRabqqjYD9YxKUM/6hF1ivSOR4K\n1A8tKpysWvpFPE6dJtT/9a7tZ5CmtyRTrJQAGSZ7mDkQlj4jxB15tfHcr/Byvdhi\nrsARKngECme1njCV7Dt5YM8f7aX4XF2V1J2VRwZwbQKBgQD2HOFu6o2XB61M0BEB\njA+sl+bkRpItxr51Zb6gi4S6eVpkr64VmJGSyp0Os6TJpjZUytThlr+dI10doaas\n9UFAvzIhBOqQYTkRbZqWMMedH6ZZoEr+9c/xr20FiMaFm2mxUlUn//0d15Bh5+15\nqQ7jmn3mXAc/smS6E/aGrnzxrwKBgQDQAzJyCZCy/dDMyScj81uN6NQWJro75Juw\n/vlsyJ/Cv+A3+20ZPgW8KSKtuxyTxUfKruX6ZOxRIEMt2ivlM2u//HZAxRwfTdoU\nH0bMCU8GmvVvTTZg6XwvKFm1N+9JskjXYA5AlyXgfQxEQq796Vnt61/XiHRzSWGS\nPlyB26nd/QKBgGVk0JtZlqu6RfN3ZQo2Id8BVeaGDIM/dgf3uul5kV0h0dPZbOcI\nzDCluL7t094f1BJq3flymc6rWxlyF7D5+cArBQQFen2xEEnV1fI6doKNH4OdPkh8\nDQeNNmUpTGCO/qRHPz4TgLxiquErI/MTa0bpxyS4lWPwov7mapJiIKeRAoGBAM6q\nrn8Ao+RCKyaboCimy8rVjYoolhWVj14uJfB/78LVUlcslXtj1NzaXdsQMVdbxXVJ\nibLafLQpgrVWsw/4o9BOa8r0S3mKpuYhIPztLrfYU4tuwl1M/RX5WA+lcDffS2G4\nzNA9m+NLOlnDiws4wiGRHlsM9u3n9WoQTWazsTSdAoGBAOmx19Nsa2ymrVeluv98\nDcR8s9rbH4Jjy0sLCtaufMMJyROyk//BqQWgTJoPLdfklSxR7iXVZPq1hgnfoBI9\nIOZP0Gg6lr+Y5l4VynseqAWnG/VmFfxiMu8eAZdeSEadH5NW9BDf78VUfsDlCOeZ\n66e1BzKcU7VSwqZeBEsCsSQY\n-----END PRIVATE KEY-----\n",
+  "client_email": "nexuseducation@nexuseducation.iam.gserviceaccount.com",
+  "client_id": "100000773682600710989",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nexuseducation%40nexuseducation.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

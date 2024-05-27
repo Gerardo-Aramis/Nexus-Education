@@ -1,3 +1,17 @@
+// Obtener el parámetro 'email' de la URL
+document.addEventListener('DOMContentLoaded', (event) => {
+    //console.log('DOM completamente cargado y analizado');
+    const urlParams = new URLSearchParams(window.location.search);
+    const email = urlParams.get('email');
+    console.log('Email parámetro:', email); // Depuración
+
+    if (email) {
+        document.getElementById('email').value = email;
+    } /*else {
+        console.log('No se encontró el parámetro email en la URL.');
+    }*/
+});
+
 const nombre = document.getElementById("nombre");
 const apellidoPaterno = document.getElementById("ApellidoPaterno");
 const apellidoMaterno = document.getElementById("ApellidoMaterno");

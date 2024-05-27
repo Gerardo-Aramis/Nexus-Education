@@ -29,14 +29,17 @@ function sendOTP() {
 
 			otp_btn.addEventListener('click', () => {
 				if (otp_inp.value == otp_val) {
-					alert("Identididad Verificada");
-					window.location.href = 'register.html';
+					//console.log('Correo electrónico enviado:', email.value);
+					alert("Identidad Verificada");
 					
+					const redirectUrl = "register.html?email=" + encodeURIComponent(email.value);
+					//console.log('Redirect URL:', redirectUrl); // Debug
+					window.location.href = redirectUrl;
 				}
 				else {
-					alert("Código no válido");
+					alert("Código no válido.");
 				}
-			})
+			});
 		}
 	}
 );

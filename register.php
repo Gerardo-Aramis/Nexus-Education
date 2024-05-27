@@ -1,13 +1,16 @@
 <?php
-$serverName = "25.41.90.44\\SQLEXPRESS"; 
-$connectionOptions = array(
+$serverName = "tcp:nexus-education.database.windows.net,1433";
+$connectionInfo = array(
     "Database" => "NexusEducation",
-    "UID" => "log_userweb", 
-    "PWD" => "nexus123", 
-    "CharacterSet" => "UTF-8"
+    "UID" => "nexus_admin", 
+    "PWD" => "Nxs#1#Edctn", 
+    "CharacterSet" => "UTF-8",
+    "LoginTimeout" => 30, 
+    "Encrypt" => 1, 
+    "TrustServerCertificate" => 0
 );
 
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+$conn = sqlsrv_connect($serverName, $connectionInfo);
 if( $conn === false ) {
     echo "No se estableció la conexión. ";
     die(print_r(sqlsrv_errors(), true));
@@ -65,8 +68,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $alertMessage = "Ha ocurrido un error al registrar sus datos.";
                     } else {
                         $alertMessage = "Usuario registrado exitosamente.";
-                        header("Location: login.html");
 
+                        // Consulta para obtener el UserID del usuario recién insertado
+                        $consultaUserId = "SELECT TOP 1 UserID FROM [User] ORDER BY UserID DESC";
+                        $resultadoUserId = sqlsrv_query($conn, $consultaUserId);
+
+                        if ($resultadoUserId === false) {
+                            echo "Ha ocurrido un error al obtener el UserID del usuario recién insertado.";
+                            die(print_r(sqlsrv_errors(), true));
+                        }
+
+                        $userId = sqlsrv_fetch_array($resultadoUserId, SQLSRV_FETCH_ASSOC)['UserID'];
+
+                        // Consulta para insertar la foto predeterminada en la tabla PictureProfile
+                        $consultaFoto = "INSERT INTO PictureProfile (UserID, pictureProfile) VALUES ($userId, 'images/usuario.png')";
+                        $resultadoFoto = sqlsrv_query($conn, $consultaFoto);
+
+                        if ($resultadoFoto === false) {
+                            echo "Ha ocurrido un error al insertar la foto predeterminada en la tabla PictureProfile.";
+                            die(print_r(sqlsrv_errors(), true));
+                        } else {
+
+                        header("Location: login.html");
+                        }
                     }
                 }
             }
@@ -76,28 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Mostrar el mensaje de alerta
     echo "<script>alert('$alertMessage');</script>";
 }
-/*
-// Consulta para obtener el UserID del usuario recién insertado
-$consultaUserId = "SELECT TOP 1 UserID FROM [User] ORDER BY UserID DESC";
-$resultadoUserId = sqlsrv_query($conn, $consultaUserId);
 
-if ($resultadoUserId === false) {
-    echo "Ha ocurrido un error al obtener el UserID del usuario recién insertado.";
-    die(print_r(sqlsrv_errors(), true));
-}
-
-$userId = sqlsrv_fetch_array($resultadoUserId, SQLSRV_FETCH_ASSOC)['UserID'];
-
-// Consulta para insertar la foto predeterminada en la tabla PictureProfile
-$consultaFoto = "INSERT INTO PictureProfile (UserID, pictureProfile) VALUES ($userId, 'images/usuario.png')";
-$resultadoFoto = sqlsrv_query($conn, $consultaFoto);
-
-if ($resultadoFoto === false) {
-    echo "Ha ocurrido un error al insertar la foto predeterminada en la tabla PictureProfile.";
-    die(print_r(sqlsrv_errors(), true));
-} else {
-    header("Location: login.html");
-}*/
 
 sqlsrv_close($conn);
 ?>
@@ -105,5 +108,5 @@ sqlsrv_close($conn);
 <script>
     setTimeout(function() {
         window.location.href = "register.html"; // Redireccionar después de 3 segundos
-    }, 1000); // 1000 milisegundos = 1 segundos
+    }, 200); // 1000 milisegundos = 1 segundos
 </script>
