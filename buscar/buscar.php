@@ -69,7 +69,7 @@
         </div>
         <div>
             <img style="margin-top: 30%;" src="images/Subir.png" alt="Subir" class="fotosperfil ">
-            <a href="../subir/SubirArhivo.html">Subir</a>
+            <a href="../subir/SubirArchivo.html">Subir</a>
         </div>
         <div>
             <img style="margin-top: 60%;" src="images/Mis_archivos.png" alt="Mis_archivos" class="fotosperfil">

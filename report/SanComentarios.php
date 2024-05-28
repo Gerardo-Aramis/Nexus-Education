@@ -210,7 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
             <img src="images/categoria.png" alt="categoria" class="fotosperfil" style="margin-left: -12px; margin-top: 175px; width: 140px; height: auto;">
                 <a href="../categoria/organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
             <img src="images/crearmoderador.png" alt="Validar" class="fotosperfil" style="margin-left: 10px; margin-top: 320px; width: 55px; height: auto;">
-                <a href="opcionesestudiantes.html" style="margin-left: 25px; margin-top: 70px;">Estudiantes</a>
+                <a href="../students/opcionesestudiantes.html" style="margin-left: 25px; margin-top: 70px;">Estudiantes</a>
             <img src="images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
                 <a href="../index.html" style="margin-left: 7px; margin-top: 80px;">Cerrar sesión</a>
         </div>

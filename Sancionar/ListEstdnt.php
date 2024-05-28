@@ -602,7 +602,7 @@ if ($result === false) {
         <img src="../validar/iconos/gerente.png" alt="Moderador" class="Moderador">
         <span class="titModerador">Moderador</span>
     </a>
-    <a href="../Sancionar/ListEstdnt.php" class="validar-link">
+    <a href="../validar/ArchEspera.php" class="validar-link">
         <img src="../validar/iconos/validar.png" alt="Validar" class="Validar">
         <span class="titValidar">Validar</span>
     </a>
@@ -617,7 +617,7 @@ if ($result === false) {
         <span class="titCategorias">Categorias</span>
     </a>
 
-    <a href="" class="Estudiante-link">
+    <a href="../students/opcionesestudiantes.html" class="Estudiante-link">
         <img src="../validar/iconos/crearmoderador.png" alt="Estudiante" class="Estudiante">
         <span class="titEstudiante">Estudiante</span>
     </a>
