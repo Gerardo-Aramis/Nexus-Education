@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             die(print_r(sqlsrv_errors(), true));
                         } else {
 
-                        header("Location: login.html");
+                        header("Location: index.html");
                         }
                     }
                 }

@@ -12,7 +12,7 @@
             width: 60%; /* Ancho del textarea */
             padding: 10px; /* Relleno dentro del textarea */
             font-family: Arial, Helvetica, sans-serif; /* Familia de fuentes */
-            font-size: 18px; /* Tamaño de la fuente */
+            font-size: 12px; /* Tamaño de la fuente */
             border: 1px solid #ccc; /* Borde del textarea */
             border-radius: 5px; /* Radio de los bordes del textarea */
             resize: vertical; /* Permitir que el usuario redimensione verticalmente */
@@ -41,33 +41,36 @@
         </div>
 
         <!-- BARRA DE LA IZQUIERDA -->
-        <div class="left-section">
-            <div>
-                <img src="images/Mi_Perfil.png" alt="Mi_perfil" class="fotosperfil">
-                <a href="../profile.php">Mi perfil</a>
-            </div>
-            <div>
-                <img style="margin-top: 30%;" src="images/Subir.png" alt="Subir" class="fotosperfil">
-                <a href="../subir/SubirArhivo.html">Subir</a>
-            </div>
-            <div>
-                <img style="margin-top: 60%;" src="images/Mis_archivos.png" alt="Mis_archivos" class="fotosperfil">
-                <a href="../view-file/my-files.php">Mis Archivos</a>
-            </div>
-            <div>
-                <img style="margin-top: 85%;" src="images/buscar.png" alt="Mis_archivos" class="fotosperfil">
-                <a href="buscar.php">Buscar</a>
-            </div>
-            <div>
-                <img style="margin-top: 200%;" src="images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil"> 
-                <a  style="margin-top: 105%;"  href="../login.html">Cerrar sesión</a>
-            </div>
+        <div class="left-section" > 
+        <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
+        <div>
+            <img src="images/Mi_Perfil.png" alt="Mi_perfil" class="fotosperfil">
+            <a href="../profile.php">Mi perfil</a>
+        </div>
+        <div>
+            <img style="margin-top: 30%;" src="images/Subir.png" alt="Subir" class="fotosperfil ">
+            <a href="../subir/SubirArhivo.html">Subir</a>
+        </div>
+        <div>
+            <img style="margin-top: 60%;" src="images/Mis_archivos.png" alt="Mis_archivos" class="fotosperfil">
+            <a href="../view-file/my-files.php">Mis Archivos</a>
+        </div>
+        <div>
+            <img style="margin-top: 85%;" src="images/buscar.png" alt="Mis_archivos" class="fotosperfil">
+            <a href="buscar.php">Buscar</a>
+        </div>
+        <div>
+            <img style="margin-top: 200%;" src="images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil"> 
+            <a  style="margin-top: 105%;"  href="../login.html">Cerrar sesión</a>
         </div>
 
+    </div>
+
         <!-- PARTE AZUL DE CONTENIDO -->
-        <div class="bottom-section">
+        <div class="bottom-section" >
             <div style="display: flex; align-items: center;">
                 <!-- Pasa el archivo_id como parámetro en la URL -->
+                
             </div>
 
             <!-- TITULO Y TEXT AREA -->
@@ -86,46 +89,56 @@
                     exit(); // Salir del script si no se proporciona el ID del archivo
                 }
 
-                // Establecer la conexión a la base de datos
-                $serverName = "tcp:nexus-education.database.windows.net,1433";
-                $connectionInfo = array(
-                    "Database" => "NexusEducation",
-                    "UID" => "nexus_admin", 
-                    "PWD" => "Nxs#1#Edctn", 
-                    "CharacterSet" => "UTF-8",
-                    "LoginTimeout" => 30, 
-                    "Encrypt" => 1, 
-                    "TrustServerCertificate" => 0
-                );
-        
-                // Establecer la conexión a la base de datos
-                $conn = sqlsrv_connect($serverName, $connectionInfo);
+                // Verificar si se ha enviado el formulario para editar el comentario
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // Verificar si se ha proporcionado el nuevo contenido del comentario
+                    if (isset($_POST['new_comment_content'])) {
+                        // Obtener el nuevo contenido del comentario
+                        $newCommentContent = $_POST['new_comment_content'];
 
-                // Verificar la conexión
-                if ($conn === false) {
-                    die(print_r(sqlsrv_errors(), true));
+                        // Establecer la conexión a la base de datos
+                        $serverName = "tcp:nexus-education.database.windows.net,1433";
+                        $connectionInfo = array(
+                            "Database" => "NexusEducation",
+                            "UID" => "nexus_admin", 
+                            "PWD" => "Nxs#1#Edctn", 
+                            "CharacterSet" => "UTF-8",
+                            "LoginTimeout" => 30, 
+                            "Encrypt" => 1, 
+                            "TrustServerCertificate" => 0
+                        );
+                        
+                        // Establecer la conexión a la base de datos
+                        $conn = sqlsrv_connect($serverName, $connectionInfo);
+                        // Verificar la conexión
+                        if ($conn === false) {
+                            die(print_r(sqlsrv_errors(), true));
+                        }
+
+                        // Preparar la consulta para actualizar el comentario
+                        $query = "UPDATE Comments SET commentContent = ? WHERE commentsID = ?";
+                        $params = array($newCommentContent, $commentID);
+                        $stmt = sqlsrv_query($conn, $query, $params);
+
+                        if ($stmt === false) {
+                            
+                        } else {
+                            //echo "¡Comentario actualizado correctamente!";
+                            // Redirigir a la página de comentarios después de unos segundos
+                            
+                        }
+
+                        // Cerrar la conexión a la base de datos
+                        sqlsrv_close($conn);
+                    } else {
+                        //echo "No se proporcionó el nuevo contenido del comentario.";
+                    }
                 }
 
-                // Obtener el contenido actual del comentario
-                $query = "SELECT commentContent FROM Comments WHERE commentsID = ?";
-                $params = array($commentID);
-                $stmt = sqlsrv_query($conn, $query, $params);
-
-                if ($stmt === false) {
-                    die(print_r(sqlsrv_errors(), true));
-                }
-
-                // Obtener el comentario actual
-                $commentContent = "";
-                if (sqlsrv_fetch($stmt)) {
-                    $commentContent = sqlsrv_get_field($stmt, 0);
-                }
-
-                // Cerrar la conexión a la base de datos
-                sqlsrv_close($conn);
             } else {
                 // Manejar la situación si no se proporciona el ID del comentario
                 echo "No se proporcionó el ID del comentario.";
+                // Puedes redirigir a alguna página de error o manejarlo según tus necesidades
                 exit(); // Asegura que el script se detenga después de mostrar el mensaje de error
             }
             ?>
@@ -133,20 +146,23 @@
             
             <div class="form-group">
                 <form action="editar_comentario.php" method="POST">
-                    <textarea name="new_comment_content" id="new_comment_content" class="comment-form" required><?php echo htmlspecialchars($commentContent); ?></textarea>
-                    <input type="hidden" name="commentID" value="<?php echo $commentID; ?>">
-                    <input type="hidden" name="archivo_id" value="<?php echo $archivo_id; ?>">
-                    <button type="submit" style="display: block; margin-left: 15%; margin-top: 2%;">Guardar</button>
+                <textarea name="new_comment_content" id="new_comment_content" class="comment-form" required></textarea>
+                <input type="hidden" name="commentID" value="<?php echo $commentID; ?>">
+                <input type="hidden" name="archivo_id" value="<?php echo $archivo_id; ?>">
+                <button type="submit" style="display: block; margin-left: 15%; margin-top: 2%;">Guardar</button>
                 </form>
             </div>
+
 
             <div style="display: flex; align-items: center; margin-top: 1%; margin-left: 15%;">
                 <form action="agregar_comentario.php" method="POST">
                     <input type="hidden" name="commentID" value="<?php echo $commentID; ?>">
                     <input type="hidden" name="archivo_id" value="<?php echo $archivo_id; ?>">
+                    <!-- Muestra el contenido actual del comentario -->
                     <button type="submit" style="margin-left: 20%">Regresar</button>
                 </form>
             </div>
+
 
             <!-- COMENTARIOS -->
             <div style="margin-top: 10%;">

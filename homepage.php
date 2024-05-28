@@ -42,7 +42,7 @@
         </div>
         <div>
             <img style="margin-top: 200%;" src="images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil"> 
-            <a  style="margin-top: 105%;"  href="login.html">Cerrar sesión</a>
+            <a  style="margin-top: 105%;"  href="index.html">Cerrar sesión</a>
         </div>
     </div>
         <?php
