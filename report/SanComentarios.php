@@ -4,21 +4,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
     $userID = $_POST["userID"];
     $CommentsID = intval($_POST["CommentsID"]);
     $sancion = $_POST["sancion"];
-
     
-$serverName = "tcp:nexus-education.database.windows.net,1433";
-$connectionInfo = array(
-    "Database" => "NexusEducation",
-    "UID" => "nexus_admin", 
-    "PWD" => "Nxs#1#Edctn", 
-    "CharacterSet" => "UTF-8",
-    "LoginTimeout" => 30, 
-    "Encrypt" => 1, 
-    "TrustServerCertificate" => 0
-);
-
-// Establecer la conexión a la base de datos
-$conn = sqlsrv_connect($serverName, $connectionInfo);
+    $serverName = "tcp:nexus-education.database.windows.net,1433";
+    $connectionInfo = array(
+        "Database" => "NexusEducation",
+        "UID" => "nexus_admin", 
+        "PWD" => "Nxs#1#Edctn", 
+        "CharacterSet" => "UTF-8",
+        "LoginTimeout" => 30, 
+        "Encrypt" => 1, 
+        "TrustServerCertificate" => 0
+    );
+    
+    // Establecer la conexión a la base de datos
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
     if ($conn === false) {
         echo "No se estableció la conexión.";
         die(print_r(sqlsrv_errors(), true));
@@ -166,8 +165,8 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sancionar comentarios</title>
-    <link rel="stylesheet" href="report-style.css">
+    <title>Comentarios Reportados</title>
+    <link rel="stylesheet" href="Lista.css">
     <link rel="icon" href="../images/logo.png" type="image/png">
     
 </head>
@@ -195,18 +194,15 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 <div class="top-section">
         <a href="../homepage.php" style="margin-top: 50px;">
         <img src="../images/nexus.png" alt="Logo Nexus" class="logo-nexus"></a>
-        <h1 >Sancionar comentarios</h1>
+        <h1 >Comentarios Reportados</h1>
 </div>
 
 <div class="left-section"> 
             
-            <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR --> 
-            <a href="../estadisticas/principalmoderador.html" class="moderador-link">
-            <img src="images/moderador.png" alt="moderador" class="fotosperfil" style="margin-left: -17px; margin-top: -15px; width: 50px; height: auto;"></a>
-            <a href="../estadisticas/principalmoderador.html" class="moderador-link">
+            <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
+            <img src="images/moderador.png" alt="moderador" class="fotosperfil" style="margin-left: -17px; margin-top: -15px; width: 50px; height: auto;">
             <img src="images/textomoderador.png" alt="textomoderador" class="fotosperfil" style="margin-left: 30px; margin-top: -5px; width: 150px; height: auto;">
-            </a>
-            
+
             <img src="images/validar.png" alt="Validar" class="fotosperfil" style="margin-left: -17px; margin-top: 5px; width: 125px; height: auto;">
                 <a href="validar.html" style="margin-left: 25px; margin-top: 80px;">Validar</a>
             <img src="images/reporte.png" alt="reporte" class="fotosperfil" style="margin-left: -10px; margin-top: 75px; width: 130px; height: auto; ">
@@ -214,7 +210,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
             <img src="images/categoria.png" alt="categoria" class="fotosperfil" style="margin-left: -12px; margin-top: 175px; width: 140px; height: auto;">
                 <a href="organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
             <img src="images/crearmoderador.png" alt="Validar" class="fotosperfil" style="margin-left: 10px; margin-top: 320px; width: 55px; height: auto;">
-                <a href="../students/opcionesestudiantes.html" style="margin-left: 25px; margin-top: 70px;">Estudiantes</a>
+                <a href="opcionesestudiantes.html" style="margin-left: 25px; margin-top: 70px;">Estudiantes</a>
             <img src="images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
                 <a href="iniciarsesion.html" style="margin-left: 7px; margin-top: 80px;">Cerrar sesión</a>
         </div>
@@ -223,7 +219,6 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 <div class  = "RectSup">
 <div class  = "SubRect">
 
-    <img class = "Logo" src="../images/logo.png" alt="Logo">
     <h2 class= "SubTit">Buscar comentarios</h2>
     <form action="" method="get" id="searchForm">
         <label class= "bus" for="campo">Buscar por:</label>
@@ -236,16 +231,20 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
             <option value="">Seleccione una carrera</option>
             <?php
             // Obtener la lista de carreras desde la base de datos
-            $serverName = "25.41.90.44\\SQLEXPRESS"; 
-            $connectionOptions = array(
+    
+            $serverName = "tcp:nexus-education.database.windows.net,1433";
+            $connectionInfo = array(
                 "Database" => "NexusEducation",
-                "UID" => "log_userweb", 
-                "PWD" => "nexus123", 
-                "CharacterSet" => "UTF-8"
+                "UID" => "nexus_admin", 
+                "PWD" => "Nxs#1#Edctn", 
+                "CharacterSet" => "UTF-8",
+                "LoginTimeout" => 30, 
+                "Encrypt" => 1, 
+                "TrustServerCertificate" => 0
             );
-
-
-            $conn = sqlsrv_connect($serverName, $connectionOptions);
+            
+            // Establecer la conexión a la base de datos
+            $conn = sqlsrv_connect($serverName, $connectionInfo);
             if ($conn === false) {
                 echo "No se estableció la conexión.";
                 die (print_r(sqlsrv_errors(), true));
@@ -268,15 +267,20 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
     </div>
 </div>
 <?php
-$serverName = "25.41.90.44\\SQLEXPRESS"; 
-$connectionOptions = array(
-    "Database" => "NexusEducation",
-    "UID" => "log_userweb", 
-    "PWD" => "nexus123", 
-    "CharacterSet" => "UTF-8"
-);
-
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+    
+    $serverName = "tcp:nexus-education.database.windows.net,1433";
+    $connectionInfo = array(
+        "Database" => "NexusEducation",
+        "UID" => "nexus_admin", 
+        "PWD" => "Nxs#1#Edctn", 
+        "CharacterSet" => "UTF-8",
+        "LoginTimeout" => 30, 
+        "Encrypt" => 1, 
+        "TrustServerCertificate" => 0
+    );
+    
+    // Establecer la conexión a la base de datos
+    $conn = sqlsrv_connect($serverName, $connectionInfo);
 if ($conn === false) {
     echo "No se estableció la conexión.";
     die (print_r(sqlsrv_errors(), true));

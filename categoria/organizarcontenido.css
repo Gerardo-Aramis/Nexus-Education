@@ -1,0 +1,644 @@
+body {
+    max-width: 100vw; /* Establece el ancho máximo del cuerpo al ancho máximo de la ventana del navegador */
+    max-height: 100vh; /* Establece la altura máxima del cuerpo a la altura máxima de la ventana del navegador */
+    margin: 0;
+    overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    overflow-x: hidden; 
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    align-items: center; 
+    position: relative;
+    color: white;
+    min-height: 100vh; 
+    zoom: reset;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+@media (max-width: 700px){
+    .logo-nexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 70%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .logo-nombrenexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 60%);
+        width: calc(100% - 75%); 
+        height: auto; 
+    }
+    
+    .logo-tecnm {
+        position: absolute;
+        top: calc(100% - 94%);
+        left: calc(100% - 99.5%);
+        width: calc(100% - 90%); 
+        height: auto;  
+    }
+    
+    .logo-ittepic {
+        position: absolute;
+        top: calc(100% - 95%);
+        right: calc(100% - 99%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-left: calc(100% - 55%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        width: 100%;
+        height: 300px; 
+        background-color: #202d35; /* Color para el 20% */
+        bottom: 0;
+        padding-top: 2%;
+        font-size: 5px;
+    }
+    
+    .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 15%;
+        padding-top: 1%;
+        padding-left: 10%;
+        width: 83%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #2A677C; /* Color para el 80% */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:15px;
+        overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    }
+    
+    .bottom-section::-webkit-scrollbar {
+        width: 12%; /* Ancho de la barra de desplazamiento */
+    }
+
+    .bottom-section::-webkit-scrollbar-thumb {
+        background-color: #385c74; /* Color de la barra de desplazamiento */
+        border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
+    }
+
+    .fotosarchivo {
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
+    
+    .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 0px;
+        width: 15%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
+    }
+
+    .left-section a {
+        color: white;
+        font-size: 10px;
+        padding-left: 10%;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+        display: block;
+        margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
+        margin-top: calc(100% - 95%);
+    }
+
+    .left-section a:hover {
+        left: calc(100%- 70%);
+        text-decoration: underline; /* Añade subrayado al pasar el ratón */
+        padding-left: calc(100%- 70%);
+        font-size: 10%;
+    }
+
+    .fotosperfil {
+        position: absolute;
+        top: calc(100% - 98%);
+        left: calc(100% - 95%);
+        width: 1%; 
+        height: auto;
+        margin-bottom: calc(100% - 85%); 
+        padding-top: calc(100% - 99%);
+    }
+    
+    
+    button {
+        background-color: #65A7D3;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        transition: background-color 0.5s;
+        text-align: center; /* Alinea el texto del botón al centro */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 25px; /* Cambiar el tamaño del texto */
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 9999;
+        height: 80px; 
+        width: 550px;
+        margin-left: -22%;
+        margin-top: 4%;
+        border-radius: 50px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+    }
+    
+    button:hover {
+        background-color: #65A7D3;
+        text-decoration: underline; /* Aplica el subrayado solo en hover */
+        color: white;
+    }
+    
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        text-decoration: none; /* Quita el subrayado predeterminado */
+    }
+    
+
+    /* Estilos para el texto en los combobox */
+    select {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #747272; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    /* Estilos para las opciones del combobox */
+    option {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #575656; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0px; /* Empezando después del 20% */
+        left: 135px;
+        width: 590px;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-section a{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: none;
+    }
+    
+    .center-section a:hover{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: underline;
+        color: white;
+    }
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 530px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+    
+    .back-button {
+        position: absolute;
+        bottom: 30px; /* Distancia desde la parte inferior */
+        left: 25px; /* Distancia desde la parte izquierda */
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+       
+    
+}
+
+@media(min-width: 701px) and (max-width:1799px){
+    
+.logo-nexus {
+    position: absolute;
+    top: calc(100% - 97.5%);
+    left: 2%;
+    width: calc(100% - 94%); 
+    height: auto; 
+}
+
+.logo-nombrenexus {
+    position: absolute;
+    top: calc(100% - 95%);
+    left: calc(100% - 60%);
+    width: calc(100% - 75%); 
+    height: auto; 
+}
+
+.logo-tecnm {
+    position: absolute;
+    top: calc(100% - 94%);
+    left: calc(100% - 99.5%);
+    width: calc(100% - 90%); 
+    height: auto;  
+}
+
+.logo-ittepic {
+    position: absolute;
+    top: calc(100% - 95%);
+    right: calc(100% - 99%);
+    width: calc(100% - 94%); 
+    height: auto; 
+}
+
+.top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: calc(100% - 55%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+    width: 100%;
+    height: 15.5%; 
+    background-color: #202d35; /* Color para el 20% */
+    bottom: 0;
+    padding-top: 2%;
+}
+
+    .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 15%;
+        padding-top: 1%;
+        padding-left: 26%;
+        width: 83%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #2A677C; /* Color para el 80% */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:15px;
+        overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    }
+    
+    .bottom-section::-webkit-scrollbar {
+        width: 12%; /* Ancho de la barra de desplazamiento */
+    }
+
+    .bottom-section::-webkit-scrollbar-thumb {
+        background-color: #385c74; /* Color de la barra de desplazamiento */
+        border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
+    }
+
+    .fotosarchivo {
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
+    
+    .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 0px;
+        width: 15%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
+    }
+
+    .left-section a {
+        color: white;
+        font-size: (100% - 95%);
+        padding-left: calc(100% - 70%);
+        text-decoration: none; /* Quita el subrayado predeterminado */
+        display: block;
+        margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
+        margin-top: calc(100% - 95%);
+    }
+
+    .left-section a:hover {
+        left: calc(100%- 70%);
+        text-decoration: underline; /* Añade subrayado al pasar el ratón */
+        padding-left: calc(100%- 70%);
+        font-size: (100% - 95%);
+    }
+
+    .fotosperfil {
+        position: absolute;
+        top: calc(100% - 98%);
+        left: calc(100% - 95%);
+        width: calc(100% - 80%); 
+        height: auto;
+        margin-bottom: calc(100% - 85%); 
+        padding-top: calc(100% - 99%);
+    }
+   
+    button {
+        background-color: #65A7D3;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        transition: background-color 0.5s;
+        text-align: center; /* Alinea el texto del botón al centro */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 25px; /* Cambiar el tamaño del texto */
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 9999;
+        height: 80px; 
+        width: 550px;
+        margin-left: -22%;
+        margin-top: 4%;
+        border-radius: 50px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+    }
+    
+    button:hover {
+        background-color: #65A7D3;
+        text-decoration: underline; /* Aplica el subrayado solo en hover */
+        color: white;
+    }
+    
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        text-decoration: none; /* Quita el subrayado predeterminado */
+    }
+    
+
+    /* Estilos para el texto en los combobox */
+    select {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #747272; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    /* Estilos para las opciones del combobox */
+    option {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #575656; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0px; /* Empezando después del 20% */
+        left: 135px;
+        width: 590px;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-section a{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: none;
+    }
+    
+    .center-section a:hover{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: underline;
+        color: white;
+    }
+    
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 530px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+    
+    .back-button {
+        position: absolute;
+        bottom: 30px; /* Distancia desde la parte inferior */
+        left: 25px; /* Distancia desde la parte izquierda */
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+}
+
+@media(min-width: 1800px){
+    .logo-nexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 70%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .logo-nombrenexus {
+        position: absolute;
+        top: calc(100% - 95%);
+        left: calc(100% - 60%);
+        width: calc(100% - 75%); 
+        height: auto; 
+    }
+    
+    .logo-tecnm {
+        position: absolute;
+        top: calc(100% - 94%);
+        left: calc(100% - 99.5%);
+        width: calc(100% - 90%); 
+        height: auto;  
+    }
+    
+    .logo-ittepic {
+        position: absolute;
+        top: calc(100% - 95%);
+        right: calc(100% - 99%);
+        width: calc(100% - 94%); 
+        height: auto; 
+    }
+    
+    .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+        position: center;
+        top: 0;
+        left: 0;
+        padding-left: calc(100% - 50%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        padding-top: 10%;
+        width: 100%;
+        height: 400px; /* 20% de la pantalla */
+        background-color: #202d35; /* Color para el 20% */
+    }
+
+    .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 15%;
+        padding-top: 1%;
+        padding-left: 20%;
+        width: 83%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #2A677C; /* Color para el 80% */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:15px;
+        overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
+    }
+    
+    .bottom-section::-webkit-scrollbar {
+        width: 12%; /* Ancho de la barra de desplazamiento */
+    }
+
+    .bottom-section::-webkit-scrollbar-thumb {
+        background-color: #385c74; /* Color de la barra de desplazamiento */
+        border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
+    }
+
+    .fotosarchivo {
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
+
+    .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
+        position: absolute;
+        top: 20%; /* Empezando después del 20% */
+        left: 0px;
+        width: 15%;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
+    }
+
+    .left-section a {
+        color: white;
+        font-size: (100% - 95%);
+        padding-left: calc(100% - 70%);
+        text-decoration: none; /* Quita el subrayado predeterminado */
+        display: block;
+        margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
+        margin-top: calc(100% - 95%);
+    }
+
+    .left-section a:hover {
+        left: calc(100%- 70%);
+        text-decoration: underline; /* Añade subrayado al pasar el ratón */
+        padding-left: calc(100%- 70%);
+        font-size: (100% - 95%);
+    }
+
+    .fotosperfil {
+        position: absolute;
+        top: calc(100% - 98%);
+        left: calc(100% - 95%);
+        width: calc(100% - 80%); 
+        height: auto;
+        margin-bottom: calc(100% - 85%); 
+        padding-top: calc(100% - 99%);
+    }
+    
+       
+   
+    button {
+        background-color: #65A7D3;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        transition: background-color 0.5s;
+        text-align: center; /* Alinea el texto del botón al centro */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 25px; /* Cambiar el tamaño del texto */
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 9999;
+        height: 80px; 
+        width: 550px;
+        margin-left: -22%;
+        margin-top: 4%;
+        border-radius: 50px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
+    }
+    
+    button:hover {
+        background-color: #65A7D3;
+        text-decoration: underline; /* Aplica el subrayado solo en hover */
+        color: white;
+    }
+    
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        text-decoration: none; /* Quita el subrayado predeterminado */
+    }
+    
+
+    /* Estilos para el texto en los combobox */
+    select {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #747272; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    /* Estilos para las opciones del combobox */
+    option {
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño del texto */
+        color: #575656; /* Cambiar el color del texto */
+        /* Otros estilos según tus preferencias */
+    }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0px; /* Empezando después del 20% */
+        left: 135px;
+        width: 590px;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-section a{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: none;
+    }
+    
+    .center-section a:hover{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: underline;
+        color: white;
+    } 
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 530px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+    
+    .back-button {
+        position: absolute;
+        bottom: 30px; /* Distancia desde la parte inferior */
+        left: 25px; /* Distancia desde la parte izquierda */
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    
+}
