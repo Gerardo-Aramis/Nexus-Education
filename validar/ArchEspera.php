@@ -186,12 +186,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="rectangulo-izquierdo">
 
-    <a href="" class="moderador-link">
+    <a href="../estadisticas/principalmoderador.html" class="moderador-link">
         <img src="iconos/gerente.png" alt="Moderador" class="Moderador">
         <span class="titModerador">Moderador</span>
     </a>
 
-    <a href="" class="validar-link">
+    <a href="ArchEspera.php" class="validar-link">
         <img src="iconos/validar.png" alt="Validar" class="Validar">
         <span class="titValidar">Validar</span>
     </a>
@@ -220,7 +220,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="rectangulo-superior">
     <h1 class="InterfazTit">Validar documento</h1>
-    <a href="principalmoderador.html">
+    <a href="../estadisticas/principalmoderador.html">
     <img src= "iconos/nexus.png" alt= "nexus" class= "nexus"></a>
     <div class = "Opciones">
         <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">

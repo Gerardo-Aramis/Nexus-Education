@@ -4,87 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar Categoría - Nexus Education</title>
-    <link rel="stylesheet" href="../estilospantallas.css">
+    <link rel="stylesheet" href="eliminarcategoria.css">
     <link href="../images/logo.png" rel="shortcut icon">
 
     <style>
-        button {
-            background-color: #65A7D3;
-            color:black;
-            cursor: pointer;
-            transition: background-color 0.5s;
-            height: 40px;
-            width: 300px; /* Ajuste del ancho del botón */
-            text-align: center; /* Alinea el texto del botón al centro */
-            margin-bottom: 10px; /* Espacio entre botones */
-            border-radius: 50px;
-            font-family: Arial, sans-serif; /* Cambiar la fuente */
-            font-size: 22px; /* Cambiar el tamaño del texto */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        button:hover {
-            background-color: #3594d3;
-        }
-
-        /* Estilo cuando se hace clic */
-        button:active {
-            transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
-        }
         
-        input[type="nombre"],
-        input[type="carrera"],
-        input[type="semestre"],
-        input[type="materia"] {
-            width: 500px;
-            padding: 10px;
-            border: 1px solid #ffffff;
-            border-radius: 30px;
-            margin-top: -20px;
-            margin-left: 90px;
-
-        }
-
-        input[type="nombre"],
-        input[type="carrera"],
-        input[type="semestre"],
-        input[type="materia"],
-        button {
-            border: none;
-            background-color: #65A7D3;
-            border-radius: 50px;
-            padding: 5px 10px;
-            margin-bottom: 5px;
-            height: 30px;
-            width: 500px;
-            margin-right: 0px; 
-            text-align: left; /* Alinea el texto a la izquierda */
-            font-family: Arial, sans-serif; /* Cambiar la fuente */
-            font-size: 16px; /* Cambiar el tamaño de la letra */
-            margin-left: 100px;
-        }
-
-        input[type="nombre"],
-        input[type="carrera"],
-        input[type="semestre"],
-        input[type="materia"],
-        button:focus {
-            outline: none;
-            background-color: #2d4e64;
-        }
-
-        .back-button {
-            position: absolute;
-            bottom: 30px; /* Distancia desde la parte inferior */
-            left: 25px; /* Distancia desde la parte izquierda */
-            border: none;
-            background: none;
-            cursor: pointer;
-            padding: 0;
-        }
     </style>
 </head>
 <body>
@@ -92,24 +16,21 @@
     <div class="container">
         <!-- PARTE DE ARRIBA CON LOS LOGOS-->
         <div class="top-section">
-            <img src="../images/tecnm.png" alt="Logo Tecnm" class="logo-tecnm">
-            <img src="../images/ittepic.png" alt="Logo Tec Tepic" class="logo-ittepic">
-            <img src="../images/nexus2.png" alt="Logo Nexus" class="logo-nexus">
-            <img src="../images/nombrenexus.png" alt="Logo nombre Nexus" class="logo-nombrenexus">
-
+            <a href="../homepage.php" style="margin-top: 50px;">
+            <img src="../images/nexus.png" alt="Logo Nexus" class="logo-nexus"></a>
+            <h1 >Eliminar categoría </h1>
         </div>
         
         <!-- SECCION AZUL -->
         <div class="bottom-section">
             <div class="center-section">
-            <h1 stye ="margin-right: -500px; font-family: Arial, sans-serif; font-size: 70px; " >Eliminar categoría</h1>
                 
                 <!-- SECCION BLANCA-->
                 <div class="center-sectionwhite">
                     <form id="eliminarCategoriaForm" method="POST" action="eliminarcategoria.php">
-                        <div style="display: flex; align-items: center; margin-top: 35px; margin-left: -250px;">
-                            <h3 style="margin-left: -15px; color:black; margin-bottom:50px; padding-top: 10px;">Nombre de la categoría</h3>
-                            <select id="nombre" name="categoria_id" style="background-color: #ffffff; margin-left: 15px; padding: 10px; width: 520px; border: 1px solid #ccc; border-radius: 30px;">
+                        <div style="display: flex; align-items: center; margin-top: 20px; margin-left: -250px;">
+                            <h3 style="margin-left: -15px; color:black; margin-bottom:50px; padding-top: 25px;">Nombre de la categoría</h3>
+                            <select id="nombre" name="categoria_id" style="background-color: #ffffff; margin-left: 15px; padding: 10px;  width: 520px; border: 1px solid #ccc; border-radius: 30px;">
                                 <!-- Opciones del combo box serán llenadas dinámicamente por JavaScript -->
                         </select>
                     </div>
@@ -155,8 +76,8 @@
                         <select id="nombre" name="nombre_categoria" style="background-color: #ffffff; margin-left: 15px; padding: 10px; width: 520px; border: 1px solid #ccc; border-radius: 30px;">
                         </select>
                     </div>
-                    <button type="button" onclick="actualizarMateriasYcategorias()" style="font-size: 20px;width: 250px;height:40px; margin: 100px; margin-top: 20px; margin-left: -260px;">Buscar</button>
-                    <button type="button" onclick="eliminarCategoria()" style="font-size: 20px;width: 250px;height:40px; margin: 100px; margin-top: 20px; margin-left: 30px;">Eliminar</button>                
+                    <button type="button" onclick="actualizarMateriasYcategorias()" style="font-size: 20px;width: 250px;height:40px; margin: 100px; margin-top: 40px; margin-left: -180px;">Buscar</button>
+                    <button type="button" onclick="eliminarCategoria()" style="font-size: 20px;width: 250px;height:40px; margin: 100px; margin-top: -140px; margin-left: 120px;">Eliminar</button>                
                 </div>
                 
             </div>
@@ -164,20 +85,21 @@
 
         <!-- ESTA SECCION ES LA BARRA DE LA IZQUIERDA-->
         <div class="left-section"> 
-            
+            <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
             <img src="../images/moderador.png" alt="moderador" class="fotosperfil" style="margin-left: -17px; margin-top: -15px; width: 50px; height: auto;">
             <img src="../images/textomoderador.png" alt="textomoderador" class="fotosperfil" style="margin-left: 30px; margin-top: -5px; width: 150px; height: auto;">
 
-            <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
-
             <img src="../images/validar.png" alt="Validar" class="fotosperfil" style="margin-left: -17px; margin-top: 5px; width: 125px; height: auto;">
-                <a href="validar.html" style="margin-left: 25px; margin-top: 80px;">Validar</a>
+                <a href="../validar/ArchEspera.php" style="margin-left: 25px; margin-top: 80px;">Validar</a>
             <img src="../images/reporte.png" alt="reporte" class="fotosperfil" style="margin-left: -10px; margin-top: 75px; width: 130px; height: auto; ">
                 <a href="reporte.html" style="margin-left: 25px; margin-top: 70px;">Reporte</a>
             <img src="../images/categoria.png" alt="categoria" class="fotosperfil" style="margin-left: -12px; margin-top: 175px; width: 140px; height: auto;">
-                <a href="organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
+                <a href="../categoria/organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
+            <img src="../images/crearmoderador.png" alt="Validar" class="fotosperfil" style="margin-left: 10px; margin-top: 320px; width: 55px; height: auto;">
+                <a href="opcionesestudiantes.html" style="margin-left: 25px; margin-top: 70px;">Estudiantes</a>
             <img src="../images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
-                <a href="../login.html" style="margin-left: 7px; margin-top: 170px;">Cerrar sesión</a>
+                <a href="login.html" style="margin-left: 7px; margin-top: 80px;">Cerrar sesión</a>
+
         </div>
         
     </div>

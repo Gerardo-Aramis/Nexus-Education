@@ -7,7 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
     // Verificar si la sanción es por 3 días
     if ($sancion === "3") {
         // Realizar la conexión a la base de datos
-        
         $serverName = "tcp:nexus-education.database.windows.net,1433";
         $connectionInfo = array(
             "Database" => "NexusEducation",
@@ -18,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
             "Encrypt" => 1, 
             "TrustServerCertificate" => 0
         );
-
+        
         // Establecer la conexión a la base de datos
         $conn = sqlsrv_connect($serverName, $connectionInfo);
         if ($conn === false) {
@@ -40,20 +39,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
 
     } elseif($sancion === "6"){
          // Realizar la conexión a la base de datos
+         $serverName = "tcp:nexus-education.database.windows.net,1433";
+         $connectionInfo = array(
+             "Database" => "NexusEducation",
+             "UID" => "nexus_admin", 
+             "PWD" => "Nxs#1#Edctn", 
+             "CharacterSet" => "UTF-8",
+             "LoginTimeout" => 30, 
+             "Encrypt" => 1, 
+             "TrustServerCertificate" => 0
+         );
          
-    $serverName = "tcp:nexus-education.database.windows.net,1433";
-    $connectionInfo = array(
-        "Database" => "NexusEducation",
-        "UID" => "nexus_admin", 
-        "PWD" => "Nxs#1#Edctn", 
-        "CharacterSet" => "UTF-8",
-        "LoginTimeout" => 30, 
-        "Encrypt" => 1, 
-        "TrustServerCertificate" => 0
-    );
-
-    // Establecer la conexión a la base de datos
-    $conn = sqlsrv_connect($serverName, $connectionInfo);
+         // Establecer la conexión a la base de datos
+         $conn = sqlsrv_connect($serverName, $connectionInfo);
          if ($conn === false) {
              echo "No se estableció la conexión.";
              die (print_r(sqlsrv_errors(), true));
@@ -72,20 +70,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
          sqlsrv_close($conn);
     }elseif($sancion === "permanentemente"){
         // Realizar la conexión a la base de datos
+        $serverName = "tcp:nexus-education.database.windows.net,1433";
+        $connectionInfo = array(
+            "Database" => "NexusEducation",
+            "UID" => "nexus_admin", 
+            "PWD" => "Nxs#1#Edctn", 
+            "CharacterSet" => "UTF-8",
+            "LoginTimeout" => 30, 
+            "Encrypt" => 1, 
+            "TrustServerCertificate" => 0
+        );
         
-    $serverName = "tcp:nexus-education.database.windows.net,1433";
-    $connectionInfo = array(
-        "Database" => "NexusEducation",
-        "UID" => "nexus_admin", 
-        "PWD" => "Nxs#1#Edctn", 
-        "CharacterSet" => "UTF-8",
-        "LoginTimeout" => 30, 
-        "Encrypt" => 1, 
-        "TrustServerCertificate" => 0
-    );
-
-    // Establecer la conexión a la base de datos
-    $conn = sqlsrv_connect($serverName, $connectionInfo);
+        // Establecer la conexión a la base de datos
+        $conn = sqlsrv_connect($serverName, $connectionInfo);
         if ($conn === false) {
             echo "No se estableció la conexión.";
             die (print_r(sqlsrv_errors(), true));
@@ -104,20 +101,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
         sqlsrv_close($conn);
     }elseif($sancion === "Quitar"){
        // Realizar la conexión a la base de datos
-      
-        $serverName = "tcp:nexus-education.database.windows.net,1433";
-        $connectionInfo = array(
-            "Database" => "NexusEducation",
-            "UID" => "nexus_admin", 
-            "PWD" => "Nxs#1#Edctn", 
-            "CharacterSet" => "UTF-8",
-            "LoginTimeout" => 30, 
-            "Encrypt" => 1, 
-            "TrustServerCertificate" => 0
-        );
-
-        // Establecer la conexión a la base de datos
-        $conn = sqlsrv_connect($serverName, $connectionInfo);
+       $serverName = "tcp:nexus-education.database.windows.net,1433";
+       $connectionInfo = array(
+           "Database" => "NexusEducation",
+           "UID" => "nexus_admin", 
+           "PWD" => "Nxs#1#Edctn", 
+           "CharacterSet" => "UTF-8",
+           "LoginTimeout" => 30, 
+           "Encrypt" => 1, 
+           "TrustServerCertificate" => 0
+       );
+       
+       // Establecer la conexión a la base de datos
+       $conn = sqlsrv_connect($serverName, $connectionInfo);
        if ($conn === false) {
            echo "No se estableció la conexión.";
            die (print_r(sqlsrv_errors(), true));
@@ -209,8 +205,265 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuarios</title>
-    <link rel="stylesheet" href="Lista.css">
     <link rel="icon" href="../images/logo.png" type="image/png">
+
+    <style>
+        body{
+    background:#2A677C;
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden; 
+}
+th, td {
+    border: unset;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #0E3C54;
+}
+tr:hover td{
+    background-color: #2A677C;
+}
+
+td {
+    background-color: #5a9baf; /* Color de fondo para las celdas de la tabla */
+}
+
+button{
+    border-radius: 30px;
+    padding: 5px 15px;
+    border: unset;
+    cursor: pointer;
+    background: #0E3C54;
+    color: white;
+}
+
+button:hover{
+    background: #35B6E3;
+}
+
+select, input{
+    border-radius: 30px;
+    padding: 5px 15px;
+    border: unset;
+    background: #35B6E3;
+    color: white;
+}
+
+a{
+    color: white;
+}
+
+/* Estilos para la ventana modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 30px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    background: #0E3C54;
+    border-radius: 15px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*Estilos para el menu lateral*/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    background: #0E3C54;
+   
+}
+
+.sidenav a {
+    padding: 10px 8px 10px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    color: white;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+ /* Estilos del botón del menú */
+ .menu-btn {
+   
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+     /* Asegura que esté por encima de otros elementos */
+}
+
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.Moderador{
+    position: absolute;
+    top: 9%;
+    right: 65%;
+    width: 64px;
+    height: 64px;
+}
+
+.titModerador{
+    position: absolute;
+    top: 13%;
+    right: 25%;
+    font-size: 20px;
+    color: white;
+}
+
+.Validar{
+    position: absolute;
+    top: 28%;
+    right: 68%;
+    width: 45px;
+    height: 45px;
+}
+
+.titValidar{
+    position: absolute;
+    top: 31%;
+    right: 38%;
+    font-size: 20px;
+    color: white;
+}
+
+.Reporte{
+    position: absolute;
+    top: 39%;
+    right: 65%;
+    width: 45px;
+    height: 45px;
+}
+
+.titReporte{
+    position: absolute;
+    top: 42%;
+    right: 31%;
+    font-size: 20px;
+    color: white;
+}
+
+.Categorias{
+    position: absolute;
+    top: 50%;
+    right: 68%;
+    width: 35px;
+    height: 35px;
+}
+
+.titCategorias{
+    position: absolute;
+    top: 53%;
+    right: 25%;
+    font-size: 20px;
+    color: white;
+}
+
+.Estudiante{
+    position: absolute;
+    top: 59%;
+    right: 65%;
+    width: 49px;
+    height: 49px;
+}
+
+.titEstudiante{
+    position: absolute;
+    top: 64%;
+    right: 25%;
+    font-size: 20px;
+    color: white;
+}
+
+.CerrarSesion{
+    position: absolute;
+    top: 80%;
+    right: 68%;
+    width: 45px;
+    height: 45px;
+}
+
+.titCerrarSesion{
+    position: absolute;
+    top: 82%;
+    right: 15%;
+    font-size: 20px;
+    color: white;
+}
+
+.Tit{
+    position: absolute;
+    top: 0%;
+    right: 45%;
+}
+
+.Logo{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 6%;
+    height: 12%;
+}
+
+/**/
+
+
+    </style>
+
 </head>
 <body>
 <span class="menu-btn" onclick="openNav()">&#9776;</span>
@@ -227,58 +480,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["userID"]) && isset($_P
             <button type="button" onclick="confirmacion('permanentemente')">Bloquear permanentemente</button> <br>
             <button type="button" onclick="confirmacion('Quitar')">Quitar sanción</button> <br>
         </form>
-
     </div>
 </div>
 
-<div class  = "RectSup">
-<div class  = "SubRect">
-    <h2 class= "Tit">Sancionar usuario</h2>
-    <img class = "Logo" src="../images/logo.png" alt="Logo">
-    <h2>Buscar Usuario</h2>
-    <form action="" method="get" id="searchForm">
-        <label for="campo">Buscar por:</label>
-        <select id="campo" name="campo" onchange="toggleCarreraSelect()">
-            <option value="nombre">Nombre</option>
-            <option value="carrera">Carrera</option>
-            <option value="noCtrol">No. Control</option>
-        </select>
-        <select id="carreraSelect" name="carrera" disabled>
-            <option value="">Seleccione una carrera</option>
-            <?php
-            // Obtener la lista de carreras desde la base de datos
-            $serverName = "25.41.90.44\\SQLEXPRESS"; 
-            $connectionOptions = array(
-                "Database" => "NexusEducation",
-                "UID" => "log_userweb", 
-                "PWD" => "nexus123", 
-                "CharacterSet" => "UTF-8"
-            );
+<div class="RectSup">
+    <div class="SubRect">
+        <h2 class="Tit">Sancionar usuario</h2>
+        <a href="../estadisticas/principalmoderador.html" class="moderador-link">
+        <img class="Logo" src="../images/logo.png" alt="Logo"></a>
+        <h2>Buscar Usuario</h2>
+        <form action="" method="get" id="searchForm">
+            <label for="campo">Buscar por:</label>
+            <select id="campo" name="campo" onchange="toggleCarreraSelect()">
+                <option value="nombre">Nombre</option>
+                <option value="carrera">Carrera</option>
+                <option value="noCtrol">No. Control</option>
+            </select>
+            <select id="carreraSelect" name="carrera" disabled>
+                <option value="">Seleccione una carrera</option>
+                <?php
+$serverName = "tcp:nexus-education.database.windows.net,1433";
+$connectionInfo = array(
+    "Database" => "NexusEducation",
+    "UID" => "nexus_admin", 
+    "PWD" => "Nxs#1#Edctn", 
+    "CharacterSet" => "UTF-8",
+    "LoginTimeout" => 30, 
+    "Encrypt" => 1, 
+    "TrustServerCertificate" => 0
+);
 
-            $conn = sqlsrv_connect($serverName, $connectionOptions);
-            if ($conn === false) {
-                echo "No se estableció la conexión.";
-                die (print_r(sqlsrv_errors(), true));
-            }
+// Establecer la conexión a la base de datos
+$conn = sqlsrv_connect($serverName, $connectionInfo);
+                if ($conn === false) {
+                    echo "No se estableció la conexión.";
+                    die(print_r(sqlsrv_errors(), true));
+                }
 
-            $query_carreras = "SELECT * FROM Carreer";
-            $result_carreras = sqlsrv_query($conn, $query_carreras);
-            if ($result_carreras === false) {
-                echo "Error al obtener las carreras.";
-                die (print_r(sqlsrv_errors(), true));
-            }
-            while ($row_carrera = sqlsrv_fetch_array($result_carreras, SQLSRV_FETCH_ASSOC)) {
-                echo "<option value='" . $row_carrera['carreerID'] . "'>" . $row_carrera['carreerName'] . "</option>";
-            }
-            ?>
-        </select>
-        <input type="text" id="valor" name="valor">
-        <button type="submit">Buscar</button>
-    </form>
+                $query_carreras = "SELECT * FROM Carreer";
+                $result_carreras = sqlsrv_query($conn, $query_carreras);
+                if ($result_carreras === false) {
+                    echo "Error al obtener las carreras.";
+                    die(print_r(sqlsrv_errors(), true));
+                }
+                while ($row_carrera = sqlsrv_fetch_array($result_carreras, SQLSRV_FETCH_ASSOC)) {
+                    echo "<option value='" . $row_carrera['carreerID'] . "'>" . $row_carrera['carreerName'] . "</option>";
+                }
+                ?>
+            </select>
+            <input type="text" id="valor" name="valor">
+            <button type="submit">Buscar</button>
+        </form>
     </div>
 </div>
 <?php
-
 $serverName = "tcp:nexus-education.database.windows.net,1433";
 $connectionInfo = array(
     "Database" => "NexusEducation",
@@ -347,17 +602,17 @@ if ($result === false) {
         <img src="../validar/iconos/gerente.png" alt="Moderador" class="Moderador">
         <span class="titModerador">Moderador</span>
     </a>
-    <a href="" class="validar-link">
+    <a href="../Sancionar/ListEstdnt.php" class="validar-link">
         <img src="../validar/iconos/validar.png" alt="Validar" class="Validar">
         <span class="titValidar">Validar</span>
     </a>
 
-    <a href="" class="Reporte-link">
+    <a href="../report/SanComentarios.php" class="Reporte-link">
         <img src="../validar/iconos/Reporte.png" alt="Reporte" class="Reporte">
         <span class="titReporte">Reportes</span>
     </a>
 
-    <a href="" class="Categorias-link">
+    <a href="../categoria/organizarcontenido.html" class="Categorias-link">
         <img src="../validar/iconos/categoria.png" alt="Categorias" class="Categorias">
         <span class="titCategorias">Categorias</span>
     </a>
@@ -367,13 +622,13 @@ if ($result === false) {
         <span class="titEstudiante">Estudiante</span>
     </a>
 
-    <a href="../login.html" class="CerrarSesion-link">
+    <a href="../index.html" class="CerrarSesion-link">
         <img src="../validar/iconos/cerrar_sesion.png" alt="CerrarSesion" class="CerrarSesion">
         <span class="titCerrarSesion">Cerrar Sesión</span>
     </a>
 </div>
 
-<div class = "Tbl">
+<div class = "table-container">
     <h2>Lista de Usuarios</h2>
     <table>
         <tr>

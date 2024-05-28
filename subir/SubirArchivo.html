@@ -8,40 +8,54 @@
     <link rel="stylesheet" href="subirarchivo.css">
     <link href="../images/logo.png" rel="shortcut icon">
     <style>
+        
+        .top-section, .bottom-section {
+        width: 100%;
+        box-sizing: border-box;
+
+        }  
+        
+        .top-section{
+            height: 121px; 
+        }
         .bottom-section {
-            display: none;
+        display: none;
         }
 
-        input[type="archivo"],
+        input[type="nombre"],
         input[type="carrera"],
         input[type="semestre"],
         input[type="materia"] {
             width: 500px;
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #ffffff;
             border-radius: 30px;
-            margin-top: -10px;
-            margin-left: 200px;
+            margin-top: -20px;
 
         }
-
+        
         input[type="archivo"],
         input[type="carrera"],
         input[type="semestre"],
         input[type="materia"],
         button {
             border: none;
-            background-color: #f2f2f2;
+            background-color: #65A7D3;
             border-radius: 50px;
             padding: 5px 10px;
-            margin-top: 10px;
+            margin-bottom: 5px;
             height: 30px;
             width: 500px;
-            margin-right: 10px; 
+            margin-right: 0px; 
             text-align: left; /* Alinea el texto a la izquierda */
             font-family: Arial, sans-serif; /* Cambiar la fuente */
             font-size: 16px; /* Cambiar el tamaño de la letra */
             margin-left: 40px;
+        }
+
+        button {
+            display: inline-block;
+            cursor: pointer;
         }
 
         input[type="archivo"]:focus,
@@ -50,14 +64,22 @@
         input[type="materia"]:focus,
         button:focus {
             outline: none;
-            background-color: #e6e6e6;
+            background-color: #2d4e64;        
         }
 
-        input[type="archivo"] {
-        color: #000; /* Cambia el color del texto a negro */
-    }
+        .button-container {
+            text-align: center;
+        }
 
-       
+        .back-button img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .back-button,
+        .submit-button {
+            margin: 20px;
+        }
 
     </style>
 </head>
@@ -85,13 +107,13 @@
             </div>
         
             <div class="bottom-section" id="uploadContainer">
-                <h2 style="padding-top: 20px; padding-left: 30px;">Ingrese los datos del archivo</h2>
-                <div style="display: flex; align-items: center; margin-bottom: 10px; margin-left: -250px;">
+                <h2 style="padding-top: 130px; padding-left: 630px;">Ingrese los datos del archivo</h2>
+                <div style="display: flex; align-items: center; margin-bottom: 10px; margin-left: 300px;">
                     <h3 style="margin-right: 20px;">Nombre del Archivo:</h3>
                     <input type="archivo" id="archivo" name="archivo" placeholder="nombredelarchivo.pdf" readonly onchange="obtenerExtension()" >
                     <input type="hidden" id="extensionArchivo" name="extensionArchivo">
                 </div>
-                <div class="form-input carrera" style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -250px;">
+                <div class="form-input carrera" style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: 300px;">
                     <h3 style="margin-right: 95px;">Carrera:</h3>
                     <select name="carrera" id="carrera" style=" margin-left:72px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px; margin-right: 15px;">
                         <option value="">Seleccione una carrera...</option>
@@ -107,7 +129,7 @@
                         <option value="10">Licenciatura en Administración</option>
                     </select>
                 </div>
-                <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -250px;">
+                <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: 300px;">
                     <h3 style="margin-right: 90px;">Semestre:</h3>
                     <select name="semestre" id="semestre" style=" margin-left:61px ; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px; margin-right: 15px;">
                         <option value="">Seleccione un semestre...</option>
@@ -124,22 +146,21 @@
                     </select>
                 </div>
             
-                <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -250px;">
-                    <h3 style="margin-right: 35px;">Materia:</h3>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: 300px;">
+                    <h3 style="margin-right: 155px;">Materia:</h3>
                     <select name="materia" id="materia" style="margin-left:11px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px;"></select>
                 </div>
             
-                <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: -250px;">
-                    <h3 style="margin-right: 35px;">Categoria:</h3>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;  margin-left: 300px;">
+                    <h3 style="margin-right: 135px;">Categoria:</h3>
                     <select name="categoria" id="categoria" style="margin-left:11px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px;"></select>
                 </div>
-                <br>
-                <h1><p><button type="submit" class="button" style="margin-top: 80px;">Subir</button></p></h1>
-
-                <!-- Botón con imagen -->
-                <buttonback style="margin-left: 15px;" class="back-button" onclick="mostrarAddFile()">
-                    <img src="../images/atras.png" alt="Atrás" width="100" height="100">
-                </buttonback>
+                <div class="button-container">
+                    <button type="button" class="back-button" onclick="mostrarAddFile()">
+                        <img src="../images/atras.png" alt="Atrás">
+                    </button>
+                    <button type="submit" class="submit-button" style="width: 180px; height: 40px; margin-left: 70px; text-align: center;">Subir</button>
+                </div>
             </div>
         </form>
         <div class="left-section" > 
@@ -150,19 +171,19 @@
             </div>
             <div>
                 <img style="margin-top: 30%;" src="../images/Subir.png" alt="Subir" class="fotosperfil ">
-                <a href="subir/SubirArchivo.html">Subir</a>
+                <a href="../subir/SubirArchivo.html">Subir</a>
             </div>
             <div>
                 <img style="margin-top: 60%;" src="../images/Mis_archivos.png" alt="Mis_archivos" class="fotosperfil">
-                <a href="../view-file/my-files.php">Mis Archivos</a>
+                <a href="my-files.php">Mis Archivos</a>
             </div>
             <div>
                 <img style="margin-top: 85%;" src="../images/buscar.png" alt="Mis_archivos" class="fotosperfil">
-                <a href="../buscar/buscar.php">Buscar</a>
+                <a href="buscar.html">Buscar</a>
             </div>
             <div>
                 <img style="margin-top: 200%;" src="../images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil"> 
-                <a  style="margin-top: 110%;"  href="../index.html">Cerrar sesión</a>
+                <a  style="margin-top: 110%;"  href="../login.html">Cerrar sesión</a>
             </div>
         
     </div>

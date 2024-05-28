@@ -4,117 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clasificación de Categorías - Nexus Education</title>
-    <link rel="stylesheet" href="../estilospantallas.css">
+    <link rel="stylesheet" href="clasificacioncategoria.css">
     <link href="../images/logo.png" rel="shortcut icon">
 
     <style>
-        button {
-            background-color: #65A7D3;
-            color:black;
-            cursor: pointer;
-            transition: background-color 0.5s;
-            height: 40px;
-            width: 300px; /* Ajuste del ancho del botón */
-            text-align: center; /* Alinea el texto del botón al centro */
-            margin-bottom: 10px; /* Espacio entre botones */
-            border-radius: 50px;
-            font-family: Arial, sans-serif; /* Cambiar la fuente */
-            font-size: 22px; /* Cambiar el tamaño del texto */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        button:hover {
-            background-color: #3594d3;
-        }
-
-        /* Estilo cuando se hace clic */
-        button:active {
-            transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
-        }
         
-        input[type="nombre"],
-        input[type="carrera"],
-        input[type="semestre"],
-        input[type="materia"] {
-            width: 350px;
-            padding: 10px;
-            border: 1px solid #ffffff;
-            border-radius: 30px;
-            margin-top: -20px;
-            margin-left: 90px;
-
-        }
-
-        input[type="nombre"],
-        input[type="carrera"],
-        input[type="semestre"],
-        input[type="materia"],
-        button {
-            border: none;
-            background-color: #65A7D3;
-            border-radius: 50px;
-            padding: 5px 10px;
-            margin-bottom: 5px;
-            height: 30px;
-            width: 400px;
-            margin-right: 0px; 
-            text-align: left; /* Alinea el texto a la izquierda */
-            font-family: Arial, sans-serif; /* Cambiar la fuente */
-            font-size: 12px; /* Cambiar el tamaño de la letra */
-            margin-left: 100px;
-        }
-
-        input[type="nombre"],
-        input[type="carrera"],
-        input[type="semestre"],
-        input[type="materia"],
-        button:focus {
-            outline: none;
-            background-color: #2d4e64;
-        }
-
-        .back-button {
-            position: absolute;
-            bottom: 30px; /* Distancia desde la parte inferior */
-            left: 25px; /* Distancia desde la parte izquierda */
-            border: none;
-            background: none;
-            cursor: pointer;
-            padding: 0;
-        }
-
-        .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
-            position: absolute;
-            top: 160px;
-            left: 30px;
-            width: 530px;
-            height: 530px; 
-            background-color: #ffffffe1; /* Color para el 80% */
-            padding-top: 15px; /* Espacio arriba para separar cada opción de combobox*/
-            padding-left: 30px;
-            padding-right: 280px;
-        }
-            /* Estilos para la tabla */
-        #tabla-categorias {
-            width: 780px;
-            border-collapse: collapse;
-            margin-top: 20px;
-            border-radius: 50px;
-        }
-        #tabla-categorias th, #tabla-categorias td {
-            border: 1px solid #3594d3;
-            padding: 8px;
-            text-align: left;
-            color:black;
-            
-            
-        }
-        #tabla-categorias th {
-            background-color: #65A7D3;
-        }
     </style>
 </head>
 <body>
@@ -122,23 +16,18 @@
     <div class="container">
         <!-- TOP SECTION ES LA PARTE AZUL DE ARRIBA CON LOS LOGOS-->
         <div class="top-section">
-            <img src="../images/tecnm.png" alt="Logo Tecnm" class="logo-tecnm">
-            <img src="../images/ittepic.png" alt="Logo Tec Tepic" class="logo-ittepic">
-            <img src="../images/nexus2.png" alt="Logo Nexus" class="logo-nexus">
-            <img src="../images/nombrenexus.png" alt="Logo nombre Nexus" class="logo-nombrenexus">
-            
-
+            <a href="../homepage.php" style="margin-top: 50px;">
+            <img src="../images/nexus.png" alt="Logo Nexus" class="logo-nexus"></a>
+            <h1 >Clasificación de categorías </h1>
         </div>
         
         <!-- SECCION AZUL DE FONDO-->
         <div class="bottom-section">
             <div class="center-section">
             <form action="GET">
-            <!-- SECCION AZUL ENCIMA DE LA ANTERIOR QUE TIENE LOS COMBOBOX Y BOTON DE BUSCAR-->
-            <h1 style ="margin-top: 0px; margin-left: -40px; font-family: Arial, sans-serif; font-size: 30px; " >Clasificación de categorías</h1>
-             
+            <!-- SECCION AZUL ENCIMA DE LA ANTERIOR QUE TIENE LOS COMBOBOX Y BOTON DE BUSCAR-->             
             <!-- COMBOBOX CARRERAS-->
-            <div class="form-input carrera" style="margin-top: -15px; display: flex; align-items: center; margin-bottom: 0px;  margin-left: -270px;">
+            <div class="form-input carrera" style="margin-top: 2px; display: flex; align-items: center; margin-bottom: 0px;  margin-left: -270px;">
                 <h3 style="margin-right: 85px;  color:rgb(255, 255, 255);">Carrera</h3>
                 <select name="carrera" id="carrera" onchange="actualizarMaterias()" style=" margin-left:-80px; width: 520px; padding: 10px; border: 1px solid #ccc; border-radius: 30px; margin-right: 15px;">
                     <option value="1">Arquitectura</option>
@@ -180,14 +69,12 @@
             </div>
         </form>
             
-                            
+        <button name="buscar" id="buscar" onclick="actualizarMateriasYcategorias()" >Buscar</button>
+                    
         </div>
         
-
-            <button name="buscar" id="buscar" onclick="actualizarMateriasYcategorias()" style="font-size: 20px;width: 200px;height:40px; margin: -260px; margin-bottom: -240px; margin-left: 280px;">Buscar</button>
-
                 <!-- SECCION BLANCA -->
-                <div class="center-sectionwhite" style="margin-left: 130px; margin-top: 25px;">
+                <div class="center-sectionwhite" style="margin-left: 130px; margin-top: 45px;">
                 <!-- TABLA PARA CATEGORIAS --> 
                     <table id="tabla-categorias">
                         <tr>
@@ -201,20 +88,21 @@
 
         
         <div class="left-section"> 
-            
+            <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
             <img src="../images/moderador.png" alt="moderador" class="fotosperfil" style="margin-left: -17px; margin-top: -15px; width: 50px; height: auto;">
             <img src="../images/textomoderador.png" alt="textomoderador" class="fotosperfil" style="margin-left: 30px; margin-top: -5px; width: 150px; height: auto;">
-            
-            <!-- SE SUSTITUYE EL HTML HACIA DONDE SE QUIERE REDIRECCIONAR -->
-            
+
             <img src="../images/validar.png" alt="Validar" class="fotosperfil" style="margin-left: -17px; margin-top: 5px; width: 125px; height: auto;">
-                <a href="validar.html" style="margin-left: 25px; margin-top: 80px;">Validar</a>
+                <a href="../validar/ArchEspera.php" style="margin-left: 25px; margin-top: 80px;">Validar</a>
             <img src="../images/reporte.png" alt="reporte" class="fotosperfil" style="margin-left: -10px; margin-top: 75px; width: 130px; height: auto; ">
                 <a href="reporte.html" style="margin-left: 25px; margin-top: 70px;">Reporte</a>
             <img src="../images/categoria.png" alt="categoria" class="fotosperfil" style="margin-left: -12px; margin-top: 175px; width: 140px; height: auto;">
-                <a href="organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
+                <a href="../categoria/organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
+            <img src="../images/crearmoderador.png" alt="Validar" class="fotosperfil" style="margin-left: 10px; margin-top: 320px; width: 55px; height: auto;">
+                <a href="opcionesestudiantes.html" style="margin-left: 25px; margin-top: 70px;">Estudiantes</a>
             <img src="../images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
-                <a href="../login.html" style="margin-left: 7px; margin-top: 170px;">Cerrar sesión</a>
+                <a href="login.html" style="margin-left: 7px; margin-top: 80px;">Cerrar sesión</a>
+
         </div>
         
     </div>

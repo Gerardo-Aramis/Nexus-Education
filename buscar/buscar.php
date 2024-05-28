@@ -54,10 +54,10 @@
     <div class="container">
         
     <div class="top-section">
-        <img src="images/tecnm.png" alt="Logo Tecnm" class="logo-tecnm">
-        <img src="images/ittepic.png" alt="Logo Tec" class="logo-ittepic">
-        <img src="images/nexus2.png" alt="Logo Nexus" class="logo-nexus">
-        <img src="images/nombrenexus.png" alt="Logo Nombre Nexus" class="logo-nombrenexus">
+        <a href="../homepage.php"><img src="images/tecnm.png" alt="Logo Tecnm" class="logo-tecnm"></a>
+        <a href="../homepage.php"><img src="images/ittepic.png" alt="Logo Tec" class="logo-ittepic"></a>
+        <a href="../homepage.php"><img src="images/nexus2.png" alt="Logo Nexus" class="logo-nexus"></a>
+        <a href="../homepage.php"><img src="images/nombrenexus.png" alt="Logo Nombre Nexus" class="logo-nombrenexus"></a>
 
     </div>
 

@@ -414,7 +414,7 @@ sqlsrv_close($conn);
                 echo "<a href='' class = 'perfil' >Mi perfil</a>";
             echo "<img src='images/Cerrar_sesion.png' alt='cerrarSesion' class= 'cerrarSesion'>";
                 echo "<a href='index.html' class = 'CerrarSesion' >Cerrar sesión</a>";
-            echo "<img src='images/nexus.png' alt='nexus' class= 'nexus'>";
+            echo "<a href='homepage.php'><img src='images/nexus.png' alt='nexus' class= 'nexus'></a>";
             echo "<p class = 'Titulo'>Mi perfil</p>";
             echo "<a href='homepage.php' class = 'retrn'>Volver</a></p>";
 

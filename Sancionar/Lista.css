@@ -16,6 +16,10 @@ th {
     background-color: #2A677C;
 }
 
+td {
+    background-color: #5a9baf; /* Color de fondo para las celdas de la tabla */
+}
+
 button{
     border-radius: 30px;
     padding: 5px 15px;
@@ -239,3 +243,6 @@ a{
     width: 6%;
     height: 12%;
 }
+
+/**/
+

@@ -8,25 +8,29 @@ body {
     justify-content: center;
     align-items: center; 
     position: relative;
-    color: #ffffff;
+    color: white;
     min-height: 100vh; 
-    background-color: #2A677C;
     zoom: reset;
+    padding: 0;
 }
 
 .container {
     width: 100%;
-    height: 100vh; /* Establece la altura del contenedor para ocupar el 100% del viewport height */
+    height: 100%;
     overflow: hidden; /* Oculta el contenido que se desborda */
     display: flex;
     flex-direction: column;
+    padding: 0;
+    margin: 0;
 }
 
-@media (max-width: 650px){
+
+
+@media (max-width: 700px){
     .logo-nexus {
         position: absolute;
-        top: 1%;
-        left: 2%;
+        top: calc(100% - 95%);
+        left: calc(100% - 70%);
         width: calc(100% - 94%); 
         height: auto; 
     }
@@ -67,13 +71,13 @@ body {
         padding-top: 2%;
         font-size: 5px;
     }
-
+    
     .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
         position: absolute;
         top: 20%; /* Empezando después del 20% */
         left: 15%;
         padding-top: 1%;
-        padding-left: 2%;
+        padding-left: 10%;
         width: 83%;
         height: 100%; /* 80% de la pantalla */
         background-color: #2A677C; /* Color para el 80% */
@@ -91,6 +95,15 @@ body {
         border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
     }
 
+    .fotosarchivo {
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
+    
     .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
         position: absolute;
         top: 20%; /* Empezando después del 20% */
@@ -103,8 +116,8 @@ body {
 
     .left-section a {
         color: white;
-        font-size: 40%;
-        padding-left: calc(100% - 70%);
+        font-size: 10px;
+        padding-left: 10%;
         text-decoration: none; /* Quita el subrayado predeterminado */
         display: block;
         margin-bottom: calc(100% - 80%); /* Espacio entre cada enlace */
@@ -115,74 +128,51 @@ body {
         left: calc(100%- 70%);
         text-decoration: underline; /* Añade subrayado al pasar el ratón */
         padding-left: calc(100%- 70%);
-        font-size: (100% - 95%);
+        font-size: 10%;
     }
 
-    
     .fotosperfil {
         position: absolute;
         top: calc(100% - 98%);
         left: calc(100% - 95%);
-        width: calc(100% - 80%); 
+        width: 1%; 
         height: auto;
         margin-bottom: calc(100% - 85%); 
         padding-top: calc(100% - 99%);
     }
     
-    .add-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
-        position: absolute;
-        top: 20%; /* Empezando después del 20% */
-        left: 200px;
-        padding-left: 430px;
-        width: 1200px;
-        height: 512.8px; /* 80% de la pantalla */
-        background-color: #2A677C; /* Color para el 80% */
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .fotosarchivo {
-        position: absolute;
-        top: 60px;
-        left: 400px;
-        width: 125px; 
-        height: auto; 
-    }
-
-    button { /* ESTE BOTON ES PARA SUBIR ARCHIVO*/
-        background: none; /* Elimina el fondo */
-        border: none; /* Elimina el borde */
-        padding: 0; /* Elimina el relleno */
+    
+    button {
+        background-color: #65A7D3;
+        color: rgb(255, 255, 255);
         cursor: pointer;
-        position: absolute;
-        top: 350px;
-        left: 510px;
-        width: 150px; 
-        height: auto; 
+        transition: background-color 0.5s;
         text-align: center; /* Alinea el texto del botón al centro */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 25px; /* Cambiar el tamaño del texto */
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 9999;
+        height: 80px; 
+        width: 550px;
+        margin-left: -22%;
+        margin-top: 4%;
+        border-radius: 50px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
     }
-
-    span { /* ESTE BOTON ES PARA SUBIR ARCHIVO*/
-        background: none; /* Elimina el fondo */
-        border: none; /* Elimina el borde */
-        padding: 0; /* Elimina el relleno */
-        cursor: pointer;
-        position: absolute;
-        top: 350px;
-        left: 510px;
-        width: 150px; 
-        height: auto; 
-        text-align: center; /* Alinea el texto del botón al centro */
-    }
-
+    
     button:hover {
-        background-color: #005fcc00;
+        background-color: #65A7D3;
+        text-decoration: underline; /* Aplica el subrayado solo en hover */
+        color: white;
     }
-
-    /* Estilo cuando se hace clic */
+    
     button:active {
         transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        text-decoration: none; /* Quita el subrayado predeterminado */
     }
-
+    
 
     /* Estilos para el texto en los combobox */
     select {
@@ -191,7 +181,7 @@ body {
         color: #747272; /* Cambiar el color del texto */
         /* Otros estilos según tus preferencias */
     }
-
+    
     /* Estilos para las opciones del combobox */
     option {
         font-family: Arial, sans-serif; /* Cambiar la fuente */
@@ -199,14 +189,123 @@ body {
         color: #575656; /* Cambiar el color del texto */
         /* Otros estilos según tus preferencias */
     }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0px; /* Empezando después del 20% */
+        left: 135px;
+        width: 590px;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-section a{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: none;
+    }
+    
+    .center-section a:hover{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: underline;
+        color: white;
+    }
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 530px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+    
+    
+    button {
+        background-color: #65A7D3;
+        color:black;
+        cursor: pointer;
+        transition: background-color 0.5s;
+        height: 40px;
+        width: 300px; /* Ajuste del ancho del botón */
+        text-align: center; /* Alinea el texto del botón al centro */
+        margin-bottom: 10px; /* Espacio entre botones */
+        border-radius: 50px;
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 22px; /* Cambiar el tamaño del texto */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
+    button:hover {
+        background-color: #3594d3;
+    }
+
+    /* Estilo cuando se hace clic */
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+    }
+    
+    input[type="nombre"],
+    input[type="carrera"],
+    input[type="semestre"],
+    input[type="materia"] {
+        width: 500px;
+        padding: 10px;
+        border: 1px solid #ffffff;
+        border-radius: 30px;
+        margin-top: -20px;
+        margin-left: 90px;
+
+    }
+
+    input[type="nombre"],
+    input[type="carrera"],
+    input[type="semestre"],
+    input[type="materia"],
+    button {
+        border: none;
+        background-color: #65A7D3;
+        border-radius: 50px;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        height: 30px;
+        width: 500px;
+        margin-right: 0px; 
+        text-align: left; /* Alinea el texto a la izquierda */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño de la letra */
+        margin-left: 100px;
+    }
+
+    input[type="nombre"],
+    input[type="carrera"],
+    input[type="semestre"],
+    input[type="materia"],
+    button:focus {
+        outline: none;
+        background-color: #2d4e64;
+    }
+
+    .back-button {
+        position: absolute;
+        bottom: 30px; /* Distancia desde la parte inferior */
+        left: 25px; /* Distancia desde la parte izquierda */
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    
 }
 
-@media(min-width: 651px) and (max-width:1799px){
+@media(min-width: 701px) and (max-width:1799px){
     .logo-nexus {
         position: absolute;
         top: calc(100% - 97.5%);
-        left: 2%;
+        left: 1%;
         width: calc(100% - 94%); 
         height: auto; 
     }
@@ -241,22 +340,23 @@ body {
         left: 0;
         padding-left: calc(100% - 55%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
         width: 100%;
-        height: 121px; 
+        height: 15.5%; 
         background-color: #202d35; /* Color para el 20% */
         bottom: 0;
         padding-top: 2%;
     }
     
-
     .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
+        position: absolute;
         top: 20%; /* Empezando después del 20% */
         left: 15%;
-        width: 100%;
-        height: 100%;
+        padding-top: 1%;
+        padding-left: 26%;
+        width: 83%;
+        height: 100%; /* 80% de la pantalla */
         background-color: #2A677C; /* Color para el 80% */
         font-family: Arial, Helvetica, sans-serif;
         font-size:15px;
-        flex: 1 0 auto;
         overflow-y: auto; /* Muestra la barra de desplazamiento vertical si es necesario */
     }
     
@@ -268,17 +368,24 @@ body {
         background-color: #385c74; /* Color de la barra de desplazamiento */
         border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
     }
-    
+
+    .fotosarchivo {
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
     
     .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
         position: absolute;
         top: 20%; /* Empezando después del 20% */
+        left: 0px;
         width: 15%;
-        height: 100%;
+        height: 100%; /* 80% de la pantalla */
         background-color: #0E3C54; /* Color para el 80% */
         padding-top: calc(100% - 99%); /* Espacio arriba para separar cada opción de perfil*/
-        flex-direction: column; /* Alinea los elementos en una columna */
-
     }
 
     .left-section a {
@@ -297,7 +404,8 @@ body {
         padding-left: calc(100%- 70%);
         font-size: (100% - 95%);
     }
-    
+
+
     .fotosperfil {
         position: absolute;
         top: calc(100% - 98%);
@@ -307,38 +415,8 @@ body {
         margin-bottom: calc(100% - 85%); 
         padding-top: calc(100% - 99%);
     }
-    
-    .add-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
-        position: absolute;
-        top: 20%; /* Empezando después del 20% */
-        left: 10%;
-        padding-left: 430px;
-        width: 1200px;
-        height: 512.8px; /* 80% de la pantalla */
-        background-color: #2A677C; /* Color para el 80% */
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .fotosarchivo {
-        position: absolute;
-        top: 60px;
-        left: 400px;
-        width: 125px; 
-        height: auto; 
-    }
-
-    span { /* ESTE BOTON ES PARA SUBIR ARCHIVO*/
-        background: none; /* Elimina el fondo */
-        border: none; /* Elimina el borde */
-        padding: 0; /* Elimina el relleno */
-        cursor: pointer;
-        position: absolute;
-        top: 350px;
-        left: 510px;
-        width: 150px; 
-        height: auto; 
-        text-align: center; /* Alinea el texto del botón al centro */
-    }
+   
+ 
 
     /* Estilos para el texto en los combobox */
     select {
@@ -347,7 +425,7 @@ body {
         color: #747272; /* Cambiar el color del texto */
         /* Otros estilos según tus preferencias */
     }
-
+    
     /* Estilos para las opciones del combobox */
     option {
         font-family: Arial, sans-serif; /* Cambiar la fuente */
@@ -355,6 +433,38 @@ body {
         color: #575656; /* Cambiar el color del texto */
         /* Otros estilos según tus preferencias */
     }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0px; /* Empezando después del 20% */
+        left: 135px;
+        width: 590px;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-section a{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: none;
+    }
+    
+    .center-section a:hover{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: underline;
+        color: white;
+    }
+    
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 20px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 430px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+    
 
     button {
         background-color: #65A7D3;
@@ -383,25 +493,51 @@ body {
         transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
     }
     
+    input[type="nombre"],
+    input[type="carrera"],
+    input[type="semestre"],
+    input[type="materia"] {
+        width: 500px;
+        padding: 10px;
+        border: 1px solid #ffffff;
+        border-radius: 30px;
+        margin-top: -20px;
+        margin-left: 90px;
 
-    buttonback {
-        background-color: #35B6E3;
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.3s;
+    }
+
+    input[type="nombre"],
+    input[type="carrera"],
+    input[type="semestre"],
+    input[type="materia"],
+    button {
+        border: none;
+        background-color: #65A7D3;
+        border-radius: 50px;
+        padding: 5px 10px;
+        margin-bottom: 5px;
         height: 30px;
-        width: calc(50% - 10px); /* Ajuste del ancho del botón */
-        border-radius: 50%; /* Para hacer el botón circular */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
+        width: 500px;
+        margin-right: 0px; 
+        text-align: left; /* Alinea el texto a la izquierda */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño de la letra */
+        margin-left: 100px;
+    }
+
+    input[type="nombre"],
+    input[type="carrera"],
+    input[type="semestre"],
+    input[type="materia"],
+    button:focus {
+        outline: none;
+        background-color: #2d4e64;
     }
 
     .back-button {
         position: absolute;
-        bottom: 70px; /* Distancia desde la parte inferior */
-        left: -260px; /* Distancia desde la parte izquierda */
+        bottom: 30px; /* Distancia desde la parte inferior */
+        left: 25px; /* Distancia desde la parte izquierda */
         border: none;
         background: none;
         cursor: pointer;
@@ -409,12 +545,11 @@ body {
     }
 }
 
-
 @media(min-width: 1800px){
     .logo-nexus {
         position: absolute;
-        top: 1%;
-        left: 2%;
+        top: calc(100% - 95%);
+        left: calc(100% - 70%);
         width: calc(100% - 94%); 
         height: auto; 
     }
@@ -444,16 +579,14 @@ body {
     }
     
     .top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
-        position: absolute;
+        position: center;
         top: 0;
         left: 0;
-        padding-left: calc(100% - 55%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        padding-left: calc(100% - 50%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+        padding-top: 10%;
         width: 100%;
-        height: 300px; 
+        height: 500px; /* 20% de la pantalla */
         background-color: #202d35; /* Color para el 20% */
-        bottom: 0;
-        padding-top: 2%;
-        font-size: 5px;
     }
 
     .bottom-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
@@ -461,7 +594,7 @@ body {
         top: 20%; /* Empezando después del 20% */
         left: 15%;
         padding-top: 1%;
-        padding-left: 2%;
+        padding-left: 20%;
         width: 83%;
         height: 100%; /* 80% de la pantalla */
         background-color: #2A677C; /* Color para el 80% */
@@ -479,6 +612,15 @@ body {
         border-radius: 10%; /* Radio de la esquina de la barra de desplazamiento */
     }
 
+    .fotosarchivo {
+        position: absolute;
+        top: 60px;
+        left: 400px;
+        width: 125px; 
+        height: auto; 
+        margin-bottom: calc(100% - 85%);
+    }
+
     .left-section { /* CONTENEDOR PARTE AZUL DE LA IZQUIERDA*/
         position: absolute;
         top: 20%; /* Empezando después del 20% */
@@ -491,7 +633,7 @@ body {
 
     .left-section a {
         color: white;
-        font-size: 40%;
+        font-size: (100% - 95%);
         padding-left: calc(100% - 70%);
         text-decoration: none; /* Quita el subrayado predeterminado */
         display: block;
@@ -506,7 +648,6 @@ body {
         font-size: (100% - 95%);
     }
 
-    
     .fotosperfil {
         position: absolute;
         top: calc(100% - 98%);
@@ -517,60 +658,39 @@ body {
         padding-top: calc(100% - 99%);
     }
     
-    .add-section { /* CONTENEDOR PARTE AZUL DE ABAJO*/
-        position: absolute;
-        top: 20%; /* Empezando después del 20% */
-        left: 200px;
-        padding-left: 430px;
-        width: 1200px;
-        height: 512.8px; /* 80% de la pantalla */
-        background-color: #2A677C; /* Color para el 80% */
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .fotosarchivo {
-        position: absolute;
-        top: 60px;
-        left: 400px;
-        width: 125px; 
-        height: auto; 
-    }
-
-    button { /* ESTE BOTON ES PARA SUBIR ARCHIVO*/
-        background: none; /* Elimina el fondo */
-        border: none; /* Elimina el borde */
-        padding: 0; /* Elimina el relleno */
+       
+   
+    button {
+        background-color: #65A7D3;
+        color: rgb(255, 255, 255);
         cursor: pointer;
-        position: absolute;
-        top: 350px;
-        left: 510px;
-        width: 150px; 
-        height: auto; 
+        transition: background-color 0.5s;
         text-align: center; /* Alinea el texto del botón al centro */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 25px; /* Cambiar el tamaño del texto */
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 9999;
+        height: 80px; 
+        width: 550px;
+        margin-left: -22%;
+        margin-top: 4%;
+        border-radius: 50px;
+        text-decoration: none; /* Quita el subrayado predeterminado */
     }
-
-    span { /* ESTE BOTON ES PARA SUBIR ARCHIVO*/
-        background: none; /* Elimina el fondo */
-        border: none; /* Elimina el borde */
-        padding: 0; /* Elimina el relleno */
-        cursor: pointer;
-        position: absolute;
-        top: 350px;
-        left: 510px;
-        width: 150px; 
-        height: auto; 
-        text-align: center; /* Alinea el texto del botón al centro */
-    }
-
+    
     button:hover {
-        background-color: #005fcc00;
+        background-color: #65A7D3;
+        text-decoration: underline; /* Aplica el subrayado solo en hover */
+        color: white;
     }
-
-    /* Estilo cuando se hace clic */
+    
     button:active {
         transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+        text-decoration: none; /* Quita el subrayado predeterminado */
     }
-
+    
 
     /* Estilos para el texto en los combobox */
     select {
@@ -579,7 +699,7 @@ body {
         color: #747272; /* Cambiar el color del texto */
         /* Otros estilos según tus preferencias */
     }
-
+    
     /* Estilos para las opciones del combobox */
     option {
         font-family: Arial, sans-serif; /* Cambiar la fuente */
@@ -587,6 +707,114 @@ body {
         color: #575656; /* Cambiar el color del texto */
         /* Otros estilos según tus preferencias */
     }
+    
+    .center-section { /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 0px; /* Empezando después del 20% */
+        left: 135px;
+        width: 590px;
+        height: 100%; /* 80% de la pantalla */
+        background-color: #0E3C54; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 300px;
+    }
+    
+    .center-section a{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: none;
+    }
+    
+    .center-section a:hover{ /* CONTENEDOR PARTE AZUL DEL CENTRO EN CATEGORIAS*/
+        text-decoration: underline;
+        color: white;
+    } 
+    .center-sectionwhite { /* CONTENEDOR PARTE BLANCA DEL CENTRO EN CATEGORIAS*/
+        position: absolute;
+        top: 100px; /* Empezando después del 20% */
+        left: 30px;
+        width: 520px;
+        height: 530px; /* 80% de la pantalla */
+        background-color: #ffffffe1; /* Color para el 80% */
+        padding-top: 15px; /* Espacio arriba para separar cada opción de perfil*/
+        padding-left: 310px;
+    }
+    
+    
+    button {
+        background-color: #65A7D3;
+        color:black;
+        cursor: pointer;
+        transition: background-color 0.5s;
+        height: 40px;
+        width: 300px; /* Ajuste del ancho del botón */
+        text-align: center; /* Alinea el texto del botón al centro */
+        margin-bottom: 10px; /* Espacio entre botones */
+        border-radius: 50px;
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 22px; /* Cambiar el tamaño del texto */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
+    button:hover {
+        background-color: #3594d3;
+    }
+
+    /* Estilo cuando se hace clic */
+    button:active {
+        transform: translateY(1px); /* Mueve el botón hacia abajo un poco al hacer clic */
+    }
+    
+    input[type="nombre"],
+    input[type="carrera"],
+    input[type="semestre"],
+    input[type="materia"] {
+        width: 500px;
+        padding: 10px;
+        border: 1px solid #ffffff;
+        border-radius: 30px;
+        margin-top: -20px;
+        margin-left: 90px;
+
+    }
+
+    input[type="nombre"],
+    input[type="carrera"],
+    input[type="semestre"],
+    input[type="materia"],
+    button {
+        border: none;
+        background-color: #65A7D3;
+        border-radius: 50px;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        height: 30px;
+        width: 500px;
+        margin-right: 0px; 
+        text-align: left; /* Alinea el texto a la izquierda */
+        font-family: Arial, sans-serif; /* Cambiar la fuente */
+        font-size: 16px; /* Cambiar el tamaño de la letra */
+        margin-left: 100px;
+    }
+
+    input[type="nombre"],
+    input[type="carrera"],
+    input[type="semestre"],
+    input[type="materia"],
+    button:focus {
+        outline: none;
+        background-color: #2d4e64;
+    }
+
+    .back-button {
+        position: absolute;
+        bottom: 30px; /* Distancia desde la parte inferior */
+        left: 25px; /* Distancia desde la parte izquierda */
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    
 }
-
