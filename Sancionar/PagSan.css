@@ -4,14 +4,14 @@ body{
 
 .alerta{
     position: absolute;
-    width: 25%;
-    height: 40%;
-    top: 15%;
-    right: 37%;
+    width: 15%;
+    height: 30%;
+    top: 30%;
+    right: 43%;
 }
 .msj{
     position: absolute;
-    top: 55%;
+    top: 62%;
     right: 20%;
     font-size: 150%;
     color: white;
@@ -19,7 +19,7 @@ body{
 
 .msj2{
     position: absolute;
-    top: 60%;
+    top: 68%;
     right: 33%;
     font-size: 150%;
     color: white;
@@ -27,17 +27,31 @@ body{
 
 .Contacto{
     position: absolute;
-    top: 68%;
+    top: 75%;
     right: 40%;
     font-size: 150%;
-    color: rgb(4, 186, 199);
+    color: rgb(9, 231, 247);
 }
+
+.Contacto a {
+    text-decoration: none;
+    color:  rgb(9, 231, 247); /* Color del enlace */
+    transition: border-bottom 0.3s ease; /* Transición para el hover */
+}
+
+/* Estilo para el estado hover */
+.Contacto a:hover {
+    border-bottom: 2px solid rgb(10, 155, 165); /* Línea debajo del enlace al pasar el cursor */
+    text-decoration:underline;
+
+}
+
 
 .Regresar{
     background: #0E3C54;
     position: absolute;
-    top: 90%;
-    right: 45%;
+    top: 87%;
+    right: 46%;
     border-radius: 30px;
     color: White;
     cursor: pointer;
@@ -50,36 +64,45 @@ body{
     background: #a6d3e2; 
 }
 
-
-/**/
-.user-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.logo-nexus {
+    position: absolute;
+    top: calc(100% - 95%);
+    left: calc(100% - 70%);
+    width: calc(100% - 94%); 
+    height: auto; 
 }
 
-.user-list-header, .user-list-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+.logo-nombrenexus {
+    position: absolute;
+    top: calc(100% - 95%);
+    left: calc(100% - 60%);
+    width: calc(100% - 75%); 
+    height: auto; 
 }
 
-.user-list-header {
-    background-color: #f2f2f2;
-    font-weight: bold;
+.logo-tecnm {
+    position: absolute;
+    top: calc(100% - 94%);
+    left: calc(100% - 98%);
+    width: calc(100% - 90%); 
+    height: auto;  
 }
 
-.user-list-item:nth-child(even) {
-    background-color: #f9f9f9;
+.logo-ittepic {
+    position: absolute;
+    top: calc(100% - 95%);
+    right: calc(100% - 99%);
+    width: calc(100% - 94%); 
+    height: auto; 
 }
 
-.user-list-item span {
-    flex: 1;
-    text-align: center;
-}
-
-button {
-    padding: 5px 10px;
-    cursor: pointer;
+.top-section { /* CONTENEDOR PARTE AZUL DE ARRIBA*/
+    position: center;
+    top: 0;
+    left: 0;
+    padding-left: calc(100% - 50%); /* PARA CENTRAR EL TEXTO DE TITULO AÑADIR ARCHIVO*/
+    padding-top: 10%;
+    width: 50%;
+    height: 0px; /* 20% de la pantalla */
+    background-color: #202d35; /* Color para el 20% */
 }
