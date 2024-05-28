@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container">
         
     <div class="top-section">
-        <a href="../homepage.php" style="margin-top: 50px;">
+        <a href="../estadisticas/principalmoderador.html" style="margin-top: 50px;">
         <img src="../images/nexus.png" alt="Logo Nexus" class="logo-nexus"></a>
         <h1 >Crear moderador</h1>
     </div>
