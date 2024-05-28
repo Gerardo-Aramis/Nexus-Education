@@ -208,15 +208,15 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
             </a>
             
             <img src="images/validar.png" alt="Validar" class="fotosperfil" style="margin-left: -17px; margin-top: 5px; width: 125px; height: auto;">
-                <a href="validar.html" style="margin-left: 25px; margin-top: 80px;">Validar</a>
+                <a href="../validar/ArchEspera.php" style="margin-left: 25px; margin-top: 80px;">Validar</a>
             <img src="images/reporte.png" alt="reporte" class="fotosperfil" style="margin-left: -10px; margin-top: 75px; width: 130px; height: auto; ">
-                <a href="reporte.html" style="margin-left: 25px; margin-top: 70px;">Reporte</a>
+                <a href="" style="margin-left: 25px; margin-top: 70px;">Reporte</a>
             <img src="images/categoria.png" alt="categoria" class="fotosperfil" style="margin-left: -12px; margin-top: 175px; width: 140px; height: auto;">
-                <a href="organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
+                <a href="../categoria/organizarcontenido.html" style="margin-left: 25px; margin-top: 65px;">Categorias</a>
             <img src="images/crearmoderador.png" alt="Validar" class="fotosperfil" style="margin-left: 10px; margin-top: 320px; width: 55px; height: auto;">
                 <a href="../students/opcionesestudiantes.html" style="margin-left: 25px; margin-top: 70px;">Estudiantes</a>
             <img src="images/Cerrar_sesion.png" alt="Cerrar_sesion" class="fotosperfil" style="margin-top: 430px;  "> 
-                <a href="iniciarsesion.html" style="margin-left: 7px; margin-top: 80px;">Cerrar sesión</a>
+                <a href="../index.html" style="margin-left: 7px; margin-top: 80px;">Cerrar sesión</a>
         </div>
         
 

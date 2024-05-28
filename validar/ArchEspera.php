@@ -196,22 +196,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <span class="titValidar">Validar</span>
     </a>
 
-    <a href="" class="Reporte-link">
+    <a href="../report/SanComentarios.php" class="Reporte-link">
         <img src="iconos/Reporte.png" alt="Reporte" class="Reporte">
         <span class="titReporte">Reportes</span>
     </a>
 
-    <a href="" class="Categorias-link">
+    <a href="../categoria/organizarcontenido.html" class="Categorias-link">
         <img src="iconos/categoria.png" alt="Categorias" class="Categorias">
         <span class="titCategorias">Categorias</span>
     </a>
 
-    <a href="" class="Estudiante-link">
+    <a href="../students/opcionesestudiantes.html" class="Estudiante-link">
         <img src="iconos/crearmoderador.png" alt="Estudiante" class="Estudiante">
         <span class="titEstudiante">Estudiante</span>
     </a>
 
-    <a href="../login.html" class="CerrarSesion-link">
+    <a href="../index.html" class="CerrarSesion-link">
         <img src="iconos/cerrar_sesion.png" alt="CerrarSesion" class="CerrarSesion">
         <span class="titCerrarSesion">Cerrar Sesión</span>
     </a>
