@@ -39,7 +39,7 @@ if(isset($_GET['id'])) {
         $fila = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
         
         // Redirigir al usuario al enlace del archivo en Drive
-        header("Location: {$fila['filePath']}");
+        header("Location: https://drive.google.com/file/d/{$fila['filePath']}/view");
         exit;
     } else {
         echo "El archivo no fue encontrado.";
